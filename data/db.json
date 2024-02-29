@@ -1,0 +1,13 @@
+{
+  "blogs" : [
+    { "title": "My new website", "body": "lorem ipsum bunsl...", "author": "Rabby", "id": 1 },
+    { "title": "More toilet trouble", "body": "lorem ipsum bunsl...", "author": "Rabby", "id": 4 },
+    { "title": "Hello world",    "body": "lorem ipsum schneble...", "author": "Peanut", "id": 2 },
+    { "title": "Web dev tips",   "body": "lorem ipsum caveat...", "author": "Rabby", "id": 3 }
+  ], 
+  "users": [
+    { "id":1, "name": "Sam Stone", "email": "sam.stone.111@gmail.com", "number": "650-111-1111" },
+    { "id":2, "name": "Helen Troy", "email": "helentroy22@gmail.com", "number": "650-222-2222" },
+    { "id":3, "name": "Mike Hunter", "email": "mikehunter33@yahoo.com", "number": "650-333-3333" }
+  ]
+}

@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+In the project root directory there is a Makefile to encapsulate the various buils and options.
+
 In the project directory, you can run:
 
 ### `npm start`

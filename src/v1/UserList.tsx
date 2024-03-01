@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-interface User {
+interface IUser {
     id: number;
     name: string;
     email: string;
@@ -9,7 +9,7 @@ interface User {
 }
 
 interface UserListProps {
-    users: User[];
+    users: IUser[];
     name: string;
 }
 

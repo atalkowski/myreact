@@ -1,6 +1,7 @@
 import BlogPage from './v1/BlogPage.js';
 import Counter from './v1/Counter.jsx';
 import Home from './v1/Home.tsx';
+import User from './v1/User.tsx';
 import Navbar from './Navbar.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -16,6 +17,7 @@ function App() {
             <Route exact path="/" element={<Home/>}>       </Route>
             <Route path="/blogpage" element={<BlogPage />}></Route>
             <Route path="/counter"  element={<Counter />}> </Route>
+            <Route exact path="/users/:userId" element={<User />} />
           </Routes>
         </div>
       </div>

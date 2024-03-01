@@ -4,8 +4,9 @@ import Home from './v1/Home.tsx';
 import User from './v1/User.tsx';
 import Navbar from './Navbar.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
 import './App.css';
+import UserCreate from './v1/UserCreate.tsx';
+
 function App() {
   return (
     <Router>
@@ -18,6 +19,8 @@ function App() {
             <Route path="/blogpage" element={<BlogPage />}></Route>
             <Route path="/counter"  element={<Counter />}> </Route>
             <Route exact path="/users/:userId" element={<User />} />
+            <Route exact path="/user-create" element={<UserCreate />} />
+            
           </Routes>
         </div>
       </div>

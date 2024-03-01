@@ -1,18 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-interface IUser {
-    id: number;
-    name: string;
-    email: string;
-    number: string;
-}
+import IUser from './IUser';
 
 interface UserListProps {
     users: IUser[];
     name: string;
 }
-
 
 const UserList: React.FC<UserListProps> = ({ users, name }) => {
   return (
@@ -21,6 +14,7 @@ const UserList: React.FC<UserListProps> = ({ users, name }) => {
         <div>
           <h1>Users List</h1>
         </div>
+        <div><Link to={"/user-create"}><button className="create">Add User</button></Link></div>
         <div>
           <table text-align="center">
             <thead>
@@ -38,7 +32,7 @@ const UserList: React.FC<UserListProps> = ({ users, name }) => {
                   </td>
                   <td>
                     <Link to={`/users/${user.id}`}>
-                      <button>View full details</button>
+                      <button>View detail</button>
                     </Link>
                   </td>
                 </tr>

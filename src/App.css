@@ -89,12 +89,12 @@ label {
   display: block;
 }
 
-.create button {
-  background: #C08080;
+button {
+  background: hsl(293, 34%, 43%);
   color: #fff;
   border: 0;
   padding: 8px;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
 }
 

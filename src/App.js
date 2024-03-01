@@ -15,9 +15,10 @@ function App() {
         <Navbar />
         <div className="content>">
           <Routes>
-            <Route exact path="/" element={<Home/>}>       </Route>
+            <Route exact path="/" element={<Home/>}       ></Route>
             <Route path="/blogpage" element={<BlogPage />}></Route>
-            <Route path="/counter"  element={<Counter />}> </Route>
+            <Route path="/counter"  element={<Counter />} ></Route>
+            <Route exact path="/users" element={<Home/>}  ></Route>
             <Route exact path="/users/:userId" element={<User />} />
             <Route exact path="/user-create" element={<UserCreate />} />
             

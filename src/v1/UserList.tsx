@@ -1,20 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import IUser from './IUser';
+import useState from 'react';
+
+import '../App.css';
 
 interface UserListProps {
-    users: IUser[];
-    name: string;
+  users: IUser[];
 }
 
-const UserList: React.FC<UserListProps> = ({ users, name }) => {
+// function UserList {
+ // const [searchTerm, setSearchTerm] = useState("");
+const UserList: React.FC<UserListProps> = ({ users }) => {
+ 
   return (
     <>
       <div>
         <div>
-          <h1>Users List</h1>
+          <h3>Users List</h3>
+          <div>
+            <Link to={"/user-create"}><button className="create">Add User</button></Link></div>
         </div>
-        <div><Link to={"/user-create"}><button className="create">Add User</button></Link></div>
         <div>
           <table text-align="center">
             <thead>
@@ -32,7 +38,7 @@ const UserList: React.FC<UserListProps> = ({ users, name }) => {
                   </td>
                   <td>
                     <Link to={`/users/${user.id}`}>
-                      <button>View detail</button>
+                      View/Edit
                     </Link>
                   </td>
                 </tr>

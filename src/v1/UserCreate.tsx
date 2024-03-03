@@ -41,6 +41,7 @@ const UserCreate = () => {
   return (
     <React.Fragment>
     <div>
+      <h3>Create New User</h3>
       <form className="create" onSubmit={handleSubmit}> 
         <label>Name:  
            <input type="text" required value={name} onChange={(e) => setName(e.target.value)}/>

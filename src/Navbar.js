@@ -12,15 +12,16 @@ import { Link } from "react-router-dom";
         </tr>
 
 */
+const wid = "20%";
+
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <h2>Navigation here</h2>
-      <table><tbody>
+      <table width="100%"><tbody>
         <tr>
-        <td width="33%"> <Link to="/">Home</Link></td>
-        <td width="33%"> <Link to="/blogpage">Blogs</Link></td>
-        <td width="33%"> <NavLink to="/counter">Counter</NavLink></td>
+        <td width={wid}> <Link to="/">Users</Link></td>
+        <td width={wid}> <Link to="/blogpage">Blogs</Link></td>
+        <td width={wid}> <NavLink to="/counter">Counter</NavLink></td>
         </tr>
       </tbody></table>
     </nav>

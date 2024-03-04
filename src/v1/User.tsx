@@ -83,14 +83,14 @@ const User = () => {
   return (
     <React.Fragment>
     <div>
-         <h3> Edit User Detail </h3>
+        <h3> Edit User Detail </h3>
         {error && <p color="red">{error}</p>}
         {saveError && <p color="red">{saveError}</p>}
         {isPending && <p>Loading user...</p>}
         {!isPending && initialized(user) && ( <div>
             <form onSubmit={handleSubmit}> 
               <table align="center"><tbody>
-              <tr><td>User ID</td><td><div> {user.id} <a href="#" onClick={handleDelete}>Delete this entry</a> </div>  
+              <tr><td>User ID</td><td><div> {user.id} <a href="/" onClick={handleDelete}>Delete this entry</a> </div>  
               </td></tr>
               <tr><td>Name  </td><td> <label><input type="text" value={name} 
                       required onChange={(e) => setName(e.target.value)}/>  </label></td></tr>
@@ -106,7 +106,6 @@ const User = () => {
               </tbody>
               </table>
              </form>
-
             </div> )
         }
     </div>

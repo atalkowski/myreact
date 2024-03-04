@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import IUser from './IUser';
-import useState from 'react';
 
 import '../App.css';
 
@@ -11,6 +10,7 @@ interface UserListProps {
 
 // function UserList {
  // const [searchTerm, setSearchTerm] = useState("");
+ // Note we are destructuring the properties passed from the parent component here.
 const UserList: React.FC<UserListProps> = ({ users }) => {
  
   return (

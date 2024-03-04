@@ -1,10 +1,5 @@
 const BlogList = ({ blogs, title}) => {
-  const handleDelete = (id) => {
-    console.log("This handleDelete would be passed as a PROPERTY function from the parent");
-    console.log("Nothing to see here - it was decomissioned when we started updating db.json");
-  }
 
-  // <button onClick={() => handleDelete(blog.id)}>Delete blog (pretend)</button>
   const snippet = (s) => {
     console.log("making snippet " + s);
     if (s.length > 50) {

@@ -1,0 +1,50 @@
+<H1>Airbnb Senior Software Engineer, Core Services</H1>
+<h2>About the job</h2>
+<p>Airbnb was born in 2007 when two Hosts welcomed three guests to their San Francisco home, and has since grown to over 4 million Hosts who have welcomed more than 1 billion guest arrivals in almost every country across the globe. Every day, Hosts offer unique stays and experiences that make it possible for guests to connect with communities in a more authentic way.</p>
+<h3>The Community You Will Join<h3>
+<p>Airbnb is a mission-driven company dedicated to helping create a world where anyone can belong anywhere. It takes a unified team committed to our core values to achieve this goal. Airbnb's various functions embody the company's innovative spirit and our fast-moving team is committed to leading as a 21st century company.</p>
+<h3>The Difference You Will Make</h3>
+<p><b>Auth Infrastructure</b> - This team is responsible for building the infrastructure around Airbnb’s authentication and authorization systems. Authentication systems encompass credential and sessions management. Authorization systems enable permission management for all Airbnb platform products and services across internal and external Airbnb communities. Together these systems provide developers at Airbnb with the best-in-class infrastructure to build secure and trustworthy applications.</p>
+<h3>A Typical Day</h3>
+<p>This engineer will work on distributed systems with focus in the domain of authentication and authorization, that have higher reliability and security requirements than most backend systems or services. The systems owned by the team have a large number of critical services, and any downtime across these services can result in a hard downtime for the Airbnb platform. In addition, the team collaborates closely with the product and infra engineering teams to build new features and evolve the systems to meet the engineering challenges as the business is growing and evolving.</p>
+<h3>Your day-to-day responsibilities include</h3>
+<ul>
+  <li>Designing and implementing in distributed systems. The role is very hands-on and requires expertise in designing significant parts of the auth systems, implementing core features in collaboration with other team members, formulate well-thought out rollout and testing plans, and be able to participate in team’s on call.
+  </li><li>Maintaining and debugging existing authentication and authorization systems. This could involve fixing bugs, improving test coverage, improving performance, contributing to production excellence, adding new features, code reviews and creating dashboards for better observability into the systems.
+  </li><li>Providing technical support to other engineers and developers. This could involve answering questions, debugging code, or helping to troubleshoot problems. Partner with stakeholders to understand their feature requests, design, implement and ship them as per expectations.
+  </li><li>Staying up-to-date on the latest security threats and trends. This could involve reading security blogs, attending conferences, or taking security courses.</li>
+  <li>Collaborating within and broadly across the Airbnb tech community. Working with other engineers on Airbnb wide initiatives, collaborating with external teams - partners and stakeholders, and ensuring that team success makes Airbnb platform and community successful.
+</li>
+</ul>
+<h2>Your Expertise</h2>
+<ul><li>Experience working on distributed systems and evaluating trade-offs
+   </li><li>An ideal candidate should be proficient in Java to be most effective in their role. 
+   </li><li>Experience working in Authentication or Authorization systems is a plus
+   </li><li>Proficient in technical communication - writing design docs, presenting in design reviews, writing effective post-mortems from security incidents, etc.
+   </li><li>Love collaborating via code reviews and architecture discussions
+   </li><li>Are motivated to contribute to a good team culture
+   </li><li>Are excited to join an impactful infrastructure team 
+   </li>
+</ul>
+<h2>Benefits</h2>
+<ul><li>Stock
+</li><li>Competitive salaries
+</li><li>Quarterly employee travel coupon
+</li><li>Paid time off
+</li><li>Medical, dental, & vision insurance
+</li><li>Life insurance and disability benefits
+</li><li>Fitness Discounts
+</li><li>401K
+</li><li>Flexible Spending Accounts
+</li><li>Apple equipment
+</li><li>Commuter Subsidies
+</li><li>Community Involvement (4 hours per month to give back to the community)
+</li><li>Company sponsored tech talks and happy hours
+</li><li>Much more…
+</li></ul>
+<h3>Your Location</h3>
+This position is US - Remote Eligible. The role may include occasional work at an Airbnb office or attendance at offsites, as agreed to with your manager. Airbnb,Inc. can employ in states where we have registered entities. Currently, employees can not be located in: Alaska, Indiana, Nebraska, North Dakota, Ohio, South Dakota, Wisconsin, Alabama, Mississippi, Oklahoma, Delaware and Rhode Island. This list is continuously evolving and being updated, please check back with us if the state you live in is on the exclusion list. If your position is employed by another Airbnb entity, your recruiter will inform you what states you are eligible to work from.
+<h3>How We'll Take Care Of You</h3>
+Our job titles may span more than one career level. The actual base pay is dependent upon many factors, such as: training, transferable skills, work experience, business needs and market demands. The base pay range is subject to change and may be modified in the future. This role may also be eligible for bonus, equity, benefits, and Employee Travel Credits.
+<h3>Pay Range</h3>
+Between : $185,000—$221,000 USD

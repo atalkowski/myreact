@@ -1,0 +1,48 @@
+
+# <tr><td>993</td><td>Cruise SF                  </td><td>Sen Security Soft Eng II  </td><td>             </td><td>Not Java  &nbsp;</td><td>&nbsp;</td></tr>
+#<tr><td>994</td><td>SAP -                      </td><td>Sen Soft Eng              </td><td>             </td><td>To do? &nbsp;</td><td>&nbsp;</td></tr>
+#<tr><td>995</td><td>Apple – Cupertino          </td><td>Sen Soft Eng Apple Pay FT </td><td>140-256K     </td><td>Req rcvd &nbsp;</td><td>&nbsp;</td></tr>
+
+function part1() {
+cat jobstatus.html | grep "<tr>" | sed 's/<td>/|/g
+s/<tr>//g
+s/<.td>//g
+s/<.tr>//g
+s/     / /g
+s/.nbsp;/ /g'
+}
+
+function part2() {
+  cat jdata | sed 's/ *|/|/g
+s/| */|/g' | awk -F'|' '{
+   print sprintf("%3.3s| %33.33s | %30.30s | %15.15s | %15.15s | %s", $2, $3, $4, $5, $6, $7); }'
+}
+
+function part3() {
+   echo "# -- Create the SQL from the text file using awk" | cut -c2-
+  cat dat2 | sed 's/| */|/g
+s/ *|/|/g' | awk -F'|' 'BEGIN { loc="";
+          sql="INSERT into MYREACT.JOB(COMPANY, TITLE, APPLYDATE, LOCATION, SALARY, WORKAT)LINEFEEDvalues";
+          print sql;
+        }
+        /lingam/ { loc="Burlingame"; }
+        /ateo/  { loc="San Mateo"; }
+        /(SF|San F)/ { loc="San Francisco"; }
+        /Jose/  { loc="San Hose"; }
+        /M.*view/  { loc="Mt View"; }
+        /upert/ { loc="Cupertino"; }
+        /Palo/  { loc="Palo Alto"; }
+        { 
+          company=sprintf("DQ%s", $2);
+          title=sprintf("DQ%s", $3);
+          loc=sprintf("DQ%s", loc);
+          apply=sprintf("DQ%s", $5);
+          salary=sprintf("DQ%s", $4);
+          type=sprintf("DQ%s", $6);
+          print sprintf(" (%31.31sDQ, %32.32sDQ, %12.12sDQ, %15.15sDQ, %13.13sDQ, %sDQ),", company, title, apply, loc, salary, type);
+          loc= ""; bg = 0; sf = 0; sj=0; mv=0; sm=0; pa=0;
+        }' | sed 's/DQ/"/g
+s/LINEFEED/\n/'
+}
+
+part3

@@ -1,0 +1,36 @@
+
+<h2>Solutions to Angular GOTCHAS</h2>
+<table class="htmltext">
+	<tr><th width=50%>Problem</th><th width=50%>Resolution</th></tr>
+	<tr><td>Getting the following error during <b>ng serve:</b><br/>
+		node_modules/webpack/lib/util/createHash.js:135:53
+		<ul>
+			<li>opensslErrorStack: [ 'error:03000086:digital envelope routines::initialization error' ],</li>
+			<li>library: 'digital envelope routines',</li>
+			<li>reason: 'unsupported',</li>
+			<li>code: 'ERR_OSSL_EVP_UNSUPPORTED'</li>
+		</ul>
+		</td>
+		<td>Ensure npm is up to date:<br/>ng update @angular/core@16 @angular/cli@16 
+			<br/>... from version N=old to N=desired 1 at at time<br/>
+		    export NODE_OPTIONS=--openssl-legacy-provider
+	   </td>
+	</tr>
+    <tr><td>'module' is not defined eslint error</td><td>
+       Looks like the env needed to be updated from this
+<div class="code2">env: {</div>
+<div class="code2">&nbsp;&nbsp;&nbsp;&nbsp;browser: true,</div>
+<div class="code2">&nbsp;&nbsp;&nbsp;&nbsp;es6: true,</div>
+<div class="code2">&nbsp;&nbsp;&nbsp;&nbsp;jest: true</div>
+<div class="code2">&nbsp;&nbsp;},</div>
+       to include node: true for the module error to be resolved.
+<div class="code2">env: {</div>
+<div class="code2">env: {</div>
+<div class="code2">&nbsp;&nbsp;&nbsp;&nbsp;browser: true,</div>
+<div class="code2">&nbsp;&nbsp;&nbsp;&nbsp;es6: true,</div>
+<div class="code2">&nbsp;&nbsp;&nbsp;&nbsp;jest: true,</div>
+<div class="code2">&nbsp;&nbsp;&nbsp;&nbsp;node: true</div>
+<div class="code2">&nbsp;&nbsp;},</div>
+</td></tr>
+</table>
+

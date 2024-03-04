@@ -1,0 +1,174 @@
+
+
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <title>Job Status</title>
+  <link rel="stylesheet" href="../css/v1.css">
+  <script src="../js/utils.js"></script>
+  <script>
+  var currentbutton;
+  function switchDetail(path, target, button) {
+    if (!currentbutton || currentbutton == button) {
+      currentbutton = button;
+    } else {
+      resetButton(currentbutton, "View job");
+      clearInnerHtml(target);
+    }
+    toggleTextFile(path, target, button);
+    currentbutton = button;
+  }
+  </script>
+</head>
+<body class="w3-light-grey">
+<div class="w3-content" style="max-width:1400px">
+<h1>Jobs</h1>
+<h2>Useful</h2>
+<ul><li>Interview questions: <button onclick='switchDetail("details/questions.html", "usefuls", this)'>View html</button>
+   </li>
+</ul>
+<div id="usefuls"></div>
+
+<span id="articles">
+<h2>Job Application Status</h2>
+<div id="job-details"></div>
+<table>
+<tr><th width=5% >ID </th>
+    <th width=20%>Organization/Location  </th>
+    <th width=20%>Job Descriction </th>
+    <th width=10%>Benefits </th>
+    <th width=25%>Applied / Status</th>
+    <th width=20%>Link</th></tr>
+    
+<tr><td>897</td><td>Thousand Eyes (San Francisco)</td><td>SSE VLoud and Enterprise</td><td>134-220K</td><td>03/01/2024</td><td>
+      <button onclick='switchDetail("details/1000eyes.htm", "job-details", this)'>View htm</button></td></tr>
+<tr><td>898</td><td>Lyft (San Francisco)</td><td>SSE Fulfillment (Hybrid)</td><td>162-180K</td><td>02/20/2024</td><td>
+      <button onclick='switchDetail("details/lyft.htm", "job-details", this)'>View htm</button></td></tr>
+<tr><td>899</td><td>Nium (Financial - San Francisco)</td><td>SBE (Hybrid)</td><td>158-227K</td><td>02/20/2024</td><td>
+      <button onclick='switchDetail("details/nium.htm", "job-details", this)'>View htm</button></td></tr>
+<tr><td>900</td><td>IBM see Instana San Jose</td><td>SE, Team Issue Detection APM</td><td>160K+</td><td>02/12/2024</td><td>
+      <button onclick='switchDetail("details/instana.job", "job-details", this)'>View job</button>
+</td></tr>
+<tr><td>901</td><td>Maven Clinic Remote</td><td>S-Staff-E, Back End</td><td>160K+</td><td>02/09/2024</td><td>
+      <button onclick='switchDetail("details/mavenclinic.job", "job-details", this)'>View job</button>
+</td></tr>
+<tr><td>902</td><td>Affirm Arizona Remote</td><td>SSE, Back End</td><td>160K+</td><td>02/08/2024</td><td>
+      <button onclick='switchDetail("details/affirm.html", "job-details", this)'>View html</button>
+</td></tr>
+<tr><td>903</td><td>Opt Health - SF - Remote</td><td>SSE, Front Ende</td><td>No idea yet</td><td>02/04/2024</td><td>
+      <button onclick='switchDetail("details/opthealth.html", "job-details", this)'>View html</button>
+</td></tr>
+<tr><td>904</td><td>Upstart - San Mateo/Remote</td><td>Senior Software Engineer, Pricing</td><td>190K+</td><td>02/01/2024</td><td>
+      <button onclick='switchDetail("details/upstart.job", "job-details", this)'>View job</button>
+</td></tr>
+<tr><td>905</td><td>The Trade Desk (San Jose)</td><td>Staff Engineer, Agile </td><td>190K+</td><td>02/01/2024</td><td>
+      <button onclick='switchDetail("details/tradedesk.job", "job-details", this)'>View job</button>
+</td></tr>
+<tr><td>906</td><td>FedEx</td><td>SSEngineer, F/Backend - remote</td><td>130K+</td><td>01/31/2024</td><td>
+      <button onclick='switchDetail("details/fedex.job", "job-details", this)'>View job</button>
+</td></tr>
+<tr><td>907</td><td>Capital One</td><td>SSEngineer, Backend - SFO</td><td>130-200K</td><td>01/30/2024</td><td>
+      <button onclick='switchDetail("details/capitalone.html", "job-details", this)'>View html</button>
+</td></tr>
+<tr><td>908</td><td>Patreon</td><td>SSEngineer, Payments - SFO Hybrid 3/2</td><td>185-221K</td><td>01/25/2024</td><td>
+      <button onclick='switchDetail("details/patreon.html", "job-details", this)'>View html</button>
+</td></tr>
+<tr><td>909</td><td>Airbnb</td><td>Senior Software Engineer, Core Services</td><td>185-221K</td><td>01/23/2024</td><td>
+      <button onclick='switchDetail("details/airbnb.html", "job-details", this)'>View html</button>
+</td></tr>
+<tr><td>910</td><td>17 Mission </td><td>SSE, some remote           </td><td>110-200K     </td><td>01/22/2024</td><td>
+      <button onclick='switchDetail("details/17mission.job", "job-details", this)'>View job</button>
+</td></tr>
+<tr class=nah><td>911</td><td>DataBricks MtnView Office  </td><td>SSE BE, On site           </td><td>150-230K     </td><td>01/19/2024</td><td>
+      <button onclick='switchDetail("details/databricks.job", "job-details", this)'>View job</button>  Not going further
+</td></tr>
+<tr><td>912</td><td>Smartsheet Bellvue WA      </td><td>SSE II , BE Remote        </td><td>             </td><td>01/18/2024</td><td>
+      <button onclick='switchDetail("details/smartsheet.job", "job-details", this)'>View job</button> or go 
+      <a href="https://www.linkedin.com/jobs/view/3774879102/?trackingId=bY49L870k7mUFUp62g%2F3%2FQ%3D%3D&refId=ByteString%28length%3D16%2Cbytes%3D08c302cb...43630b1c%29&midToken=AQEMNqQFf1z1jw&midSig=3LbX4jNXCWLb41&trk=eml-email_job_alert_digest_01-job_card-0-jobcard_body&trkEmail=eml-email_job_alert_digest_01-job_card-0-jobcard_body-null-31no1b~lri915pl~lm-null-null&eid=31no1b-lri915pl-lm&otpToken=MTMwZDFhZTExYTJjY2FjY2I3MjQwNGVkNDYxYmUyYjY4YmNmZDM0NjlhYWE4ZjYxNzJjZTA3NjY0YzUzNWNmMWY0ZGY4ZTg0NGJmMGZhZjkwZTkwYjY2ODc0MWNiYWE4Mjc3NWQ4YjE2ZmFkMzY0YWQ2ZmEsMSwx">Here</a>
+</td></tr>
+<tr><td>913</td><td>Atlassian San Fran Remote  </td><td>Senior BESE               </td><td>150-230K     </td><td>01/17/2024</td><td>
+      <button onclick='switchDetail("details/atlassion.job", "job-details", this)'>View job</button>
+</td></tr>
+<tr class=nah><td>914</td><td>Visa Foster City           </td><td>Senior SE / BE            </td><td>250K +       </td><td>01/16/2024</td><td>Not at this time :-(</td></tr>
+<tr><td>915</td><td>Jose Merciline Menlo Park  </td><td>See details way below     </td><td>144k-190K    </td><td>01/16/2024 (posted 6th)</td><td>
+      <button onclick='switchDetail("details/merciline.job", "job-details", this)'>View job</button>
+    </td></tr>
+<tr class=nah><td>916</td><td>Frazil SE – Salt Lake City </td><td>Software Engineering Lead </td><td>120K         </td><td>01/11/2024</td><td>Cannot relocate</td></tr>
+<tr class=nah><td>917</td><td>Zoox SE                    </td><td>Senior/Staff engineer     </td><td>             </td><td>01/11/2024 – chat 01/12@2:00pm</td><td class=nah>No fit</td></tr>
+<tr><td>918</td><td>Tolfrey Grp Inc (San Jose) </td><td>Backend Engineer          </td><td>180K+        </td><td>01/11/2024 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>919</td><td>Amplitude San Fran         </td><td>Staff Engineer BE         </td><td>170K+        </td><td>01/09/2024 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>920</td><td>Cribl – Burlingame         </td><td>SSE (BE)                  </td><td>?            </td><td>01/05/2024 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>921</td><td>Twin Health Mountainview   </td><td>SE Full stack             </td><td>140K         </td><td>01/04/2024 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>922</td><td>ZipRecruiter SF            </td><td>2 roles SSE / SE: Fullstk </td><td>140-200K     </td><td>01/02/2024 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>924</td><td>VMWare Palo Alto           </td><td>SE                        </td><td>143-178K est </td><td>12/30  &nbsp;</td><td>
+  <a href="ttps://vmware.wd1.myworkdayjobs.com/en-US/VMware/userHome">Here</a>
+</td></tr>
+<tr><td>925</td><td>Sephora San Fran           </td><td>Lead Eng Ecommerce Backend</td><td>143-178K est </td><td>12/29 (01F98261EN) &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>926</td><td>Guidewire                  </td><td>SSE                       </td><td>?K           </td><td>12/22 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>927</td><td>Adobe San Jose             </td><td>SSE                       </td><td>170K         </td><td>12/15 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>928</td><td>Cognitive Med Sys PaloAlto </td><td>SSE                       </td><td>150K         </td><td>12/15 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>929</td><td>Stanford BMIR              </td><td>Software Dev Research     </td><td>160K+        </td><td>12/14 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>931</td><td>Paypal (Various upcoming)  </td><td>SE                        </td><td>170K+        </td><td>12/13 Spoke to Porter &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>932</td><td>OpenAI SF                  </td><td>SEBE (ChatGPT)            </td><td>160-360K     </td><td>12/08 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>933</td><td>CapGemini SF               </td><td>SE-SBEE                   </td><td>115-170K     </td><td>12/08 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>934</td><td>Snowflake San Mateo        </td><td>SSE again                 </td><td>180K+        </td><td>12/07 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>935</td><td>Samsung Rsrch America MV   </td><td>SSE reomote               </td><td>143-196      </td><td>12/07 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>936</td><td>TIktok Mountainview        </td><td>SSE  Backend and InfraStr </td><td>180K+        </td><td>12/05 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>937</td><td>Yobi                       </td><td>??                        </td><td>??           </td><td>Abandoned as AI only &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>939</td><td>Cadent San Jose            </td><td>SSE                       </td><td>170K         </td><td>12/04 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>940</td><td>Odesava SF                 </td><td>Senior/Lead Backend Dev   </td><td>161K         </td><td>12/04 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>941</td><td>Pacaso SF                  </td><td>Software Eng              </td><td>170K         </td><td>12/04- apologies received</td><td>&nbsp;</td></tr>
+<tr><td>942</td><td>Newsbreak SF               </td><td>Software Eng BE           </td><td>170K         </td><td>12/01 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>943</td><td>Docusign (San Fran)        </td><td>Sen Soft Eng (BE CLM)     </td><td>140-197K     </td><td>11/27 – no longer accepting&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>944</td><td>Catalytic DS (Palo Alto)   </td><td>Software Engineer         </td><td>150K         </td><td>11/16 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>945</td><td>Rippling (HR stuff) SFO    </td><td>SE BE (Python)            </td><td>148K         </td><td>11/06 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>946</td><td>Zoox/ Foster City          </td><td>Senior/Staff SE           </td><td>200K+        </td><td>11/06 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>947</td><td>Afterpay / San Francisco   </td><td>Senior Software Engineer  </td><td>150K?        </td><td>11/06 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>948</td><td>GFiber/ Mtn View           </td><td>Senior Software Engineer  </td><td>150K         </td><td>10/31 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>949</td><td>Celonis / Palo Alto        </td><td>Java SE                   </td><td>150-183K     </td><td>10/31 Rej 11/01 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>951</td><td>Rivian/ Palo Alto          </td><td>SE II, BE (Charging)      </td><td>126-184K     </td><td>10/29 - duh &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>957</td><td>Navan / Palo Alto          </td><td>SBEE                      </td><td>135-215K     </td><td>10/23 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>961</td><td>GRAIL / Menlo Park         </td><td>Software Engineer BE      </td><td>?110-175K    </td><td>10/23 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>962</td><td>Cardlytics / Menlo Park    </td><td>Software Engineer III     </td><td>160K+        </td><td>10/23 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>963</td><td>IBM / San Jose             </td><td>Backend Software Engineer </td><td>150K+        </td><td>10/23 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>964</td><td>EBay                       </td><td>MTS 1 SE                  </td><td>135-206K     </td><td>10/20 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>965</td><td>LTK                        </td><td>SSE                       </td><td>?            </td><td>10/18 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>966</td><td>Ovu (or something)         </td><td>SSE                       </td><td>             </td><td>10/19 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>967</td><td>Tiktok Gl ECom FundCen     </td><td>Backend Software E        </td><td>110-205K     </td><td>10/10 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>968</td><td>Palo Alto Networks         </td><td>Principal SE              </td><td>?            </td><td>10/09 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>969</td><td>Snowflake                  </td><td>Senior Software Engineer  </td><td>170-225K     </td><td>10/13 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>970</td><td>Oracle                     </td><td>Software Engineer         </td><td>170K         </td><td>Hmm &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>971</td><td>Evidation – San Mateo      </td><td>Staff Eng                 </td><td>180K+        </td><td>10/05 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>972</td><td>Intuit                     </td><td>SBEE                      </td><td>?            </td><td>09/29 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>973</td><td>CapitalOne                 </td><td>SSE – Back End            </td><td>171-196K     </td><td>09/29 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>974</td><td>Walmart Sunnyvale          </td><td>Principle Engineer        </td><td>Upto 230K    </td><td>09/18 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>975</td><td>Stripe (Banking)           </td><td>BE/API Eng                </td><td>?            </td><td>Second time – 09/18</td><td>&nbsp;</td></tr>
+<tr><td>976</td><td>Vectara                    </td><td>Senior Java Dev           </td><td>160-220K     </td><td>09/11 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>977</td><td>Greenfly Santa Monica      </td><td>Senior Java Dev Remote    </td><td>?            </td><td>09/11 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>978</td><td>Paypal – San Jose Nicole   </td><td>Senior Software Engineer  </td><td>140-204K     </td><td>09/05 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>979</td><td>1Password                  </td><td>Sr Staff Engineer BE      </td><td>236-320K     </td><td>09/01 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>980</td><td>Coupang/Mtn View           </td><td>Staff Backend Eng         </td><td>142-309K     </td><td>09/01 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>981</td><td>Stripe (Banking)           </td><td>BE/API eng Money Mvmt BI  </td><td>             </td><td>On hold not sure &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>982</td><td>Verkada                    </td><td>Sr Backend Engineer       </td><td>             </td><td>Reject - Not at this time &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>983</td><td>Apple                      </td><td>SSE Cloud Product Services</td><td>             </td><td>8/9 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>984</td><td>IXL Learning               </td><td>SSE                       </td><td>140-210K     </td><td>8/4 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>985</td><td>SignaleFire/Longtail.AI PA </td><td>SSE etc : Flights.        </td><td>?            </td><td>Need to Apply &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>986</td><td>JPMC                       </td><td>SSE                       </td><td>Good         </td><td>0803 &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>987</td><td>Machinify                  </td><td>SSE Backend Remote Health </td><td>Upto 230K    </td><td>A=8/2 ACTIVE &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>988</td><td>Olivia                     </td><td>Senior Dev/Lead …         </td><td>105K+ ?      </td><td>0804 Not in budget &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>989</td><td>BravoLT (MI)               </td><td>Senior EDI Developer      </td><td>Upto 207K    </td><td>Bill - no reply &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>990</td><td>Oracle                     </td><td>SSE – Health and AI       </td><td>             </td><td>Recv Ack &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>991</td><td>Airbnb                     </td><td>Sen SE – Marketing Tech   </td><td>             </td><td>Recv Ack &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>992</td><td>Chan Zuckerburg Init’ve    </td><td>StaffSoftware Engineer    </td><td>200K+        </td><td>Req rcvd &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>993</td><td>Cruise SF                  </td><td>Sen Security Soft Eng II  </td><td>             </td><td>Not Java  &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>994</td><td>SAP -                      </td><td>Sen Soft Eng              </td><td>             </td><td>To do? &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>995</td><td>Apple – Cupertino          </td><td>Sen Soft Eng Apple Pay FT </td><td>140-256K     </td><td>Req rcvd &nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>996</td><td>Mental Health Care         </td><td>?                         </td><td>Req rcvd     </td><td> &nbsp;</td><td>&nbsp;</td></tr>
+  </table>
+</span>
+</div> <!-- End of the main content -->
+
+</body>
+</html>
+      

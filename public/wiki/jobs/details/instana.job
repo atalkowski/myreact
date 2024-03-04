@@ -1,0 +1,34 @@
+** Introduction
+The Instana Issue Detection team is looking for a Backend Software Engineer to join our team in San Jose.
+At Instana, we process and analyze millions of spans, traces, metrics and events per second in order 
+to provide actionable APM intelligence to our rapidly expanding customer base.
+
+As part of a multi functional team, you’ll help expanding Instana’s Issue Detection and Resolution platform. 
+Your role will cover the whole software engineering life cycle from technical design to implementation, quality assurance, delivery to production as well as maintenance and customer support. 
+If you’re interested, it is also possible to support the designer of the team on requirements engineering tasks as well as in customer interviews. Together with your peers, you’ll work on a Java based streaming backend, which is connected via gRPC and leverages Dropwizard, Kafka and Clickhouse mainly. In close collaboration with the two other teams, you’ll contribute to create the best issue detection and resolution platform on the market for our customers.
+
+* Your Role and Responsibilities
+As a member of the Issue Detection team your responsibilities will include:
+* Collaborate with Product Management and implement feature roadmaps
+* Work on innovative AI/ML solutions for issue detection
+* Leverage modern tools and techniques to develop clean, efficient and reusable code
+* Contribute to performance optimization
+* Review code and promote test automation
+* Handle issues reported by our customers
+
+
+* Required Technical and Professional Expertise
+
+* 5+ years programming experience in Java, J2EE, Spring MVC, and JavaScript.
+* Experience in developing microservices for distributed systems.
+* Experience in container technologies like docker, Kubernetes.
+* Experience with DevOps, CICD tools like Jenkins, Maven, Ansible
+* Experience in automation testing frameworks like Junit, Mockito, Spring Test, Cypress.
+* Good code writing discipline and an eye for code efficiency
+* Strong analytical thinking and problem-solving techniques
+* Fluent in written and spoken English
+
+
+* Preferred Technical and Professional Expertise
+* Experience working in cloud service providers like IBM Cloud, AWS, Google, Azure.
+* Experience with functional reactive programming paradigm like Project Reactor

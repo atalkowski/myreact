@@ -1,0 +1,68 @@
+
+<h4>CORS Requests with Credentials</h4>
+<p>In most real-life situations, requests sent to the cross-origin server need to be loaded with some kind of access credentials which could be an Authorization header or cookies - even though the default behavior is for the requests to be passed without these.</p>
+<p>When credentials are passed with the request to the cross-origin server, the browser will not allow access to the response unless the cross-origin server sends a CORS header Access-Control-Allow-Credentials with a value of true. Let's see how this works.</p>
+
+<h4>CORS Handling for Request with Credentials</h4>
+<p>When credentials are required, we have to help the browser pass in these when we make the cross-origin request. Here is a snippet of code that the original web server would send as JS to the browser which helps to facilitate authentication of the CORS feature. We send a credential in the form of a Authorization header in our CORS request:</p>
+<div class="codeblock">
+// Code held in browser from original site.
+<br/>function sendAuthRequestToCrossOrigin() {
+<br/>&nbsp;&nbsp;var xhr = new XMLHttpRequest();
+<br/>&nbsp;&nbsp;xhr.onreadystatechange = function() {
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;if (this.readyState == 4 && this.status == 200) {
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.getElementById("demo").innerHTML = this.responseText;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;};
+<br/>&nbsp;&nbsp;xhr.open('GET', "http://localhost:8000/orders", true);
+<br/>&nbsp;&nbsp;xhr.setRequestHeader('Authorization', 'Bearer rtikkjhgffw456tfdd');
+<br/>&nbsp;&nbsp;xhr.withCredentials = true; // Note - we are forcing browser to check creds are accepted!
+<br/>&nbsp;&nbsp;xhr.send();
+<br/>}
+</div>
+<p>Here we are sending a bearer token as the value of our Authorization header. To allow the browser to read the response, the cross-origin server needs to send the Access-Control-Allow-Credentials header in the response:</p>
+<div class="codeblock">
+// Code needed in the cross-origin node.js server
+<br/>app.use(function(req, res, next) {
+<br/>&nbsp;&nbsp;res.header("Access-Control-Allow-Origin", "http://localhost:9000");
+<br/>&nbsp;&nbsp;res.header(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Access-Control-Allow-Headers",
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Origin, X-Requested-With, Content-Type, Accept, Authorization"
+<br/>&nbsp;&nbsp;);
+<br/>&nbsp;&nbsp;res.header(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Access-Control-Allow-Methods",
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;"GET, POST, PUT, DELETE"
+<br/>&nbsp;&nbsp;);
+<br/>&nbsp;&nbsp;res.header("Access-Control-Allow-Credentials",true);
+<br/>&nbsp;&nbsp;next();
+<br/>});
+<br/>app.put('/orders', (req, res) => {
+<br/>&nbsp;&nbsp;console.log('updating orders');
+<br/>&nbsp;&nbsp;res.send(orders);
+<br/>});
+</div>
+<p>We have modified our code in the cross-origin server to send a value of true for the Access-Control-Allow-Credentials header so that the browser is able to read the response. We have also added the Authorization header in the list of allowed request headers in the header Access-Control-Allow-Headers.</p>
+<p>We can see the request and response headers in the browser console:</p>
+<div class="codeblock">
+Request URL: http://localhost:8000/orders
+<br/>Request Method: GET
+<br/>Status Code: 200 OK
+<br/>
+<br/>Response Headers:
+<br/>
+<br/>Access-Control-Allow-Credentials: true
+<br/>Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization
+<br/>Access-Control-Allow-Methods: GET, POST, PUT, DELETE
+<br/>Access-Control-Allow-Origin: http://localhost:9000
+<br/>
+<br/>Request Headers:
+<br/>
+<br/>Accept: */*
+<br/>Accept-Encoding: gzip, deflate, br
+<br/>Accept-Language: en-US,en;q=0.9
+<br/>Authorization: Bearer rtikkjhgffw456tfdd
+<br/>
+<br/>Origin: http://localhost:9000
+</div>
+
+<p>In this log, we can see the security credential in the form of the Authorization header in the request which contains a bearer token. The Authorization header is also included in the header named Access-Control-Allow-Headers returned from the cross-origin server. The browser can access the response since the value of the <b>Access-Control-Allow-Credentials</b> header sent by the server is <b>true</b>.</p>

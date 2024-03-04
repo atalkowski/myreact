@@ -1,0 +1,141 @@
+
+
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <title>React, Typescript and Angular</title>
+  <link rel="stylesheet" href="../css/v1.css">
+  <style>
+    .brightb b { color: #FFFFFF; }
+  </style>
+  <script src="../js/utils.js"></script>
+  <script>
+    function showOpener(buttonId, divId, url) {
+       var button = document.getElementById(buttonId);
+       if (button) { 
+        toggleTextFile(url, divId, button);
+      }
+    }
+     function showOpener1() {
+        console.log("Openers are currently not needed.")
+    //  showOpener("angular-button", "angular-setup", "examples/angular-setup.html");
+    //  showOpener("nodejs-button", "nodejs-setup", "examples/nodejs-setup.html");
+     }
+  </script>
+</head>
+
+<body onload="showOpener1()" class="w3-light-grey">
+<div class="w3-content" style="max-width:1400px">
+
+<span class="myhtml">
+  <h1>React, TypeScript, Angular, Nodejs</h1>
+  <h2>React</h2>
+  <ul>
+    <li>Quick start: <span class="code2">npx create-react-app name-of-app</span></li>
+    <li><b>React UI libraries</b> - these are the top rated UI libs and tools. 
+     <button id="react-uilibs-button" onclick='toggleTextFile("examples/react_uilibs.htm", "react-uilibs", this)'>View htm</button>
+      <div id="react-uilibs"></div>
+    </li>
+  </ul>
+  <h2>Coding tips</h2>
+  <h4>VS Code tips</h4>
+  <ul><li>Add extension: <b>Simple Snippets</b>; be warned there are lots of snippets!</li>
+    <li>Add setting: search for <b>emmet</b>:
+        then under <i>include languages</i> add key/val : <b>javascript</b> = <b>javascriptreact</b></li>
+    <li>Use of emmet: type div.whatever tab - will make &lt;div className="whatever"&gt;&lt;/div&gt;</li>
+    <li>Use of emmet: type sfc tab - will generate a function template;</li>
+    <li>Chrome: make sure to add the <b>React Developer Tools</b> extension.</li>
+  </ul>
+  <h4>Chrome tips</h4>
+  <ul>
+    <li>Add the <b>React Developer Tools</b> extension which add two extra tab items to the developer inspection bar.</li>
+    <li>Item 1: <b>Components</b> which allows you to look at the react component tree and scan properties. You have to click one of the 3 icons which will then display info in the console tab.</li>
+    <li>Item 2: <b>Profiler</b> to be explored.</li>
+  </ul>
+  
+  <h2>Nodejs, npm, nvm and n</h2>
+  <p> <b>Nodejs</b>, <b>npm</b> (package manager) allow you to set up a server environment for Javascript based framworks such as <b>Express</b>, <b>Angular</b>, <b>React</b> and test frameworks like <b>mocha</b> and <b>jest</b>. These are a great way to set up  an HTTP server for building UI apps and backend support for the same.
+  </p>
+  <ul>
+  <li><b>Setup nodejs</b>:  For the original web page see <a href="https://nodejs.org/en/learn/getting-started/how-to-install-nodejs">here</a>,
+    or <button id="nodejs-button" onclick='toggleTextFile("examples/nodejs-setup.html", "nodejs-setup", this)'>View html</button>
+    <div id="nodejs-setup"></div>
+  </li>
+  <li><b>NodeJS security updates</b>See <a href="https://nodejs.org/en/blog/vulnerability/february-2024-security-releases/">https://nodejs.org/en/blog/vulnerability/february-2024-security-releases/</a></li>
+  <li><b>Setup npm</b>: the node package manager : TODO but the above links for nodejs are a good place to start.  </li>
+  <li><b>Setup nvm</b>: the node version manager : TODO - ditto</li>
+  <li>View a typical npm audit showing vulnerabilities:  
+    <button id="npmaudit-button" onclick='toggleTextFile("examples/npmaudit.htm", "npmaudit", this)'>View html</button>
+    <div id="npmaudit"></div>
+  </li>  
+  </ul>
+  <h2>JSON server tool</h2>
+  <p>This tool allows you to use JSON as a datasource - useful for testing especially in REACT etc</p> 
+   <button id="jsonsvr-button" onclick='toggleTextFile("examples/jsonsvr.htm", "jsonsvr", this)'>View htm</button>
+    <div id="jsonsvr"></div> 
+
+  <h2> Other Useful nodejs libraries to add</h2>
+  <h3>Testing and development libraries</h3>
+  These on linux/mac:
+  <ul>
+  <li><b>Jest</b> : unit tests <div class="code2">npm install --save-dev jest</div>
+  <div>Also needed:
+    <div class="code2">npm install -D typescript</div>
+    <div class="code2">npm install -D ts-node</div>
+    <div class="code2">npm install --save-dev babel-jest @babel/core @babel/preset-env</div>
+    and a babel.config.js in the root of your node project:
+    <div class="code2">module.exports = {
+       presets: [['@babel/preset-env', {targets: {node: 'current'}}]],
+    };</div>
+    <div class="code2">npm install -D ts-node</div>
+    
+  </li>
+  <li><b>Mocha</b>: unit tests <div class="code2">npm install --save-dev mocha</div></li>
+  <li><b>Chai</b> : asserts??? <div class="code2">npm install --save-dev chai</div></li>
+  <li><b>Nodemon</b> auto-reload on change <div class="code2">npm install --save-dev nodemon</div> </li>
+  </ul>
+<h2>React Hooks</h2>
+\<p>The useCallback, useMemo, and useEffect are used to optimize the performance of React-based applications between rerendering of the components. To answer when to use useCallBack, useMemo, and useEffect, we should know what exactly they do and how they are different. See <a href="https://www.geeksforgeeks.org/when-to-use-usecallback-usememo-and-useeffect/">original page here</a>.</p>
+
+<h4>Prerequisites on original site links</h4>
+<ul><li><a href="https://www.geeksforgeeks.org/introduction-to-es6/">JavaScript and ES6+</a></li>
+    <li><a href="https://www.geeksforgeeks.org/re-rendering-components-in-reactjs/">Concept of rendering</a></li>
+    <li><a href="https://www.geeksforgeeks.org/reactjs-useeffect-hook/">"Hook lifecycle</a></li> 
+</ul>
+
+<ul><li>
+<b>useCallback:</b> The <a href="https://www.geeksforgeeks.org/react-js-usecallback-hook/">useCallback</a> is a react hook that returns a memoized callback when passed a function and a list of dependencies as parameters. It’s very useful when a component is passing a callback to its child component to prevent the rendering of the child component. It only changes the callback when one of its dependencies gets changed.</li>
+
+<li><b>useMemo:</b> The <a href="https://www.geeksforgeeks.org/react-js-usememo-hook/">useMemo</a> is similar to useCallback hook as it accepts a function and a list of dependencies but it returns the memoized value returned by the passed function. It recalculated the value only when one of its dependencies change. It is useful to avoid expensive calculations on every render when the returned value is not going to change.</li>
+
+<li><b>useEffect:</b> The <a href="https://www.geeksforgeeks.org/reactjs-useeffect-hook/">useEffect</a> hook that helps us to perform mutations, subscriptions, timers, logging, and other side effects after all the components has been rendered. The useEffect accepts a function that is imperative in nature and a list of dependencies. When its dependencies change it executes the passed function.</li>
+</ul>
+
+
+
+<h2>Angular</h2>
+<p> Note that Angular uses Typescript - and that AngularJS is the deprecated Javascript version no longer being supported</p>
+<ul>
+  <li><b>Setup angular</b>:  For the original web page see <a href="https://angular.io/tutorial/first-app">here</a>,
+    or <button id="angular-button" onclick='toggleTextFile("examples/angular-setup.html", "angular-setup", this)'>View html</button>
+    <div id="angular-setup"></div>
+  </li>
+  <li><b>Angular Gotchas</b>
+    <button id="gotchas-button" onclick='toggleTextFile("examples/angular-gotchas.html", "angular-gotchas", this)'>View html</button>
+    <div id="angular-gotchas"></div>
+  </li>
+</ul>
+
+<h2> Useful links and tips</h2>
+<ul>
+   <li>Rest params (using ...objects) 
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">here</a>
+  </li>
+</ul>
+</span>
+</div> <!-- End of the main content -->
+
+</body>
+</html>
+      

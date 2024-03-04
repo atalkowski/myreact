@@ -1,0 +1,168 @@
+
+
+    body,h1,h2,h3,h4,h5 {font-family: "", sans-serif}
+
+    .shell {
+       font-family: "Monospace", "Courier New", sans-serif;
+       background-color: #010101;
+       color: #00DD00;
+    }
+    .brightb b { color: #208000; }
+    .brightb-rev b { color: #008080; }
+    .code {
+       font-family: "Monospace", "Courier New", sans-serif;
+       color: #008000;
+    }
+
+    .code2 {
+       font-family: "Monospace", "Courier New", sans-serif;
+       color: #008000;
+       font-weight: bold; 
+    }
+
+    .codeblock {
+       font-family: "Monospace", "Courier New", sans-serif;
+       color: #008000;
+       font-weight: bold; 
+       font-style: inherit;
+       border: 2px solid yellowgreen;
+       background-color: #E0E0E0;
+       padding: 10px;
+    }
+
+    .red { font-weight: bold; color:#FF0000; }
+
+    p {font: "arial"}
+    ul {list-style-type : square}
+
+    table {
+      border: 1px solid;
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #eeeeff;
+    }
+
+    .tabtext  {
+      border-spacing: 10px;
+      font-size: 110%;
+      font-family: "Monospace", "Courier New", sans-serif;
+      border-collapse: collapse;
+      background-color: #101010;
+      color: #92DF21; 
+      width: 100%;
+      height: 500px;
+      overflow: scroll;
+    }
+
+    .tabtext tr:nth-child(even) {
+      background-color: #404040;
+    }
+
+    .tabtext li {
+      font-style: bold;
+      color: #92DF21;
+    }
+
+    .yamltext {
+      border-spacing: 10px;
+      font-size: 110%;
+      font-family: "Monospace", "Courier New", sans-serif;
+      border-collapse: collapse;
+      background-color: #202020;
+      color: #68a111; 
+      width: 100%;
+      height: 500px;
+      overflow: scroll;
+    }
+
+    .yamldata {
+      font-weight: bold;
+      color: #FFFFFF;
+    }
+
+    .comment {
+      font-style: italic;
+      color: #C0E0C0;
+    }
+
+    .nah {
+      font-style: italic;
+      color: hsl(0, 96%, 32%);
+    }
+
+    .htmltext, .jobtext {
+      border-spacing: 10px;
+      font-size: 100%;
+      border-collapse: collapse;
+      background-color: #101010;
+      color: hwb(219 11% 7%);
+      width: 100%;
+      height: 500px;
+      overflow: scroll;
+    }
+
+    .htmltext2 {
+      border-spacing: 10px;
+      font-size: 100%;
+      border-collapse: collapse;
+      background-color: #202020;
+      color: #F0F0F0;
+      width: 95%;
+    }
+
+    .htmltext .grayback {
+      background-color: hsl(0, 81%, 27%);
+      color: hsl(240, 33%, 99%);
+    }
+    
+    .grayback {
+      font-weight: bold;
+      background-color: #ededed74;
+      color: hsl(240, 97%, 13%);
+      border: 1px solid blue;
+      padding: 10px;
+    }
+    
+    .grayback .low {
+      font-weight: normal;
+      color: #2884d5;
+    }
+
+    .grayback .mustard {
+      font-weight: bolder;
+      color: #d6c01d;
+    }
+
+    .grayback .high {
+      font-weight: bolder;
+      color: #DD0000;
+    }
+
+    .grayback h1, h2, h3 {
+      color: #208220;
+    }
+
+
+    .htmltext h1, h2, h3 {
+      color: hsl(208, 89%, 63%);
+    }
+
+
+    .htmltext li {
+      font-style: normal;
+      color: hsl(72, 89%, 41%);
+    }
+
+    .htmltext a { 
+      background-color: #ddddc1;
+    }

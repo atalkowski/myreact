@@ -7,7 +7,7 @@
 
 const jsonmap = { 
     "yaml" : { "space" : "&nbsp;", "lf" : "\n<br/>", "clazz" : "yamltext"},
-    "job"  : { "space" : "&nbsp;", "lf" : "\n",      "clazz" : "htmltext"},
+    "job"  : { "space" : "&nbsp;", "lf" : "\n",      "clazz" : "htmltext grayback"},
     "html" : { "space" : " ",      "lf" : "\n",      "clazz" : "htmltext grayback"},
     "htm2" : { "space" : " ",      "lf" : "\n",      "clazz" : "htmltext2" },
     "htm"  : { "space" : " ",      "lf" : "\n",      "clazz" : "htmltext grayback"}, 
@@ -26,6 +26,7 @@ function isHTML(ext) {
   if (ext) {
     switch (ext.toLowerCase()) {
     case 'htm': case 'html': case 'htm2': return true;
+    default:
     }
   }
   return false;
@@ -149,6 +150,7 @@ function resetButton(button, text) {
 function toggleTextFile(file, name, button) {
   var ext = getFileExtension(file);
   var htm = document.getElementById(name);
+  var label = name + "-label";
   if (htm.innerHTML.length > 0) {
     clearInnerHtml(name);
     resetButton(button, "View " + ext);
@@ -156,7 +158,15 @@ function toggleTextFile(file, name, button) {
     loadTextFileToElement(file, name);
     resetButton(button, "Hide " + ext);
   }
-} 
+  var labelElt = document.getElementById(label);
+  if (labelElt) {
+    console.log("Got labelElt for " + label + " ok!");
+    var contents = `<div>${file}</div>`;
+    console.log("Setting contents to " + contents);
+    labelElt.innerHtml = contents;
+    console.log("The content is now :" + labelElt.innerHTML);
+  }
+}
 
 /*
    export testable function here:

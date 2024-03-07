@@ -2,16 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-/*
-   I used the NavLink in the first version - as shown below.
-   It is better for updating the page without sending a request back to the server.
-        <tr>
-        <td width="33%"> <NavLink to="/">Home</NavLink></td>
-        <td width="33%"> <NavLink to="/blogpage">Blogs</NavLink></td>
-        <td width="33%"> <NavLink to="/counter">Counter</NavLink></td>
-        </tr>
-
-*/
 const wid = "20%";
 
 const Navbar = () => {

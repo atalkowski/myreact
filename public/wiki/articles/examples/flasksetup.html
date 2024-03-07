@@ -8,37 +8,38 @@
 
 <h3>Create the Flask environment</h3>
 <p>Create a project folder and a .venv folder within it using something like this:
-<span class="yamltext">
-&nbsp;&nbsp;$ mkdir myproject<br/>
-&nbsp;&nbsp;$ cd myproject<br/>
-&nbsp;&nbsp;$ python3 -m venv .venv
-</span>
+<div class="yamltext">
+  &nbsp;&nbsp;$ mkdir myproject
+  <br/>&nbsp;&nbsp;$ cd myproject
+  <br/>&nbsp;&nbsp;$ python3 -m venv .venv
+</div>
 
 <p> This creates scripts, the flask dependencies and all python versions needed to run this isolated Flask environment for the current directory (for example):</p>
-<span class="yamltext">
-&nbsp;&nbsp; -rw-r--r--  1 andy  staff  9033 Nov  6 15:39 .venv/bin/Activate.ps1
-&nbsp;&nbsp; -rw-r--r--@ 1 andy  staff  2000 Nov  6 15:39 .venv/bin/activate
-&nbsp;&nbsp; -rw-r--r--  1 andy  staff   926 Nov  6 15:39 .venv/bin/activate.csh
-&nbsp;&nbsp; -rw-r--r--  1 andy  staff  2206 Nov  6 15:39 .venv/bin/activate.fish
-&nbsp;&nbsp; -rwxr-xr-x  1 andy  staff   238 Feb  3 18:45 .venv/bin/flask
-&nbsp;&nbsp; -rwxr-xr-x  1 andy  staff   251 Nov  6 15:39 .venv/bin/pip
-&nbsp;&nbsp; -rwxr-xr-x  1 andy  staff   251 Nov  6 15:39 .venv/bin/pip3
-&nbsp;&nbsp; -rwxr-xr-x  1 andy  staff   251 Nov  6 15:39 .venv/bin/pip3.11
-&nbsp;&nbsp; lrwxr-xr-x  1 andy  staff    10 Nov  6 15:39 .venv/bin/python -&gt; python3.11
-&nbsp;&nbsp; lrwxr-xr-x  1 andy  staff    10 Nov  6 15:39 .venv/bin/python3 -&gt; python3.11
-&nbsp;&nbsp; lrwxr-xr-x  1 andy  staff    41 Nov  6 15:39 .venv/bin/python3.11 -&gt; /usr/local/opt/python@3.11/bin/python3.11
-</span>
+<div class="yamltext">
+  Contents of the .venv:
+<br/>&nbsp;&nbsp; -rw-r--r--  1 andy  staff  9033 Nov  6 15:39 .venv/bin/Activate.ps1
+<br/>&nbsp;&nbsp; -rw-r--r--@ 1 andy  staff  2000 Nov  6 15:39 .venv/bin/activate
+<br/>&nbsp;&nbsp; -rw-r--r--  1 andy  staff   926 Nov  6 15:39 .venv/bin/activate.csh
+<br/>&nbsp;&nbsp; -rw-r--r--  1 andy  staff  2206 Nov  6 15:39 .venv/bin/activate.fish
+<br/>&nbsp;&nbsp; -rwxr-xr-x  1 andy  staff   238 Feb  3 18:45 .venv/bin/flask
+<br/>&nbsp;&nbsp; -rwxr-xr-x  1 andy  staff   251 Nov  6 15:39 .venv/bin/pip
+<br/>&nbsp;&nbsp; -rwxr-xr-x  1 andy  staff   251 Nov  6 15:39 .venv/bin/pip3
+<br/>&nbsp;&nbsp; -rwxr-xr-x  1 andy  staff   251 Nov  6 15:39 .venv/bin/pip3.11
+<br/>&nbsp;&nbsp; lrwxr-xr-x  1 andy  staff    10 Nov  6 15:39 .venv/bin/python -&gt; python3.11
+<br/>&nbsp;&nbsp; lrwxr-xr-x  1 andy  staff    10 Nov  6 15:39 .venv/bin/python3 -&gt; python3.11
+<br/>&nbsp;&nbsp; lrwxr-xr-x  1 andy  staff    41 Nov  6 15:39 .venv/bin/python3.11 -&gt; /usr/local/opt/python@3.11/bin/python3.11
+</div>
 <h3>Activate the environment</h3>
 Before you work on your project, activate the corresponding environment (note this must run in the current shell context):
-<span class="yamltext">
+<div class="yamltext">
 &nbsp;&nbsp;$ . .venv/bin/activate
-</span>
+</div>
 Your shell prompt will change to show the name of the activated environment.
 
 <h3>Install Flask</h3>
 Within the activated environment, use the following command to install Flask:
-<span class="yamltext">
+<div class="yamltext">
 &nbsp;&nbsp;$ pip install Flask
-</span>
+</div>
 Flask is now installed. Check out the Quickstart or go to the Documentation Overview at the original site.
 

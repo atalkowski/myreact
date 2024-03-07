@@ -127,7 +127,7 @@
     
     .grayback {
       font-weight: bold;
-      background-color: #ededed74;
+      background-color: hsla(0, 0%, 93%, 0.485);
       color: hsl(240, 97%, 13%);
       border: 1px solid blue;
       padding: 10px;
@@ -154,13 +154,13 @@
 
 
     .htmltext h1, h2, h3 {
-      color: hsl(208, 89%, 63%);
+      color: hwb(208 16% 15%);
     }
 
 
     .htmltext li {
       font-style: normal;
-      color: hsl(72, 89%, 41%);
+      color: rgb(64, 129, 14);
     }
 
     .htmltext a { 

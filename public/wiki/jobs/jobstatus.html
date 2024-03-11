@@ -19,17 +19,18 @@
     toggleTextFile(path, target, button);
     currentbutton = button;
   }
+  function loadQs() {
+      var butn = document.getElementById("questions");
+      switchDetail("details/questions.html", "job-details", butn);
+  }
   </script>
 </head>
-<body class="w3-light-grey">
+<body class="w3-light-grey" onLoad="loadQs()">
 <div class="w3-content" style="max-width:1400px">
 <h1>Jobs</h1>
 <h2>Useful</h2>
-<ul><li>Interview questions: <button onclick='switchDetail("details/questions.html", "usefuls", this)'>View html</button>
-   </li>
-</ul>
-<div id="usefuls"></div>
-
+<p>Interview questions: <button id="questions" onclick='loadQs()'>View html</button> 
+</p>
 <span id="articles">
 <h2>Job Application Status</h2>
 <div id="job-details"></div>
@@ -43,8 +44,18 @@
     <th width=20%>Link</th></tr>
 </thead>
 <tbody>
+<tr><td>889</td><td>Pie Insurance - Colrado Remote</td><td>Senior Software Engineer - Backend</td><td></td><td>03/11/2024</td><td>
+  <button onclick='switchDetail("details/pie.htm", "job-details", this)'>View htm</button></td></tr>
+<tr><td>890</td><td>Branch - Palo Alto</td><td>Senior Software Engineer - Platform and Products</td><td></td><td>03/11/2024</td><td>
+  <button onclick='switchDetail("details/branch.htm", "job-details", this)'>View htm</button></td></tr>
+<tr><td>891</td><td>Citizen (SFO)</td><td>Senior Beckend Engineer</td><td></td><td>03/10/2024</td><td>
+      <button onclick='switchDetail("details/citizen.htm", "job-details", this)'>View htm</button></td></tr>            
+<tr><td>892</td><td>Elastic (Chicago)</td><td>Senior Software Engineer</td><td></td><td>03/08/2024</td><td>
+  <button onclick='switchDetail("details/elastic.htm", "job-details", this)'>View htm</button></td></tr>      
+<tr><td>893</td><td>Flextonic (Foster City)</td><td>Senior Java Engineer</td><td></td><td>03/08/2024</td><td>
+    <button onclick='switchDetail("details/flextonic.htm", "job-details", this)'>View htm</button></td></tr>      
 <tr><td>894</td><td>Snowflake (San Mateo)</td><td>Senior Software Engineer</td><td></td><td>03/05/2024</td><td>
-      <button onclick='switchDetail("details/snowflake.htm", "job-details", this)'>View htm</button></td></tr>      
+    <button onclick='switchDetail("details/snowflake.htm", "job-details", this)'>View htm</button></td></tr>      
 <tr><td>895</td><td>SkyLab (San Mateo)</td><td>Senior Java Backend Dev</td><td></td><td>03/04/2024</td><td>
 <button onclick='switchDetail("details/sktlab.htm", "job-details", this)'>View htm</button></td></tr>      
  <tr><td>896</td><td>Syrinx Consulting (San Mateo)</td><td>Senior Java Dev</td><td></td><td>03/04/2024</td><td>

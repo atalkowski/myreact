@@ -5,8 +5,20 @@ section {
   text-align: center;
 }
 table {
-  max-width: 1000px;
+  max-width: 500px;
   align-self: center;  
+}
+
+p {
+  margin: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+}
+
+td {
+  margin: 3px;
+  font-style: bold;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .counter-container {
@@ -63,7 +75,10 @@ table {
 
 label {
   font-weight: bold;
-  color: #0b5f0b;
+  color: #360b5f;
+  font-size:large;
+  margin: 10px 10px;
+  padding: 10px;
 }
 
 .blogEdit {
@@ -79,3 +94,45 @@ label {
     transform: rotate(360deg);
   }
 }
+
+.create input, .create textarea, .create select {
+  width:100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+
+h3 {
+  background: rgb(174, 58, 79);
+  color: #fff;
+  width:100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+button {
+  background: hwb(349 25% 37%);
+  color: #fff;
+  border: 1;
+  border-color: hsl(313, 82%, 11%);
+  padding: 8px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+input {
+  background: rgb(190, 192, 235);
+  color: #0b0404;
+  border: 1;
+  border-color: hsl(313, 75%, 5%);
+  padding: 8px;
+  border-radius: 5px;
+  font-size: large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  min-width: 60;
+}
+

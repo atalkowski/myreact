@@ -6,7 +6,7 @@
     "configurations": [
         {
             "cwd": "${workspaceFolder}",
-            "command": "cd ${workspaceFolder} && npm start",
+            "command": "echo Changing to ${workspaceFolder} && cd ${workspaceFolder} && npm start",
             "name": "Run npm start",
             "request": "launch",
             "type": "node-terminal"

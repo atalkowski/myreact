@@ -1,0 +1,61 @@
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <title>PostGres SQL notes</title>
+  <style>
+    .shell {
+       font-family: "Monospace", "Courier New", sans-serif;
+       background-color: #010101;
+       color: #00DD00;
+    }
+    .red { font-weight: bold; color:#FF0000;
+    }
+    body,h1,h2,h3,h4,h5 {font-family: "", sans-serif}
+    p {font: "arial"}
+    ul {list-style-type : square}
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      xxwidth: 100%;
+      border: 2px solid black;
+
+    }
+    th,td { border: 1px solid black; align: left; }
+</style>
+</head>
+
+<body class="w3-light-grey">
+<div class="w3-content" style="max-width:1400px">
+<span id="articles">
+  <h1>PostGres SQL notes </h1>
+  <a href="../index.html">Home</a>
+  <h3>Unnest a JSON object</h3>
+  <p> Given a table content_cards like this</p>
+<ul><li>
+  <table>
+    <tr><th>id</th><th>selected_placements</th></tr>
+    <tr><td>90</td><td>{162,108,156,80,163,155,NULL}</td></tr>
+    <tr><td>91</td><td>{}</td></tr>
+  </table>
+</li></ul>
+ <p>You can unpack it like this:</p>
+<ul><li>
+ <textarea rows="7" cols="50">SELECT x.*
+FROM (SELECT id, UNNEST(selected_placements) as selected_placement
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM  app_data.content_cards
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;) x
+WHERE selected_placement IS NOT NULL;
+</textarea>
+</li></ul>
+  <h3>Useful Links</h3>
+  <ul><li><a href="https://kubernetes.io/docs/home/"  target="_blank">Kubernetes docs https://kubernetes.io/docs/home/</a></li></ul>
+  <ul><li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands"  target="_blank">Kubectl commands</a></li></ul>
+
+  
+</span>
+</div> <!-- End of the main content -->
+
+</body>
+</html>
+      

@@ -1,0 +1,93 @@
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"> -->
+<head>
+  <title>Put title here</title>
+  <link rel="stylesheet" href="../css/v1.css">
+  <script src="../js/utils.js"></script>
+</head>
+
+<body class="w3-light-grey"">
+<div class="w3-content" style="max-width:1400px">
+  <div class="myhtml">
+  <!---- MAIN CONTENT -->
+<h1>OLTP vs OLAP</h1>
+<h2>Understanding the differences and use cases</h2>
+<h3>Introduction to OLTP and OLAP</h3>
+
+<p>Data drives nearly every business today; a company’s ability to harness the value of its data is crucial to delivering customer experiences and products/services that keep them relevant and competitive.
+</p>
+<p>There are two approaches to data processing systems: one focuses on operations, and the other focuses on analytics for business intelligence. Both are essential to leverage the full power of data.
+</p>
+<p>These two systems are Online Transaction Processing (OLTP) and Online Analytical Processing (OLAP).
+</p>
+<p>Online transaction processing (OLTP) captures, stores, and processes data from transactions in real time. Online analytical processing (OLAP) uses complex queries to analyze aggregated historical data from OLTP systems.
+</p>
+<p>In this article, learn more about the basics of these two processing systems.
+</p>
+<h2>What is OLTP? Exploring transactional data processing</h2>
+<p>Online transactional processing (OLTP) is used for real-time execution of large volumes of database transactions by large numbers of people. OLTP systems are used for everyday transactions like ATMs, ecommerce purchases, online banking, text messages, and account changes, among many other day-to-day transactions.
+</p>
+<p>These transactions use a relational database or SQL database to handle extensive volumes of simple transactions, enable multi-user access to the same data, process data quickly, provide index datasets for fast searches, and are available continually.
+</p>
+<p>An OLTP system captures and maintains transaction data in a database. Each transaction involves individual database records made up of multiple fields or columns. This process can be challenging without the right tools.
+</p>
+<p>In OLTP, the emphasis is on fast processing, because OLTP databases are read, written, and updated frequently. If a transaction fails, built-in system logic ensures data integrity.
+</p>
+<p>OLTP systems can be used to provide data for their OLAP systems, as the two work together to optimize the value of data.
+</p>
+
+<h3>What is OLAP? Delving into multidimensional data analysis</h3>
+
+<p>Data analysts and data engineers use online analytical processing (OLAP) for data mining, analytics, and business intelligence. OLAP is used to process multidimensional analysis on large volumes of data at very high speeds (milliseconds). An OLTP system often processes and stores data in repositories, which OLAP then sources for analysis. Many businesses use OLAP for financial analysis, forecasting, budgeting, reporting, marketing and sales optimization, and decision making.
+</p>
+<p>OLAP applies complex queries to large amounts of historical data aggregated from OLTP databases and other sources. In OLAP, the emphasis is on response time to these complex queries. Each query involves one or more columns of data aggregated from many rows. Examples include year-over-year financial performance or marketing lead generation trends. OLAP databases and data warehouses give analysts and decision-makers the ability to use custom reporting tools to turn data into information. Query failure in OLAP does not interrupt or delay transaction processing for customers, but it can delay or impact the accuracy of business intelligence insights.
+</p>
+<h3>ETL: Bridging the gap between OLTP and OLAP</h3>
+<p>How does transactional data go from OLTP to OLAP? Most businesses use an extract, transform, load (ETL) process. Using an ETL tool like Stitch, Python, or SAP, users can collect data from several sources and send it to a destination, such as an OLAP data warehouse, where it is queried by analytics and business intelligence tools for insights.
+</p>
+<p>As you can see, both OLTP and OLAP are essential parts of data management in a business and work together to make a large amount of data useful and useable for business decisions and business operations. This is also foundational for machine learning and artificial intelligence.
+</p>
+
+<h2>OLTP vs. OLAP: Key differences</h2>
+<p>As we’ve seen, OLTP is operational, while OLAP is informational. A glance at the key features of both kinds of processing illustrates their fundamental differences and how they work together.
+</p>
+
+<table>
+  <thead>
+ <tr><th width="16%">&nbsp;</th><th width="40%">OLTP</th><th width="40%">OLAP</th></tr>
+ </thead>
+ <tbody>
+ <tr><td>Characteristics</td><td>Handles a large number of small transactions</td><td>Handles large volumes of data with complex queries</td></tr>
+ <tr><td>Query types</td><td>Simple standardized queries</td><td>Complex queries</td></tr>
+ <tr><td>Operations</td><td>Based on INSERT, UPDATE, DELETE commands</td><td>Based on SELECT commands to aggregate data for reporting</td></tr>
+ <tr><td>Response time</td><td>Milliseconds</td><td>Seconds, minutes, or hours depending on the amount of data to process</td></tr>
+ <tr><td>Design</td><td>Industry-specific, such as retail, manufacturing, or banking</td><td>Subject-specific, such as sales, inventory, or marketing</td></tr>
+ <tr><td>Source</td><td>Transactions</td><td>Aggregated data from transactions</td></tr>
+ <tr><td>Purpose</td><td>Control and run essential business operations in real time</td><td>Plan, solve problems, support decisions, discover hidden insights</td></tr>
+ <tr><td>Data updates</td><td>Short, fast updates initiated by user</td><td>Data periodically refreshed with scheduled, long-running batch jobs</td></tr>
+ <tr><td>Space requirements</td><td>Generally small if historical data is archived</td><td>Generally large due to aggregating large datasets</td></tr>
+ <tr><td>Backup and recovery</td><td>Regular backups required to ensure business continuity and meet legal and governance requirements</td><td>Lost data can be reloaded from OLTP database as needed in lieu of regular backups</td></tr>
+ <tr><td>Productivity</td><td>Increases productivity of end users</td><td>Increases productivity of business managers, data analysts, and executives</td></tr>
+ <tr><td>Data view</td><td>Lists day-to-day business transactions</td><td>Multi-dimensional view of enterprise data</td></tr>
+ <tr><td>User examples</td><td>Customer-facing personnel, clerks, online shoppers</td><td>Knowledge workers such as data analysts, business analysts, and executives</td></tr>
+ <tr><td>Database design</td><td>Normalized databases for efficiency</td><td>Denormalized databases for analysis</td></tr> 
+ </tbody>
+</table>
+<p> OLTP provides an immediate record of current business activity, while OLAP generates and validates insights from that data as it’s compiled over time. That historical perspective empowers business analysts to create accurate forecasting, but as with all business intelligence, the insights generated with OLAP are only as good as the data pipeline from which they emanate.
+</p> 
+
+
+
+
+
+
+
+  </div>
+</div> <!-- End of the main content -->
+
+</body>
+</html>
+

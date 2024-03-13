@@ -53,7 +53,7 @@ func getTodo(context *gin.Context) {
 	context.IndentedJSON(http.StatusOK, todo)
 }
 
-func toggleTodoStatus(context *gin.Context) {
+func patchTodo(context *gin.Context) {
 	id := context.Param("id")
 	todo, err := getTodoById(id)
 	if err != nil {
@@ -69,6 +69,6 @@ func main() {
 	router.GET("/todos", getTodos)
 	router.POST("/todos", addTodo)
 	router.GET("/todos/:id", getTodo)
-	router.PATCH("/todos/:id", toggleTodoStatus)
+	router.PATCH("/todos/:id", patchTodo)
 	router.Run("localhost:9090")
 }

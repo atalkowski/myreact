@@ -4,9 +4,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project root directory there is a Makefile to encapsulate the various buils and options.
+In the project root directory there is a Makefile to encapsulate the various builds and options. You can run:
 
-In the project directory, you can run:
+### `make`
+
+This will show the most up-to-date scripts that can be started and explain them - and should augment the comments below. You can take a look at the Makefile and also the make.hlp.
+
+## Other Scripts (originals from the bootstrap)
+
+Note these are encapsulated in the 'make' script above but remain documented here as per the original.
+
+In the project directory (src), you can run these scripts manually:
 
 ### `npm start`
 

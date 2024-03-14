@@ -153,10 +153,10 @@ function toggleTextFile(file, name, button) {
   var label = name + "-label";
   if (htm.innerHTML.length > 0) {
     clearInnerHtml(name);
-    resetButton(button, "View " + ext);
+    resetButton(button, "View");
   } else {
     loadTextFileToElement(file, name);
-    resetButton(button, "Hide " + ext);
+    resetButton(button, "Hide");
   }
   var labelElt = document.getElementById(label);
   if (labelElt) {

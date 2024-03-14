@@ -61,7 +61,6 @@ func patchTodo(context *gin.Context) {
 	}
 	todo.Completed = !todo.Completed
 	context.IndentedJSON(http.StatusOK, todo)
-
 }
 
 func main() {

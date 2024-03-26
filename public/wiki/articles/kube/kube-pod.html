@@ -1,0 +1,69 @@
+<h3>Kubernetes Pod</h3>
+<h4>Overview</h4>
+<p>As shown above a <b>node</b> may run several <b>pods</b> (e.g. Node 1) or just one pod - depending on requirements.</p>
+<p>In a similar way, each pod can host one or more docker containers that work together to implement an application or service (call this the <b>app</b>).
+The pod acts as a unit for running an instance (aka replica) of the app that has everything needed to perform its tasks  
+including:
+  <ul>
+    <li>a minimalized base operating system (base OS) - typically a lightweight linux variant - that docker maps onto the <b>host m/c OS</b>;</li>
+    <li>any supporting technical stack components needed by the app such as python, nodejs, tomcat, mysql etc;</li>
+    <li>any configuration data for the above, settings, plus networks, communications and references to persistent data volumes as needed;</li>
+    <li>any custom application code (the "app") needed to implement all its functionality.</li>
+  </ul>
+<h4>Digging deeper into pods</h4>
+<p>At the highest level, a Pod is a ring-fenced environment to run containers. The Pod itself doesn’t actually run anything,
+it’s just a sandbox for hosting the container(s). Keeping it high level, you ring-fence an area of the host OS, build a network stack,
+create a bunch of kernel namespaces, and run one or more containers in it. That’s a Pod.</p>
+
+<p>The simplest model for a POD is to run a single container within it. 
+However, there are advanced use cases that run multiple containers inside a single Pod.
+These multi-container Pods are beyond the scope of what we’re discussing here, but powerful examples include:</p>
+<ul>
+<li>Service meshes</li>
+<li>Web containers supported by a helper container that pulls the latest content</li>
+<li>Containers with a tightly coupled log scraper</li>
+</ul>
+<p>The point is, a Kubernetes Pod is a construct for running one or more containers.
+If you’re running multiple containers in a Pod, they all share the same Pod environment.</p>
+<p>This includes things like the IPC namespace, shared memory, volumes, and network stack.
+  As an example, this means that all containers in the same Pod will share the same IP address (the Pod’s IP).
+</p>
+<h3>Communications</h3>
+<p>If two containers in the same Pod need to talk to each other (container-to-container within the Pod),
+  they can use ports on the Pod’s localhost interface.
+</p>
+<h4>Mulitple containers within a pod</h4>
+<p>Multi-container Pods are ideal when you have requirements for tightly coupled containers that may need
+to share memory and storage. However, if you don’t need to tightly couple your containers, you should put
+them in their own Pods and loosely couple them over the network.
+This keeps things clean by having each Pod dedicated to a single task. 
+It also creates a lot of network traffic that is unencrypted.
+You should seriously consider using a <b>service mesh</b> to secure traffic between Pods and application services.
+</p>
+<h3>Pods as the unit of scaling</h3>
+<p>Pods are also the minimum unit of scaling in Kubernetes. If you need to scale your app (i.e vertically), you add or remove Pods.
+  All the app pods are part of the <b>replica set</b> and the replica count is configured by your deployment yaml files.
+   You do not scale by adding more containers to an existing Pod.
+   Multi-container Pods are only for situations where two different, but complementary, containers need to share resources.
+</p>
+<h3>Pods: atomic operations</h3>
+<p>The deployment of a Pod is an atomic operation. This means that a Pod is only considered ready for service when
+   all of its containers are up and running. 
+   There is never a situation where a partially deployed Pod will service requests.
+   The entire Pod either comes up and is put into service, or it doesn’t, and it fails.
+</p>
+<p>A single Pod can only be scheduled to a single node - by definition of a pod. This is also true of multi-container Pods – 
+  all containers in the same Pod will run on the same node. Other nodes could be spun up if available and needed.
+</p>
+<h3>Pod lifecycle</h3>
+<p>Pods are mortal. They’re created, they live, and they die. If they die unexpectedly, you don’t bring them back to life.
+   Instead, Kubernetes starts a new one in its place. 
+   However, even though the new Pod looks, smells, and feels like the old one, it isn’t. 
+   It’s a shiny new Pod with a shiny new ID and IP address.
+</p>
+<p>This has implications on how you should design your applications. Don’t design them, so they are tightly coupled 
+  to a particular instance of a Pod. Instead, design them so that when Pods fail, a totally new one 
+  (with a new ID and IP address) can pop up somewhere else in the cluster and seamlessly take its place.
+</p>
+
+

@@ -1,6 +1,6 @@
 
 
-    body,h1,h2,h3,h4,h5 {font-family: "", sans-serif}
+    body,h1,h2,h3,h4,h5,h6 {font-family: "", sans-serif}
 
     .shell {
        font-family: "Monospace", "Courier New", sans-serif;
@@ -50,6 +50,12 @@
 
     tr:nth-child(even) {
       background-color: #eeeeff;
+    }
+    
+    .smallblock {
+      height: 250px;
+      width: 1000px;
+      overflow: scroll;
     }
 
     .tabtext  {
@@ -121,16 +127,26 @@
       width: 95%;
     }
 
-    .htmltext .grayback {
+    .htmltext .grayback .grayback100 {
       background-color: hsl(0, 81%, 27%);
       color: hsl(240, 33%, 99%);
     }
     
     .grayback {
-      font-weight: bold;
-      background-color: hsla(0, 0%, 93%, 0.485);
+      font-weight: normal;
+      background-color: hsla(0, 0%, 93%, 0.435);
       color: hsl(240, 97%, 13%);
       border: 1px solid blue;
+      width: 800px;
+      padding: 10px;
+    }
+    
+    .grayback100 {
+      font-weight: normal;
+      background-color: hsla(0, 0%, 93%, 0.435);
+      color: hsl(240, 97%, 13%);
+      border: 1px solid blue;
+      width: 95%;
       padding: 10px;
     }
     
@@ -149,15 +165,14 @@
       color: #DD0000;
     }
 
-    .grayback h1, h2, h3 {
-      color: #208220;
+    .grayback .grayback100 h1, h2, h3, h4, h5, h6 {
+      color: hsl(120, 64%, 28%);
     }
 
 
-    .htmltext h1, h2, h3 {
-      color: hwb(208 16% 15%);
+    .htmltext h1, h2, h3, h4, h5, h6 {
+      color: rgb(26, 113, 189);
     }
-
 
     .htmltext li {
       font-style: normal;

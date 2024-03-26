@@ -5,21 +5,129 @@
   <title>Kubernetes notes</title>
   <link rel="stylesheet" href="../css/v1.css">
   <script src="../js/utils.js"></script>
+  <script>
+    const clusterMap = [
+      { name: "./kube/cloud-controller-manager.html", coords:[91,229,238,282]},
+      { name: "./kube/etcd.html", coords:[55,345,109,401]},
+      { name: "./kube/kube-api-server.html", coords:[144,345,247,401]},
+      { name: "./kube/kube-scheduler.html", coords:[32,476,126,530]},
+      { name: "./kube/kube-controller-manager.html", coords:[144,476,238,530]},
+      { name: "./kube/control-plane.html", coords: [46, 174, 269, 651]}, 
+      { name: "./kube/kubelet.html",     coords: [370, 406, 434, 448]}, 
+      { name: "./kube/kube-proxy.html",  coords: [448, 407, 520, 449]}, 
+      { name: "./kube/kubelet.html",     coords: [574, 406, 647, 449]}, 
+      { name: "./kube/kube-proxy.html",  coords: [667, 402, 731, 442]}, 
+      { name: "./kube/kube-pod.html",    coords: [379, 500, 505, 611]},
+      { name: "./kube/kube-pod.html",    coords: [579, 498, 720, 610]},
+      { name: "./kube/kube-node.html",   coords: [359, 356, 526, 623]},
+      { name: "./kube/kube-node.html",   coords: [558, 354, 736, 625]}, 
+      { name: "./kube/provider-cloud.html",   coords: [823, 219, 931, 295]}, 
+
+/*
+  558, 354, 736, 625 
+   node1: 359, 356, 526, 623 
+  pod: 579, 498, 720, 610
+
+  cloud: 823, 219, 931, 295 
+  */  ];
+
+    const noDetailFound = { name: "", coords:[632, 158, 737, 191]};
+    
+    function findDetailByCoords(list, x, y) {
+      for (var j = 0; j < list.length; j++) {
+        const ref = list[j];
+        const coords = ref.coords;
+        if (coords[0] <= x && x <= coords[2] && coords[1] <= y && y <= coords[3]) return ref;
+      }
+      return noDetailFound;
+    }
+
+    function loadContent(id, item) {
+      var content = "";
+      var contentElement = document.getElementById(id);
+      if (!contentElement) return;
+      if (item && item.name !== "") {
+        loadTextFileToElement(item.name, id);
+        contentElement.class = "smallblock";
+        contentElement.style.display = "block";
+        contentElement.scrollTo(0, 0);
+      } else {
+        contentElement.style.display = "none";
+        contentElement.innerHTML = "";
+      }
+    }
+
+    function imageClicked(event, img) {
+      var x = event.pageX;
+      var y = event.pageY;
+      var item = findDetailByCoords(clusterMap, x, y);
+      console.log(x + ", " + y + " " + item.name);
+      loadContent("kube-notes", item);
+    }
+
+    function initStuff() {
+      loadContent("kube-notes", noDetailFound);
+    }
+  </script>
 </head>
-<body class="w3-light-grey">
+<body class="w3-light-grey" onload="initStuff()">
 <div class="w3-content" style="max-width:1400px">
 <span id="articles">
   <h1>Kubernetes notes </h1>
   <a href="../index.html">Home</a>
-  <p>You will need docker already installed and then install kubectl and minikube to do anything...</p>
+  <h3>Architecture</h3>
+  <span valign="middle">
+    <img onclick="imageClicked(event, this)" src="../images/kub-cluster.png">
+  </span>
+  <div id="kube-notes" class="smallblock"></div>
+  <h4>Click on element in above diagram to show details</h4>
+  <p> To view the glossary of terms : 
+    <button id="react-uilibs-button" onclick='toggleTextFile("examples/k8s-glossary.html", "k8s-glossary", this)'>Glossary</button>
+    <div id="k8s-glossary"></div>
+  </p>
   <h3>Steps to install on mac:</h3>
+  <p>You will need docker already installed and then install kubectl and minikube to do anything...</p>
   <ul>
-    <li>For <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/" target="_blank"> kubectl see here</a> (essentially homebrew install kubectl)</li>
+    <li>For MAC os <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/" target="_blank"> kubectl see here</a> (essentially homebrew install kubectl)</li>
     <li>For <a href="https://minikube.sigs.k8s.io/docs/start/" target="_blank">minikube see here</a> (essentially homebrew install minikube)</li>
-    <li>Once installed run : <i>minikube start</i></li>
+    <li>Once installed - make sure DOCKER is running and then run : <i class="code2">minikube start</i></li>
     <li>Check cluster is running : in the docker console or by running <i>docker ps</i></li>
     <li>By default, kubectl configuration is located at <i>~/.kube/config</i> </li>
   </ul>
+  <h3>GOTCHA with kubectl and minikube</h3>
+  <p>The <b>.kube/config</b> file may become broken after a minikube restart or a reboot of your MAC - because the minikube port may change. So:</p>
+  <ul> 
+    <li>Make sure you successfully restart Minikube</li>
+    <li>Check that it is running properly using <span class="code2">minikube status</span>. You should not see STOPPED anywhere; things should be RUNNING</li>
+    <li>Because a minikube start would overwrite the .kube/config - you should save a backup copy in the .kube folder if you want to modify it.</li> 
+  </ul>
+
+  <h3>Kubernetes as a cluster</h3>
+<p>Kubernetes is like any other cluster – a bunch of nodes and a control plane. The control plane exposes an API and
+   records the state in a persistent store; it also has a scheduler for assigning work to nodes. Nodes are where application services run.
+</p>
+<p>It can be useful to think of the control plane as the brains of the cluster and the nodes as the muscle. 
+  In this analogy, the control plane is the brain because it implements all of the important features, 
+  such as auto-scaling and zero-downtime rolling updates. The nodes are the muscle because they do the every-day
+  hard work of executing application code.
+</p>
+
+<p>To run applications on a Kubernetes cluster, we follow this simple pattern:</p>
+<ul>
+<li>Write the application as small independent microservices in our favorite languages.</li>
+<li>Package each microservice in its own container.</li>
+<li>Wrap each container in its own Pod.</li>
+<li>Deploy Pods to the cluster via higher-level controllers, such as, Deployments, DaemonSets, StatefulSets, CronJobs etc.</li>
+</ul>
+<p>At a high level:</p>
+<ul>
+ Deployments offer scalability and rolling updates; 
+ DaemonSets run one instance of a service on every node in the cluster; 
+ StatefulSets are for stateful application components, and CronJobs are for short-lived tasks that need to run at set times. There are more than these, but these will do for now.
+</ul>
+Kubernetes likes to manage applications declaratively. This is a pattern where you describe how you want your application to look and feel in a set of YAML files. You POST these files to Kubernetes, then sit back while Kubernetes makes it all happen.
+
+But it doesn’t stop there. Because the declarative pattern tells Kubernetes how an application should look, Kubernetes can watch it and make sure things don’t stray from what you asked for. If something isn’t as it should be, Kubernetes tries to fix it.
   <h3>Useful Links</h3>
   <ul><li><a href="https://kubernetes.io/docs/home/"  target="_blank">Kubernetes docs https://kubernetes.io/docs/home/</a></li></ul>
   <ul><li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands"  target="_blank">Kubectl commands</a></li></ul>
@@ -55,8 +163,10 @@
         <button onclick='toggleTextFile("examples/nginx-deploy2.yaml", "nginx-deploy2", this)'>View yaml</button>
         <div id="nginx-deploy2"></div>
     </li>
+    <li>Specific workloads that assist with kubernetes   <button id="workload-button" onclick='toggleTextFile("kube/kube-workload.html", "workload", this)'>View</button>
+    </li>
   </ul>
-
+  <div id="workload" onclick="clickButton('workload-button')"></div>
   <h3>Deploy MySQL</h3>
   <p>
     You can run a stateful application by creating a Kubernetes Deployment and connecting it to an existing PersistentVolume using a <b>PersistentVolumeClaim</b>.</p>

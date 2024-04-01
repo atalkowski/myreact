@@ -58,6 +58,10 @@
       overflow: scroll;
     }
 
+    .notshown {
+      display: none;
+    }
+
     .tabtext  {
       border-spacing: 10px;
       font-size: 110%;
@@ -91,6 +95,24 @@
       height: 500px;
       overflow: scroll;
     }
+
+    .yaml {
+      padding: 10px;
+      border-spacing: 10px;
+      font-size: 110%;
+      font-family: "Monospace", "Courier New", sans-serif;
+      border-collapse: collapse;
+      background-color: #101010;
+      border: 2px solid hsl(221, 80%, 41%);
+      color: hsla(90, 100%, 100%, 0.943); 
+      width: 90%;
+      overflow: scroll;
+    }
+
+    .yamlname {
+      color: hsl(208, 61%, 51%);
+    }
+
 
     .yamldata {
       font-weight: bold;
@@ -168,7 +190,6 @@
     .grayback .grayback100 h1, h2, h3, h4, h5, h6 {
       color: hsl(120, 64%, 28%);
     }
-
 
     .htmltext h1, h2, h3, h4, h5, h6 {
       color: rgb(26, 113, 189);

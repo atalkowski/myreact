@@ -195,7 +195,117 @@ But it doesn’t stop there. Because the declarative pattern tells Kubernetes ho
     </li>
      <li><b>To set auto-scaling:</b> kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10</li>
   </ul>
-</span>
+
+  <h2>Appendix : Kubernetes file types and examples</h2>
+<p>As mentioned in examples above there are several types of kubernetes configuration file types.</p>
+<h3>ConfigMap</h3>
+<p>See the Kubernetes spec in the Config and Storage section
+  <a href="https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/">here</a>.
+</p>
+<h4>Example</h4>
+<div class="yaml" width="600px">
+  <span class="yamlname">apiVersion</span>: v1
+  <br/><span class="yamlname">kind</span>: ConfigMap
+  <br/><span class="yamlname">metadata</span>:
+  <br/>&nbsp;&nbsp;<span class="yamlname">name</span>: mycoolapp-config
+  <br/>&nbsp;&nbsp;<span class="yamlname">namespace</span>: mycoolapp
+  <br/><span class="yamlname">data</span>:
+  <br/>&nbsp;&nbsp;<span class="yamlname">application.properties</span>: |-
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;# PROFILE to select environment properties
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;mycoolapp.profile=qa
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;# APPLICATION CONTEXT
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;# -----------------------------------------------
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;server.port=8080
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;cloud.aws.region.static=us-west-1
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;cloud.aws.stack.auto=false
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;cloud.aws.region.auto=false
+</div>  
+<h3>Deployment</h3>
+<p>See the Kubernetes spec <a href="https://kubernetes.io/docs/reference/kubernetes-api/" >here</a> under the Workload section.</p>
+<h4>Example</h4>
+<div class="yaml">
+  <span class="yamlname">apiVersion</span>: apps/v1
+  <br/><span class="yamlname">kind</span>: Deployment
+  <br/><span class="yamlname">metadata</span>:
+  <br/>&nbsp;&nbsp;<span class="yamlname">name</span>: mycoolapp-service
+  <br/>&nbsp;&nbsp;<span class="yamlname">namespace</span>: mycoolapp
+  <br/>&nbsp;&nbsp;<span class="yamlname">labels</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">app</span>: mycoolappService
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">component</span>: app
+  <br/>
+  <br/><span class="yamlname">spec</span>:
+  <br/>&nbsp;&nbsp;<span class="yamlname">replicas</span>: 1
+  <br/>&nbsp;&nbsp;<span class="yamlname">revisionHistoryLimit</span>: 1
+  <br/>&nbsp;&nbsp;<span class="yamlname">selector</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">matchLabels</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">app</span>: mycoolappService
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">component</span>: app
+  <br/>&nbsp;&nbsp;<span class="yamlname">template</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">metadata</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">labels</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">app</span>: mycoolappService
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">component</span>: app
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">spec</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">serviceAccountName</span>: mycoolapp-service
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">imagePullSecrets</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yamlname">name</span>: gitlab-regcred
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">containers</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yamlname">name</span>: mycoolapp-service
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">image</span>: 123456782023.dkr.ecr.us-west-1.amazonaws.com/mycompany/mycoolapp-api-v2:v20230530.1685462827-release-cbb8cf29c5ea
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">imagePullPolicy</span>: Always
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">command</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "/usr/bin/java"
+  <br/>#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "-javaagent:/opt/newrelic/newrelic.jar"
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "-Djava.security.egd=file:/dev/./urandom"
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "-jar"
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- "/mycoolapp.jar"
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">env</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- name: spring_profiles_active
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">value</span>: qa
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">resources</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">requests</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">cpu</span>: "0.5"
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">memory</span>: "1Gi"
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">limits</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">memory</span>: "4Gi"
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">cpu</span>: "2"
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">ports</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yamlname">containerPort</span>: 8080
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">volumeMounts</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yamlname">name</span>: config
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">mountPath</span>: /config
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yamlname">name</span>: mycoolapp-newrelic-config
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">mountPath</span>: /opt/newrelic/newrelic.yml
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">subPath</span>: newrelic.yml
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">readinessProbe</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">httpGet</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">path</span>: /actuator/health
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">port</span>: 8080
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">initialDelaySeconds</span>: 60
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">failureThreshold</span>: 4
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">periodSeconds</span>: 30
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">successThreshold</span>: 1
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">timeoutSeconds</span>: 5
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">livenessProbe</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">httpGet</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">path</span>: /actuator/health
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">port</span>: 8080
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">initialDelaySeconds</span>: 60
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">failureThreshold</span>: 4
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">periodSeconds</span>: 30
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">successThreshold</span>: 1
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">timeoutSeconds</span>: 5
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">volumes</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yamlname">configMap</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">name</span>: mycoolapp-config
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">name</span>: config
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="yamlname">configMap</span>:
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">name</span>: mycoolapp-newrelic-config
+  <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="yamlname">name</span>: mycoolapp-newrelic-config
+  
+
+</div>
+</span> <!-- End of articles section -->
 </div> <!-- End of the main content -->
 
 </body>

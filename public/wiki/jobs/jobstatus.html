@@ -9,16 +9,21 @@
   <script src="../js/utils.js"></script>
   <script>
   var currentbutton;
-  function switchDetail(path, target, button) {
+  function switchButtonForTarget(target, button) {
     if (!currentbutton || currentbutton == button) {
       currentbutton = button;
     } else {
       resetButton(currentbutton, "View");
       clearInnerHtml(target);
+      currentbutton = button;
     }
-    toggleTextFile(path, target, button);
-    currentbutton = button;
   }
+
+  function switchDetail(path, target, button) {
+    switchButtonForTarget(target, button);
+    toggleTextFile(path, target, button);
+  }
+ 
   function loadQs() {
       var butn = document.getElementById("questions");
       switchDetail("details/questions.html", "job-details", butn);
@@ -44,9 +49,11 @@
     <th width=20%>Link</th></tr>
 </thead>
 <tbody>
-<tr><td>880</td><td>Rosetta Stone (San Mateo)</td><td>Senior Software Developer</td><td>Not known</td><td>03/18/2024</td><td>
-  <button onclick='switchDetail("details/rosetta.htm", "job-details", this)'>View htm</button></td></tr>
-<tr><td>881</td><td>Software Resource Inc (Remote)</td><td>Senior Java Developer</td><td>Not known</td><td>03/18/2024</td><td>
+<tr><td>878</td><td>Shipt via Intellij (San Francisco)</td><td>Senior Software Developer</td><td>75hr W2</td><td>03/28/2024</td><td>
+   <button onclick='switchDetail("details/shipt.htm", "job-details", this)'>View job</button></td></tr>
+<tr><td>879</td><td>Rosetta Stone (San Mateo)</td><td>Senior Software Developer</td><td>Not known</td><td>03/18/2024</td><td>
+   <button onclick='switchDetail("details/rosetta.htm", "job-details", this)'>View htm</button>
+<tr><td>880</td><td>Software Resource Inc (Remote)</td><td>Senior Java Developer</td><td>Not known</td><td>03/18/2024</td><td>
   <button onclick='switchDetail("details/srinc.htm", "job-details", this)'>View htm</button></td></tr>
 <tr><td>881</td><td>Salesforce San Francisco</td><td>Senior Software Engineer</td><td>215-232K</td><td>03/15/2024</td><td>
   <button onclick='switchDetail("details/salesforce.htm", "job-details", this)'>View htm</button></td></tr>                           

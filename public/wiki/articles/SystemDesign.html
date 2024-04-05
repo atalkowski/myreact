@@ -1,0 +1,171 @@
+
+
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"> -->
+<head>
+  <title>System Design</title>
+  <link rel="stylesheet" href="../css/v1.css">
+  <script src="../js/utils.js"></script>
+</head>
+
+<body class="w3-light-grey"">
+<div class="w3-content" style="max-width:1400px">
+  <span class="myhtml">
+    <h2>System Design</h2>
+    <h3>About this page</h3>
+    <p>This content is drawn from the <b><i>Cracking the Code Interview</i> by Gayle McDowell</b> and sprinkled with a few of my own ideas. 
+    </p>
+    <h3>Overview of the Design discussion</h3>
+    <p>Treat this more like an important discussion with a customer or product manager. Here are the tips that we suggest:
+    <ul>
+      <li>You have to <b>drive</b> the discussion carefully.</li>
+      <li><b>Be respectful, friendly, engaging and curious</b> ... this will help weave the correct balance and outcome.</li>
+      <li>At the start <b>use a (maybe virtual) white board</b> to help both yourself and manager to share ideas clearly.</li>
+      <li><b>Communicate</b> as you normally would when you are on a fact finding mission: this is <b>critical</b> - make sure you
+         ask questions and engage the manager.</li>
+      <li>To reinforce - <b>don't let them fall asleep</b> like the bar steward at the local Goggle and Duck; encourage their input.</li>
+      <li><b>Top down approach</b> - go broad first: do not start with a database schema design or specific algorithm. Instead gather these:
+        <ul>
+          <li><b>A list of requirements</b>: otherwise you cannot possibly know what you are trying to build.</li>
+          <li><b>State your assumptions</b> and get them checked by manager - because errors here could lead to disaster.</li>
+          <li><b>Pay attention to concerns</b> that the manager has and ensure you resolve these as best you can - do not brush off the manager's ideas</li>
+          <li><b>Estimate when necessary</b>: scale is super important in any design, so wherever numbers are involved these need to be 
+          identified and handled appropriately. E.g. an app to support a workload of 1000 visits/day versus 10000/second are hugely different.</li>
+        </ul>
+      </li>
+    </ul>
+    <h3>Identifying the areas of interest.</h3>
+    <p>A problem with all designs is that the audience may be interested in only certain aspects of the design. 
+      You have to use your savvy to tease out the topics of interest or identify items as risk. These might include:</p>
+      <ul>
+        <li><b>Identify any potential issues</b> with design so far and aim to resolve this in the wrap up (later).... such as</li>
+        <li><b>Security issues</b> - where we need to identify potential leaks, attack surfaces etc</li>
+        <li><b>Performance issues</b> - very likely to be an area of concern</li>
+        <li><b>Scalability</b> - how the solution can be scaled vertically or horizontally as business/use picks up.</li>
+        <li><b>Costs and Trade Offs</b> - cost of running services, of development, of 3rd party components needed - e.g. standard cloud components.</li>
+        <li><b>Availability</b> - the precentage of time the system is operational</li>
+        <li><b>Reliability</b> - a measure of time between (or frequencey) of failure scenarios; we need to know how to mitigation these.</li>
+      </ul> 
+   
+   <h3>Fleshing out the design discussion</h3>
+    <p>Once we have identified the requirements and areas of particular interest - we can now attempt to flesh out the details which may include 
+      how those issues and concerns are handled. This is where your preliminary work will start to come together.</p>
+    <p>These could include NONE or more of the following depeding on the areas of concern already identified:</p>
+    <ul>
+      <li><b>Choice of technologies</b> like:
+        <ul>
+          <li><i>Load balancers</i> and other techniques like clusters, kubernetes, Apache Spark, Hadoop</li>
+          <li><i>Languages and communication protocols</i> like the use of Go v Java v Python etc, difference between gRPC, REST, SOAP etc</li>
+          <li><i>SQL v No SQL - pros and cons</i>; denormalization of data; preferences. The big lie: I don't think we need reports.</li>
+          <li><i>Caching</i> techniques like in memory, mem-cache, redis.</li>
+          <li><i>Asynchronous v Synchronous</i> processing - just throwing this in here as a possible issue.</li>
+          <li><i>ETL</i> (Extract, Transform and Load) operations - this is an evolving topic</li>
+          <li><i>Latency</i> of the system, winner and loser solutions</li>
+        </ul> 
+      </li>
+      <li><b>A list the components</b> (maybe draw the architecture) identifying actors, processes, data stores, flows etc.</li>
+      <li><b>A rough architecture</b> may be useful if certain key technologies are of interest. This might include how new technolowies are 
+        of particualr interest to the overall design.</li>
+      <li><b>Create a sequence (diagram possibly) of events</b> that clearly shows steps in the processing - rather than just a massive set of parts.</li>
+      <li><b>Lay out a tentative data schema</b> if the design needs to clarify these because they are of particular conscern </li>
+      <li><b>Networking considerations</b> Bandwidth, Throughput, Latency, </li>
+    </ul>
+    <h3>Wrapping it up</h3>
+    <p>TO DO</p>
+
+
+    <h2>Appendix: Common AWS components overview</h2>
+
+     <h3>Amazon</h3>
+     <ul>
+        <li><b>Athena</b>: a serverless query service that analyzes data stored in Amazon Simple Storage Service (Amazon S3).
+          It's designed to simplify the process of analyzing large volumes of raw data. 
+          Athena is built on Presto and Trino, and supports a variety of data formats.
+          This database is perfect for using <b>Jupyter</b> and Python's "pandas" to do extractions and reports.</li>
+        <li><b>Cognito</b>: that allows users to sign up for apps and websites, and control access
+           to mobile and web applications. It also enables users to authenticate through an external 
+          identity provider and provides temporary security credentials to access app backend resources</li>
+        <li><b>DymnamoDB</b>  a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability.
+        It uses the concept of a HASH index key to partition data and an (optional) sort key to uniquely index and order data within the 
+        partition:
+          <ul>
+            <li><b>Partition key</b>: (AKA Hash key) composed of one attribute that must be stored 
+              as part of each record. It effectively partions the data into manageble chunks (&lt;10G). 
+            Attributes in DynamoDB are similar in many ways to fields or columns in other database systems.
+            Note to get around the use of multiple logical keys as the partition - you jsut need to store a copy of the data as a 
+            single attribute for the hash e.g. YEAR/USERID/TYPE can be the partition key</li>
+            <li><b><i>Sort key</i></b>: (if used) a secondary attribute (again possibly a concatinated stored key)
+              so that HASK + SORT  form a composite primary key. All data under a partition key is sorted and indexed by the sort key value.
+            </li>
+          </ul>      
+      </li>
+        <li><b>Elastic Search</b>: a managed service that helps users deploy, operate, and scale Elasticsearch in the AWS Cloud.
+           Elasticsearch is an open-source search and analytics engine that's used for a variety of purposes, including log analytics,
+          real-time application monitoring, and click stream analytics. 
+          It's built on Apache Lucene and has become the most popular search engine since its release in 2010.</li>
+        <li><b>EC2</b>: provides on-demand, scalable computing capacity in the AWS Cloud.
+           You can use Amazon EC2 to launch as many or as few virtual servers as you need, configure security and networking,
+           and manage storage. You can add capacity (scale up) to handle compute-heavy tasks, such as monthly or yearly processes, 
+           or spikes in website traffic. When usage decreases, you can reduce capacity (scale down) again.
+          <i>The real trick is automating this behavior over kubernetes</i> TODO</li>
+        <li><b>EMR</b>: a managed cluster platform that simplifies running big data frameworks, such as Apache Hadoop and Apache Spark,
+           on AWS to process and analyze vast amounts of data. We used this to deploy a Python script to extract data each night
+           and process using HIVE - and then dump all data into S3 readable data stores. Glue screipts were then called
+           to create data in Athena. Finally this data could be used daily to provided analytics reports.</li>
+        <li><b>Glue</b> see original docs <a href="https://docs.aws.amazon.com/glue/latest/dg/components-key-concepts.html" target="_blank">here</a>;       
+          You define jobs in AWS Glue to perform <b><i>ETL</i></b> (extract, transform, and load) from a data source to a data target. 
+          You typically perform the following actions:
+          <ul>
+            <li>For data store sources, you define a <b>crawler</b> to populate your AWS Glue <b>Data Catalog</b> with metadata table definitions.
+               You point your crawler at a data store, and the crawler creates table definitions in the Data Catalog.
+               For streaming sources, you manually define Data Catalog tables and specify data stream properties.
+            </li>
+            <li>In addition to table definitions, the AWS Glue Data Catalog contains other metadata that is required to define ETL jobs.
+               You use this metadata when you define a job to transform your data.
+            </li>
+            <li>AWS Glue can <i>generate a script</i> to transform your data. Or, you can <i>provide the script</i> in the AWS Glue console or API.
+            </li>
+            <li>You can run your job <b>on demand</b>, or you can set it up to start when a <b>specified trigger</b> occurs.
+               The trigger can be a time-based schedule or an event.
+            </li>
+            <li>When your job runs, a script extracts data from your data source, transforms the data, and loads it to your data target.
+               The script runs in an <b>Apache Spark</b> environment in AWS Glue.
+            </li>
+            <li>Note: tables and databases in AWS Glue are objects in the AWS Glue Data Catalog.
+              They contain<b>metadata</b>; they don't contain data from a data store.</li>
+           </ul>
+        </li>
+        <li><b>Lambda</b>: the AWS <b><i>serverless computing</i></b> service that runs code in response to events. 
+          It is a Functions as a Service (FaaS) model and lets you run code for any application or backend service
+          without managing or provisioning servers. You only pay for the compute time you use, and there's no
+          charge when your code is not running.</li>
+        <li><b>S3</b>: cloud storage service that allows users to store and retrieve data from anywhere, at any time.
+          It's like have an unlimited storage disk able to partition data via pseudo directories - along with useful
+          permission handling that allows sharing across different clients and users as needed.
+          S3 was designed to make web-scale computing easier for developers, and provides 99.999999999% durability
+          and 99.99% availability of objects. Other AWS services mentioned here can use it efefectively as a data repo  
+          and for tables (e,g, Athena).</li>
+        <li><b>SQS</b>: <b>Simple Queue Service</b> is a queueing system that allows asynchronous communication between
+           different software components.</li>
+        <li><b>SNS</b>: <b>Simple Notification Service</b> a publish/subscribe system that lets applications send
+          time-critical messages to multiple subscribers. SNS is backed by SQS (by configuration) to handle the consumer 
+          (subscription) side of this service.</li>
+     </ul>
+
+
+  <h2>Appendix: Microsoft services.</h2>
+     <h3>MS : Active directory</h3>
+     <p>Active Directory: or (AD) is a directory and identity management service from Microsoft that allows administrators 
+      to manage access to network resources and permissions. It's included with most MS Windows Server operating systems
+      and was introduced in Windows 2000. AD is used by a variety of Microsoft solutions like Exchange Server and SharePoint Server,
+      as well as third-party applications and services</p>
+    
+  </span>
+</div> <!-- End of the main content -->
+
+</body>
+</html>
+    

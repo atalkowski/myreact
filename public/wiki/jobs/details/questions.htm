@@ -1,19 +1,19 @@
 
 <h3> Replies to Interview Questions</h3>
 <table class="tabtext">
-<tr><th width=5%>No</th><th width=35%>Question</th><th width=60%>Answer</th></tr>
+<tr><th width=5%>No</th><th width=25%>Question</th><th width=70%>Answer</th></tr>
 <tr><td>1</td><td>Tell me about yourself.</td><td>
 About me the chatty version.
-<br/><b>Originally from UK – been working in USA last 12 years and became American citizen last year</b>.
-<br/><b>Married to my wife Sheila</b> living in San Mateo. We have 7 children and 5 grandchildren between us.
-<br/><b>Senior Software Engineer for over 20 years and used to building and managing production systems</b>.
-<br/>As team lead I enjoy <b>mentoring colleagues</b> and sharing knowledge to level up our skills..
+<br/><b>Originally from UK</b> – been working in USA last 12 years and became American citizen last year.
+<br/><b>Married</b> and living in <b>San Mateo</b>. We have 7 children and 5 grandchildren between us.
+<br/><b>Senior Software Engineer</b> for over 20 years and used to building and managing production systems.
+<br/>As <b>team lead</b> I enjoy <b>mentoring colleagues</b> and sharing knowledge to level up our skills..
 <br/><b>Lots of experience of Web</b> applications, providing (REST) APIs for both web and mobile apps.
 <br/>Always loved coding and solving problems - it’s a <b>creative job</b> – exploring new technologies and ways to make things easier.
 <br/>I’m passionate about delivering <b>adequately tested</b> code – <b>working hard to make things easier</b> and less stressful.
-<br/>Use to working <b>closely with product managers, owning projects</b>, solving issues, helping with plans and completing.
+<br/>Used to working <b>closely with PMs and owning projects</b>, solving issues, helping with plans and completing.
 <br/>Over last 5 years working with <b>cloud</b> technology and getting more involved with <b>deployment and security</b> of our applications.
-<br/>In my spare time I love music - play the guitar, piano tinkering, like art, making things and travelling.
+<br/>In my spare time <b>I love music</b> - play the guitar, piano tinkering, like art, making things and travelling.
 </td></tr>
 <tr><td>2</td><td>What is your greatest strength?</td><td> Tenacity</td></tr>
 <tr><td>3</td><td>What is your greatest weakness?</td><td> Getting Distracted</td></tr>
@@ -51,11 +51,40 @@ About me the chatty version.
 <tr><td>18</td><td>Tell me about a time you failed or made a mistake.</td><td> In a code test interview about finding the nearest date for a flight I used an ordered map. This was the correct approach and to complete the task all I need to do was use a function called "floor" that gets the nearest element (i.e. flight date less than or equal to a given key date). I had never used that function and was trying to think of a way to avoid a scan but we had run out of time. The developer running the test failed me as a consequence. In real life you would easily figure this out. In general when I test candidates I don't penalize them for not knowing one thing - I am interested in what they can do and how they think. This is the spirit of collaboration to me. It takes but a minute to find a suitable function if one exists - and about ten minutes to write your own version if
 one doesn't exist. Anyhow - lesson learned - make sure you know the standard functions available for all your typical data structures.</td></tr>
 <tr><td>19</td><td>Tell me about a time you worked with a difficult person.</td><td>
-<ul><li>I worked with a report who thought a loop was bad coding (some quote about infinite convolutions or something he had picked up). He got quite aggressive about it and was reprimanded by my manager for improper comments on an email. I considered his comments and decided it best to let him put forward his own fix to this part of the solution. It was impossible to avoid some kind of iterative loop but he made a couple of changes of which allowed him to save face and we moved on.</li>
-<li>I worked a temporary contract as a senior developer. A junior colleague who was not my report put together some code that didn't work and this got released causing issues. I am not sure why but the CEO thought it was all my fault and went ballistic. After he had finished shouting I asked him calmly what he wanted me to do about it.  
-</li></ul></td></tr>
-<tr><td>20</td><td>Tell me about a time you had to persuade someone.</td><td> I had to persuade my boss and team lead that the solution I had implemented was correct even though my team lead thought otherwise. We held a meeting with the 3 of us to ensure we all understood the problem and solution - and we agreed that code was good. My team lead was gracious enough to apologize.</td></tr>
-<tr><td>21</td><td>Tell me about a time you disagreed with someone.</td><td> We had to solve a speed issue in presenting a list of patient appointments. The underlying issue was a design flaw caused by using backend microservices and APIs all using NoSQL on separate entities. (Patient, Appointment and Diagnoses). The design was great for data updates and scalability - but not for any reporting or providing a list of appointments and diagnosis summary. I had a hard time explaining to the technical director that a simple table of current appointments was a useful solution and could be easily maintained using notifications from the primary API to a simple handler service.</td></tr>
+<ul>
+  <li>I worked with a report who thought a loop was bad coding (some quote about infinite convolutions or something he had
+    picked up). He got quite aggressive about it and was reprimanded by my manager for improper comments on an email.
+    I considered his comments and decided it best to let him put forward his own fix to this part of the solution.
+    It was impossible to avoid some kind of iterative loop but he made a couple of changes of which allowed him to save face
+    and we moved on.</li>
+  <li>I worked a temporary contract as a senior developer reporting to one of two CEO's who owned the business
+    - the technical CEO was my effective manager.
+    A junior employee put together some duff code that got released causing issues.
+    It was not my job to manage staff or to test, review or release their work - but the non-tech CEO 
+    decided that I should be held responsible for this and went ballistic at me. Sigh.
+    I just waited for him to finish shouting and then calmly asked him what he wanted me to do next to resolve the issue.
+    Lesson - the blame game is a stupid way to run a business and solves nothing.
+    I was happy this was a short contract.
+  </li>
+</ul>
+</td></tr>
+<tr><td>20</td><td>Tell me about a time you had to persuade someone.</td><td>This is a standard part of the job.
+  I had to persuade my boss and team lead that a solution was correct and not worth another week of pointless work.
+  We held a meeting with the 3 of us to ensure we all understood the problem and solution - and
+  we agreed that the code was good.    
+</td></tr>
+<tr><td>21</td><td>Tell me about a time you disagreed with someone.</td><td>This often occurs and
+  I handle disagreements with an open mind - discussing to explore the possibilities.
+  I have learned many things this way - including that my own biases are not always the best way forward.
+  For eaxmple - we had to solve a speed issue in presenting a list of patient appointments. 
+  A design flaw was caused by using all backend microservices and APIs based on NoSQL for all entities and not having
+  any easy SQL solution for handling relationships. The design was great for Service Oriented design, data updates
+  and scalability - but not for any reporting or providing a list of appointments and diagnosis summary.
+  I deferred to the tech director who wished to avoid creating any duplicate (denormalized) table.
+  Instead I enhanced the design to cache results, preload data and keep these caches warm.
+  In the end the trade off was quite a good solution and good lessons were learned. 
+  Conclusion: <b>discuss and evaluate all views without bias</b>.
+</td></tr>
 <tr><td>22</td><td>Tell me about a time you created a goal and achieved it.</td><td> At Apple i proposed we get 90% code test coverage. We acheived this. </td></tr>
 <tr><td>23</td><td>Tell me about a time you surpassed people’s expectations.</td><td> At Edifecs someone convinced a client that to reload their documents for the last 2 years would be OK and would take a short time. This represented over 10 million documents included ongoing daily updates. Unfortunately they did not realize our legacy system could not process this amount of data and repopulate all the patient states within the expected time frame (a week or so). To resolve this I created a way to multi-thread the legacy system and created a rapid import system that could call their system to fetch the documents at a rapid rate. The time taken was 20% of predicted - keeping this important customer happy.</td></tr>
 <tr><td>24</td><td>Tell me about a time you had to handle pressure.</td><td>See above: our customer was a valued client and they were pretty agressive with us on this.</td></tr>

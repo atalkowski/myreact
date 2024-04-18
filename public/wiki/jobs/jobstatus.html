@@ -24,9 +24,10 @@
     toggleTextFile(path, target, button);
   }
  
-  function loadQs() {
-      var butn = document.getElementById("questions");
-      switchDetail("details/questions.htm", "job-details", butn);
+  function loadQs(name) {
+      if (!name) name = "tips";
+      var butn = document.getElementById(name);
+      switchDetail("details/" + name + ".htm", "job-details", butn);
   }
   </script>
 </head>
@@ -34,8 +35,8 @@
 <div class="w3-content" style="max-width:1400px">
 <h1>Jobs</h1>
 <h2>Useful</h2>
-<p>Interview questions: <button id="questions" onclick='loadQs()'>View html</button> 
-</p>
+<p>Tips on life       : <button id="tips" onclick='loadQs("tips")'>View tips</button></p>
+<p>Interview questions: <button id="questions" onclick='loadQs("questions")'>View questions</button></p>
 <span id="articles">
 <h2>Job Application Status</h2>
 <div id="job-details"></div>
@@ -49,10 +50,20 @@
     <th width=20%>Link</th></tr>
 </thead>
 <tbody>
+  <tr><td>871</td><td>Apptio (IBM takeover)</td><td>Principal Software Engineer</td><td>Who knows</td><td>17/04/2024</td><td>
+    <button onclick='switchDetail("details/apptio.htm", "job-details", this)'>View job</button> Withdrawn</td></tr>
+  <tr><td>872</td><td>Oracle (Remote)</td><td>Senior Software Engineer</td><td>Who knows</td><td>16/04/2024</td><td>
+    <button onclick='switchDetail("details/oracle1.htm", "job-details", this)'>View job</button></td></tr>
+  <tr><td>873</td><td>Medallion (San Francisco - Remote)</td><td>Senior Software Engineer</td><td>Who knows</td><td>15/04/2024</td><td>
+    <button onclick='switchDetail("details/medallion.htm", "job-details", this)'>View job</button></td></tr>
+<tr><td>874</td><td>Valerian (San Diego - Remote)</td><td>Senior Software Engineer</td><td>160-200K</td><td>12/04/2024</td><td>
+  <button onclick='switchDetail("details/valerian.htm", "job-details", this)'>View job</button></td></tr>
+<tr><td>875</td><td>Reddit (San Francisco - Remote)</td><td>Senior Software Engineer, Storage</td><td>190-260K</td><td>12/04/2024</td><td>
+  <button onclick='switchDetail("details/reddit.htm", "job-details", this)'>View job</button></td></tr>
 <tr><td>876</td><td>Vartana (San Francisco)</td><td>Senior Software Engineer (BE)</td><td>144-190K</td><td>04/04/2024</td><td>
-   <button onclick='switchDetail("details/vartana.htm", "job-details", this)'>View job</button></td></tr>
+  <button onclick='switchDetail("details/vartana.htm", "job-details", this)'>View job</button></td></tr>
 <tr><td>877</td><td>Modius (San Francisco)</td><td>Senior Software Engineer</td><td>120-180K</td><td>04/04/2024</td><td>
-   <button onclick='switchDetail("details/modius.htm", "job-details", this)'>View job</button></td></tr>
+  <button onclick='switchDetail("details/modius.htm", "job-details", this)'>View job</button></td></tr>
 <tr><td>878</td><td>Shipt via Intellij (San Francisco)</td><td>Senior Software Developer</td><td>75hr W2</td><td>03/28/2024</td><td>
    <button onclick='switchDetail("details/shipt.htm", "job-details", this)'>View job</button></td></tr>
 <tr><td>879</td><td>Rosetta Stone (San Mateo)</td><td>Senior Software Developer</td><td>Not known</td><td>03/18/2024</td><td>
@@ -104,10 +115,10 @@
       <button onclick='switchDetail("details/mavenclinic.job", "job-details", this)'>View job</button>
 </td></tr>
 <tr><td>902</td><td>Affirm Arizona Remote</td><td>SSE, Back End</td><td>160K+</td><td>02/08/2024</td><td>
-      <button onclick='switchDetail("details/affirm.html", "job-details", this)'>View html</button>
+      <button onclick='switchDetail("details/affirm.htm", "job-details", this)'>View htm</button>
 </td></tr>
 <tr><td>903</td><td>Opt Health - SF - Remote</td><td>SSE, Front Ende</td><td>No idea yet</td><td>02/04/2024</td><td>
-      <button onclick='switchDetail("details/opthealth.html", "job-details", this)'>View html</button>
+      <button onclick='switchDetail("details/opthealth.htm", "job-details", this)'>View htm</button>
 </td></tr>
 <tr><td>904</td><td>Upstart - San Mateo/Remote</td><td>Senior Software Engineer, Pricing</td><td>190K+</td><td>02/01/2024</td><td>
       <button onclick='switchDetail("details/upstart.job", "job-details", this)'>View job</button>
@@ -119,13 +130,13 @@
       <button onclick='switchDetail("details/fedex.job", "job-details", this)'>View job</button>
 </td></tr>
 <tr><td>907</td><td>Capital One</td><td>SSEngineer, Backend - SFO</td><td>130-200K</td><td>01/30/2024</td><td>
-      <button onclick='switchDetail("details/capitalone.html", "job-details", this)'>View html</button>
+      <button onclick='switchDetail("details/capitalone.htm", "job-details", this)'>View htm</button>
 </td></tr>
 <tr><td>908</td><td>Patreon</td><td>SSEngineer, Payments - SFO Hybrid 3/2</td><td>185-221K</td><td>01/25/2024</td><td>
-      <button onclick='switchDetail("details/patreon.html", "job-details", this)'>View html</button>
+      <button onclick='switchDetail("details/patreon.htm", "job-details", this)'>View htm</button>
 </td></tr>
 <tr><td>909</td><td>Airbnb</td><td>Senior Software Engineer, Core Services</td><td>185-221K</td><td>01/23/2024</td><td>
-      <button onclick='switchDetail("details/airbnb.html", "job-details", this)'>View html</button>
+      <button onclick='switchDetail("details/airbnb.htm", "job-details", this)'>View htm</button>
 </td></tr>
 <tr><td>910</td><td>17 Mission </td><td>SSE, some remote           </td><td>110-200K     </td><td>01/22/2024</td><td>
       <button onclick='switchDetail("details/17mission.job", "job-details", this)'>View job</button>

@@ -1,0 +1,73 @@
+
+
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"> -->
+<head>
+  <title>Observability in the cloud</title>
+  <link rel="stylesheet" href="../css/v1.css">
+  <script src="../js/utils.js"></script>
+  <script>
+    function clickButton(id) {
+      var elt = document.getElementById(id);
+      if (elt) {
+        elt.onclick();
+      }
+    }
+  </script>
+</head>
+
+<body class="w3-light-grey"">
+<div class="w3-content" style="max-width:1400px">
+<div class="myhtml">
+  <h2>Observability</h2>
+  <h3>Brief</h3>
+  <div id="detail_log1" class="grayback100">
+    Cloud Logging allows you to centralize, aggregate, and manage logs from sources on the cloud. 
+    It allows you to collect, correlate, and analyze logs from all over your stack, identify bottlenecks, measure performance,
+    and tweak the configuration. This is all to say that having a logging tool in your arsenal to help you identify important
+    metrics within your cloud is crucial for the security, longevity, and utilization of the data you have stored in the cloud.
+  </div>
+
+   <h3>Important Metrics to Track</h3>
+<p>There are a few essential metrics to track when monitoring a component of a distributed system:</p>
+  <ul>
+    <li><b>Response time</b> is the time it takes for the system to process a request. You can use this metric to identify bottlenecks.</li>
+    <li><b>Throughput</b> is the number of requests the system can process per unit of time. You can use this metric to identify overloaded components.</li>
+    <li><b>Error rate</b> is the number of errors that occur in the system per unit of time. You can use this metric to identify issues.</li>
+  </ul>
+    
+  <h3>Guidwire organisation</h3>
+  <p> Guidewire deploy an enterprise business application to multiple cloud customers. This document goes over their observability solution.
+  </p>
+  <p> To see the background architecture of Guidewire Cloud Platform (GWCP) and ATMOS click here:
+    <button id="atmos-button" onclick='toggleTextFile("examples/atmos.htm", "atmos-detail", this)'>View</button>
+  </p>
+  <div id="atmos-detail" onclick="clickButton('atmos-button')"></div>
+
+  <h3>Guidewire observability intro</h3>
+  <p>For any cloud platform, observability refers to the ability to gain insight into the internal state and behavior of the platform’s
+    infrastructure components, services, and applications. It is a growing focus area in the industry because it helps operators and developers
+    detect issues and make faster decisions that lead to:
+  </p>
+  <ul>
+    <li>improved platform performance,</li>
+    <li>improved reliability,</li>
+    <li>improved security,</li>
+    <li>improved customer experience</li> 
+  </ul> 
+  <p>Most observability tools are comprised of three (3) core components: </p>   
+  <ul>
+  <li><b>Logs</b>, which are a record of operational events that have occurred within the platform</li>
+  <li><b>Metrics</b>, which are quantitative measurements of the system’s performance or behavior</li>
+  <li><b>Traces</b>, which provide visibility into the flow of requests and transactions throughout the platform</li>
+  </ul>
+
+</div> <!-- End of myhtml -->
+</div> <!-- End of the main content -->
+
+</body>
+</html>
+      

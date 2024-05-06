@@ -6,11 +6,19 @@
  */
 
 const jsonmap = { 
-    "yaml" : { "space" : "&nbsp;", "lf" : "\n<br/>", "clazz" : "yamltext"},
-    "job"  : { "space" : "&nbsp;", "lf" : "\n",      "clazz" : "htmltext grayback"},
-    "html" : { "space" : " ",      "lf" : "\n",      "clazz" : "htmltext grayback"},
-    "htm2" : { "space" : " ",      "lf" : "\n",      "clazz" : "htmltext2" },
-    "htm"  : { "space" : " ",      "lf" : "\n",      "clazz" : "htmltext grayback"}, 
+    "yaml"   : { "space" : "&nbsp;", "lf" : "\n<br/>", "clazz" : "yamltext"},
+    "output" : { "space" : "&nbsp;", "lf" : "\n<br/>", "clazz" : "htmltext"},
+    "job"    : { "space" : "&nbsp;", "lf" : "\n",      "clazz" : "htmltext grayback"},
+    "html"   : { "space" : " ",      "lf" : "\n",      "clazz" : "htmltext grayback"},
+    "htm2"   : { "space" : " ",      "lf" : "\n",      "clazz" : "grayback" },
+    "htm"    : { "space" : " ",      "lf" : "\n",      "clazz" : "grayback100"}, 
+}
+
+function clickButton(id) {
+  var elt = document.getElementById(id);
+  if (elt) {
+    elt.onclick();
+  }
 }
 
 function getHTS(ext) {
@@ -153,10 +161,10 @@ function toggleTextFile(file, name, button) {
   var label = name + "-label";
   if (htm.innerHTML.length > 0) {
     clearInnerHtml(name);
-    resetButton(button, "View " + ext);
+    resetButton(button, "View");
   } else {
     loadTextFileToElement(file, name);
-    resetButton(button, "Hide " + ext);
+    resetButton(button, "Hide");
   }
   var labelElt = document.getElementById(label);
   if (labelElt) {
@@ -173,7 +181,8 @@ function toggleTextFile(file, name, button) {
 */
 module.exports = {
   mapToHTML,
-  toggleTextFile
+  toggleTextFile,
+  clickButton,
 }
 // module.exports.mapToHTML = mapToHTML;
 // module.exports.toggleTextFile = toggleTextFile;

@@ -18,3 +18,10 @@ db: jsondb
 
 jsondb:
 	json-server --watch data/db.json --port 8000
+
+go: gotodo
+
+gotodo:
+	cd go && go run main.go
+
+

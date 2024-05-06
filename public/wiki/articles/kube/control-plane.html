@@ -1,0 +1,22 @@
+
+<h3>Control Plane</h3>
+<p>The control plane consists of the components that make global decisions about the cluster (for example, scheduling and deployment),
+ as well as detecting and responding to cluster events (for example, starting up a new pod when a Deployment's replicas field is unsatisfied).</p>
+<p>Control plane components can be run on any machine in the cluster.</p>
+<p>However, for simplicity, setup scripts typically start all control plane components on the same machine,
+ and do not run user containers on this machine.</p>
+<p>See <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/">
+  Creating Highly Available clusters with kubeadm</a> 
+  for an example control plane setup that runs across multiple machines.
+  A brief intro is given here:
+</p>
+<h3>Creating Highly Available Clusters with kubeadm</h3>
+There are two different approaches to setting up a highly available Kubernetes cluster using kubeadm:
+<ul>
+<li>With stacked control plane nodes. This approach requires less infrastructure. The etcd members and control plane nodes are co-located.</li>
+<li>With an external etcd cluster. This approach requires more infrastructure. The control plane nodes and etcd members are separated.</li>
+</ul>
+<p>
+Before proceeding, you should carefully consider which approach best meets the needs of your applications and environment.
+<a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/">Options for Highly Available topology</a>
+ outlines the advantages and disadvantages of each.</p>

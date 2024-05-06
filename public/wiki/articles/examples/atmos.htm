@@ -1,0 +1,105 @@
+   <h2>Guidewire History leading to ATMOS</h2>
+   <h3>Intro</h3>
+   <p>Tfis document gives an overview of the Guidewire history leading to the development of ATMOS.</p>
+   <p>Guidewire is a leading software company providing a well established (over 20yrs) solution in the Insurance Industry using
+    its "Hybrid Tenancy" solution for their customers.</p>
+  <p>They evovled this solution into <b>Guidewire Cloud Platform (GWCP)</b> - it is powered by the <b>ATMOS</b> solution, 
+    a platform-as-a-service (PaaS) layer specifically optimized to the insurance industry.  This PasS is delivered within the Saas. 
+  </p>
+  <p>In any distributed computing model like that enabled by GWCP and ATMOS, providing a high degree
+  of observability is crucial to maintaining a robust and reliable cloud platform.</p>
+ <div class="grayback100">
+    PaaS stands for Platform as a Service, which is a cloud computing model that provides a flexible, scalable platform
+    for developing, deploying, running, and managing applications. PaaS solutions typically include:
+    <ul>
+      <li>Cloud infrastructure: Data centers, storage, network equipment, and servers</li>
+      <li>Middleware software: Operating systems, frameworks, development kits (SDK), libraries, and more
+      </li>
+    </ul>
+    <p>In addition to support for the customer's application lifecycle, PaaS allows developers to rent everything they need to build
+       an application, relying on a cloud provider for development tools, infrastructure, and operating systems.
+    </p>
+    <p>In the case of Guidewire - who provide a sophisticated Insurance Core application for each customer, and shared services behind
+       the scenes, as well as all of the above ... they allow customers to add their own development tools - presumably (need to find out) that
+       can utilize the API's that are exposed by their core applications and services.
+    </p>
+  </div>    
+  <h3>Problems and solutions history</h3>
+  Below we can see the probelms and solutions that gradually appeard over the years:
+  <ul>
+  <li>Solution: simplicity in managing an all-in core application (like the Single Tenant - InsuranceSuite core)</li>
+  <li>Problem: the cost of enabling unplanned capabilities for different customers</li>
+  <li>Problem: supporting unexpected transaction volumes. For example, when insurance quote comparators started geting 10 to 20 times more quote volume than when the product was first built.</li>
+  <li>Solution: PolicyCenter was architected for scalability and capable of handling that demand.</li>
+  <li>Problem: this required scaling not just the quoting function but all the modules comprising PolicyCenter</li>
+  <li>Problem: this lead to costly and inefficient use of computing resources. </li>
+  <li>Solution: Built a high-volume quoting service, even higher scalability and very high availability and a much-reduced infrastructure cost.</li>
+  <li>Solution: Enabling modern digital experiences through a front-end API layer to access the core</li>
+  <li>Solution: Integrating Apache Solr for full-text search</li>
+  <li>Solution: New data services for reporting, analytics, and enhanced decision making.</li>
+  <li>Solution: Other services extended the core applications to offer richer functionality and greater business value to customers.</li>
+  <li>Solution: The Multi-Tenant hybrid approach.</li>
+  <li>Problem: Multi-tenant architectures are great if your only consideration is maximizing cost savings to the SaaS vendor (Guidewire)
+     but don’t always deliver equivalent value to the customer.</li>
+</ul>
+<h3>A way forward is established (3 years ago)</h3>
+<p>Achieving this balance drove Guidewire to take a hybrid approach that allows customers to leverage the substantial investments they’ve made in InsuranceSuite while unlocking new levels of speed, agility, and innovation in the cloud. This meant preserving the InsuranceSuite core to maintain the strict data and process isolation customers demanded, while externalizing ancillary functions as cloud services that could be shared by multiple customers. 
+  These and other key considerations for Guidewire’s hybrid tenancy model are summarized below:</p>
+<div class="grayback100"><h3>Design principles</h3>
+  <ul>
+  <li>Core process flows and datastores are considered insurer proprietary helps to remain isolated - much easier for insurers to guarantee transaction integrity (ACID).</li>
+  <li>Datastores for single tenant core applications are completely isolated from the datastores of any other tenant which helps in security as much as scalability and performance.</li>
+  <li>Every ancillary or sub-domain function is and can be further externalized into multi-tenant cloud services on top of the API and business events exposed by the core. </li>
+  <li>Single tenant core applications can interact with multi-tenant cloud services to enable fulfillment of functional needs within an externalized sub-domain.</li>
+  <li>The single tenant core will be increasingly componentized to enable use of the same Continuous Integration/Continuous Delivery (CI/CD) release process as multi-tenant cloud services.</li>
+  <li>Multi-tenancy constructs will be implemented at the cloud infrastructure layer to optimize resource utilization and minimize cost.</li>
+  </ul>
+</div>
+<h3>Guidewire Cloud</h3>
+Three years ago with the above considerations fully vetted, Guidewire started executing on a strategy to transform its platform to a cloud service 
+it would operate on behalf of its customers. The end result — Guidewire Cloud — is a complete Software-as-a-Service (SaaS) solution based
+ on Amazon Web Services (AWS) that is highly optimized for use with the InsuranceSuite core applications.
+The architectural transformation that resulted in Guidewire Cloud was driven by three key design principles:
+<ul>
+<li> The InsuranceSuite core remains the vital system-of-record for all key P&C insurance transactions 
+</li>
+<li> API-First: Guidewire began by componentizing the InsuranceSuite core through a new layer of RESTful cloud APIs. 
+  <ul>
+    <li>APIs cover all essential policy, billing, and claims functions and include inbound APIs, outbound app events, as well as client-side callouts to external systems. </li>
+    <li>APIs are fully versioned and designed to support non-breaking changes so they update-safe and made common across all customer deployments.</li>
+    <li>These new cloud APIs simplify integrations with <b>InsurTech</b> and other 3rd party systems while also enabling Guidewire to extend or replace select core functions
+      with external cloud services.</li>
+    <li>This in turn enables the second design principle below.</li>
+  </ul>
+</li>
+<li> External Services: Guidewire combined the best of two distinct architectural patterns to maximize value to its customers. 
+  <ul>
+    <li>Utilized the powerful extensibility, performance, and workload scalability that is best provided by a distributed, cloud-based architecture.</li>
+    <li>Designed to enable cost-effective management and operations of this hybrid platform in the cloud.</li>
+  </ul>
+
+</li>
+<li> Cloud Platform: Called the Guidewire Cloud Platform (GWCP)
+  <ul>
+    <li>Support P&C insurance customers who wanted to leverage their InsuranceSuite investment while taking full advantage of the cloud.</li>
+    <li>Guidewire designed a unique cloud platform that effectively delivers the best of both. </li>
+    <li>It leverages containerized workloads orchestrated by Kubernetes to declaratively secure, deploy, test, manage, and update core InsuranceSuite applications and cloud services of varying architectural styles.</li>
+    <li>These components are all integrated with a common set of cloud-native libraries to unify everything from authentication and observability to configuration and technical properties management.</li>
+    <li>GWCP also exposes AWS managed services in a unified and secure way so core, digital, and analytics applications can all leverage them in a consistent fashion</li>
+    <li>Enable Guidewire to continuously optimize infrastructure cost and simplify operations.</li>
+  </ul>
+</li>
+</ul>
+<h2>Guidewire Cloud High-Level Architecture</h2>
+Based on these principles, Guidewire proceeded to build out GWCP as a standardized platform-as-a-service (PaaS) layer on top of Amazon Web Services (AWS) infrastructure.
+GWCP is highly optimized for use with InsuranceSuite and the hybrid architectural approach we had adopted.
+This “PaaS within SaaS” component is called <b>ATMOS</b>, which leverages AWS, Kubernetes, and Docker to automate deployment, management, and scaling of containerized core applications, cloud services, and associated workloads. 
+A high-level architectural overview of how ATMOS helps standardize interactions between InsuranceSuite and externalized components is provided in the diagram below:
+<h4> TO DO</h4>
+ATMOS also provides Guidewire with a standardized way to address cross-cutting architectural concerns like security, stability, and dynamic scalability.
+Using ATMOS has helped bring our developer community closer to the GitOps model for continuous deployment, management, and monitoring of containerized applications and cloud-native services at scale.
+<h3>Continuous Evolution of Guidewire Cloud
+</h3>
+Guidewire InsuranceSuite became the leading core application and transactional system in the P&C industry for good reason: 
+It was architected to enable all essential business processes as well as scale to meet the needs of the world’s largest insurers. This same architecture that 
+provided the inherent modularity required to adapt to changing market conditions, allowed Guidewire to take a more balanced, evolutionary approach to cloud transformation.

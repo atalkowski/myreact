@@ -22,3 +22,5 @@ Target list:
                        It bundles React in production mode and optimizes the build.
   make jsondb ........ Starts the test json in data/db.json to expose data endpoints:
                        json-server --watch data/db.json --port 8000
+  make gotodo ........ starts a go REST server listening at http://localhost:9090/todos
+  make go ............ as above

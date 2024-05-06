@@ -17,7 +17,26 @@
 <h3 id="back_to_top">Table of contents</h3>
 <ul>
 <li><a href="#intro">Introduction</a></li>
-<li><a href="#q-and-a">Question and Answers</a></li>
+<li><a href="#q-and-a">Question and Answers</a>
+  <ul>
+    <li><a href="#purpose">Purpose and use cases of ML</a></li>
+    <li><a href="#labels">Labels</a></li>
+    <li><a href="#supervised">Supervised learning - regression v classification</a></li>
+    <li><a href="#unsupervised">Unsupervised learning types</a></li>
+    <li><a href="#fraud">Fraud detection</a></li>
+    <li><a href="#online">On-line versus Batch systems</a></li>
+    <li><a href="#outofcore">Out-of-core learning</a></li>
+    <li><a href="#instance">Instance based</a></li>
+    <li><a href="#hyper">Hyperparameter versus Model parameter</a></li>
+    <li><a href="#segment">Segmentation - how to</a></li>
+    <li><a href="#reinforce">Bots and reinforcement learning</a></li>
+    <li><a href="#regular">Regularization of model</a></li>
+    <li><a href="#problem1">When things go wrong - overfit/underfit</a></li>
+    <li><a href="#testet">Test</a> set versus <a href="#testet">Validation</a> set versus <a href="#cross">Cross validation</a></li>
+    
+    
+  </ul>
+</li>
 <li><a href="#python-libs">Using python libraries</a></li>
 </ul>
 <h3 id="intro">Introduction</h3>
@@ -28,7 +47,7 @@
     <tr><th width="25%">Question</th><th width="75%">Answer</th></tr>
   </thead>
   <tbody>
-    <tr><td>What is the purpose of ML?</td><td><b>Machine Learning</b> is about building systems that can learn from <b>data</b>.
+    <tr id="purpose"><td>What is the purpose of ML?</td><td><b>Machine Learning</b> is about building systems that can learn from <b>data</b>.
        Learning means getting better at some task, given some performance measure</td></tr>
     <tr><td>What is ML good for?</td><td><b>Machine Learnng is great</b> for
       <ul>
@@ -38,17 +57,17 @@
         <li>to <b>help humans learn</b> by giving them insights (e.g. <b><i>data mining</i></b>).</li>
       </ul>
     </td></tr>
-    <tr><td>What is a <b>labeled training set</b>?</td><td>A <b>labeled training set</b> is one where each instance is associated with the desired solution (a.k.a. the label)</td></tr>
-    <tr><td>What are the 2 most common <b>supervised</b> tasks?</td><td>The 2 most common <b>supervised</b> tasks are <b>regression</b> and <b>classification</b>:
+    <tr id="labels"><td>What is a <b>labeled training set</b>?</td><td>A <b>labeled training set</b> is one where each instance is associated with the desired solution (a.k.a. the label)</td></tr>
+    <tr id="supervised"><td>What are the 2 most common <b>supervised</b> tasks?</td><td>The 2 most common <b>supervised</b> tasks are <b>regression</b> and <b>classification</b>:
       <ul>
         <li><b>Regression</b>: Predicts a continuous value, such as price, income, or age. Regression algorithms are used with continuous data to solve problems like predicting house prices and weather patterns.</li>
         <li><b>Classification</b>: Predicts a categorical value, such as real or false, male or female, or spam or not spam. Classification algorithms are used with discrete data to solve problems like identifying spam emails, spotting cancer cells, and speech recognition.
           </li>
       </ul>
     </td></tr>
-    <tr><td>Can you name 4 unsupervised tasks?</td><td>Common <b>unsupervised</b> include <b>clustering</b>,
-    <b>visualization</b>, dimensionality reduction, and association rule learning</td>.</tr>
-    <tr><td>What type of learning would you use to teach a robot to walk?</td><td>
+    <tr id="unsupervised"><td>Can you name 4 unsupervised tasks?</td><td>Common <b>unsupervised</b> include <b>clustering</b>,
+    <b>visualization</b>, <b>dimensionality reduction</b>, and <b>association rule learning</b></td>.</tr>
+    <tr id="reinforce"><td>What type of learning would you use to teach a robot to walk?</td><td>
       <b>Reinforcement learning</b> is likely to perform well and be superior to other ML techniques when the desired outcome 
       is not easily gleaned from trial and error data or the desired outcome is hard to define - as in different terrain walks.
       When we want a robot to learn to walk or a machine to excel in a race driving game around a complex track - these are
@@ -56,33 +75,33 @@
       the right direction and steer it away from disasters/undesirable outcomes. It might be possible to do these 
       in supervised or unsupervised learning but reinforcement can improve success by orders of magnitude.
     </td></tr>
-    <tr><td>What type of algorithm would you use to segment your customers into multiple groups?</td>
+    <tr id="segment"><td>What type of algorithm would you use to segment your customers into multiple groups?</td>
       <td>Segmenting into groups depends on the use case:
       <ul>
-        <li>If you don't know how to define the groups, then you can use a <b>clustering</b> algorithm
+        <li>If you <b>don't know</b> how to define the groups, then you can use a <b>clustering</b> algorithm
           (i.e. unsupervised learning)
           to segment your customers into clusters based on similarity of characteristics.</li>
-        <li>If you know what groups you would like to have, then you can feed many labelled examples of each groups
+        <li>If you <b>know</b> what groups you would like to have, then you can feed many labelled examples of each groups
           to a <b>classification</b> algorithmn (i.e. <i>supervised learning</i>) which will then be able to classify all 
           your customers into these groups. Of course... knowing how many examples for good accuracy is part of the problem.
         </li>
       </ul>
       </td></tr>
-    <tr><td>Would you frame the problem of fraud detection as supervised of unsupervised learning?</td><td>
+    <tr id="fraud"><td>Would you frame the problem of fraud detection as supervised of unsupervised learning?</td><td>
       <b>Fraud</b> (or spam) detection is a typical <b>supervised learning</b> problem e.g. the algorithm is fed
       many emails with their label (fraud or valid). This needs more clarification please.
     </td></tr>
-    <tr><td>What is an <b>on-line learning</b> system</td><td>An <b>on-line learning</b> system is one that can learn incrementally
+    <tr id="online"><td>What is an <b>on-line learning</b> system</td><td>An <b>on-line learning</b> system is one that can learn incrementally
     as opposed to a <b>batch learning</b> system. This makes it capable of adapting rapidly to <b>changing</b> data and 
     autonomous systems. It also makes it capable of training on large quantities of data by using incremental updates 
     with the latest data - but without re-learning all the old data (please check).</td></tr>
-    <tr><td>What is <b>out-of-core</b> learning?</td><td><b>Out-of-core</b> algorithms can handle vast quantities of data that Cannot
-    fit in a single computer's main ,memory. An out-of-core learning algorithm chops data into mini-batches and uses on line learning
-    techniques to learn from those.</td></tr>
-    <tr><td>What type of learning algorithm relies on a similarity measure to make predictions?</td>
-        <td>An <b>instance-based</b> learning sysmtem - it learns the training data by heart \; then, when given a new
+    <tr id="outofcore"><td>What is <b>out-of-core</b> learning?</td><td><b>Out-of-core</b> algorithms can handle vast quantities of data that cannot
+    fit in a single computer's main memory. The algorithm chops data into mini-batches and uses on line learning
+    techniques to learn from those mini-batches.</td></tr>
+    <tr id="instance"><td>What type of learning algorithm relies on a similarity measure to make predictions?</td>
+        <td>An <b>instance-based</b> learning sysmtem - it learns the training data by heart; then, when given a new
           instance, it uses the similarity measure to find the most similar learned instances and uses them to make predictions.</td></tr>
-    <tr><td>What is the difference between a <b>model parameter</b> and a learning algorithm's <b>hyperparameter</b>?</td>
+    <tr id="hyper"><td>What is the difference between a <b>model parameter</b> and a learning algorithm's <b>hyperparameter</b>?</td>
         <td><ul>
           <li><b>Model parameter</b>: A model has one or more parameters that determine what it will predict given a new 
               instance (e.g. the slope of a linear model). A learning algorithm tries to find optimal values for these parameters so that the model generalizes well to new
@@ -91,26 +110,26 @@
               (e.g. the amount of <i>regularization</i> to apply).</li> 
         </ul>
         </td></tr>
-    <tr><td>
-      What do model-based learning algorithms search for? 
-      What is the most common startegy they use to succeed?
-      How do they make predictions? 
+    <tr id="model"><td>A three part question:<ul>
+      <li>What do model-based learning algorithms search for? </li>
+      <li>What is the most common startegy they use to succeed?</li>
+      <li>How do they make predictions?</li>
+    </ul> 
     </td><td>Model-based algorithms feed the features of an instance into its prediction function to try to classify it:
       <ul>
       <li><b>Model-based algorithms</b> search for an <b>optimal value</b> for the <b><i>model parameters</i></b> such that the
       model will generalize to new instances. The initial goal is to compute these parameter values for the model so that when 
       combined with a feature values for a new instance, it should be a good predictor of that instance's type.
       </li>
-      <li>The strategy used is usually to train such systems by <b>minimizing the cost function</b> (i.e. error) that 
-      measures how bad the system is at making predictions, plus a penalty for model complexity if the model
-      is <b>regularized</b>.
+      <li>The <b>strategy used</b> is usually to train such systems by <b>minimizing the cost function</b> (i.e. error) that 
+      measures how bad the system is at making predictions, plus a penalty for model complexity if the model is <b>regularized</b>.
       </li>
-      <li>To make predictions on an unseen instance, we feed the new instance's features into the model's prediction function
-      as identified above (using the parameters values computed by the learning algorithm).
+      <li>To <b>make predictions</b> on an unseen instance, we feed the new instance's features into the model's prediction function
+      as identified above (using the parameters computed by the learning algorithm).
       </li>
       </ul>
     </td></tr>
-    <tr><td>Can you name 4 main challenges of machine learning?</td><td>These are:
+    <tr id="challenges"><td>Can you name 4 main challenges of machine learning?</td><td>These are:
       <ul>
         <li><b>Lack of data</b> which leads to noise bias problems etc.</li>
         <li><b>Poor quality or non-representative data</b> either due to inaccurate or poor survey and bias towards a subsection of the population.</li>
@@ -119,7 +138,7 @@
         <li><b>Excessively complex models</b> that overfitfit the training data.</li>
       </ul>
     </td></tr>
-    <tr><td>If your model performs great on training data but poorly on new instances, what is happening? 
+    <tr id="problem1"><td>If your model performs great on training data but poorly on new instances, what is happening? 
       Can you name 3 possible solutons</td><td>This is likely due to overfitting or we had some sort of fluke luck.
         Possible solitions are:
         <ul>
@@ -130,7 +149,7 @@
           <li><b>Reduce the noise</b> in training data by rejecting outliers etc. </li>
         </ul>
       </td></tr>
-    <tr><td>Can you explain <b>regularization</b>?</td><td><b>Regularization</b> works by making the model's
+    <tr id="regular"><td>Can you explain <b>regularization</b>?</td><td><b>Regularization</b> works by making the model's
       answer simpler, which can be done by adding a penalty to the model to encourage it to be more conservative.
       <br/>Regularization refers to techniques that are used to calibrate machine learning models in order to 
       minimize the adjusted loss function and prevent overfitting or underfitting. 
@@ -145,10 +164,28 @@
      Regularization can lead to model underfitting if it introduces too much bias.
      A model with high bias and low variance is considered underfitted.
   </td></tr>
-    <tr><td></td><td></td></tr>
-    <tr><td></td><td></td></tr>
-    <tr><td></td><td></td></tr>
-    <tr><td>What are <b>Bias</b> and <b>Variance</b>?</td><td>
+  <tr id="testset"><td>What is a <b>test set</b> and why would you want to use it?</td>
+        <td>A <b>test set</b> is used to estimate the generalization error that a model will make on new instances,
+           before the model is launched to production.
+     </td></tr>
+  <tr id="validset"><td>What is the prupose of a <b>validation set</b>?</td><td>A <b>validation set</b> is used to compare models. 
+      It makes it possible to select the best model and tune the hyperparameters.
+      There are different methods to create a validation set, depending on the size and nature of your data. 
+        <br/>One common method is to split your data into three parts: <i>training</i>, <i>validation</i>, and <i>test</i> sets.
+        <ul> 
+        <li>The <b>training</b> set is used to <b>fit</b> your model,</li>
+        <li>the <b>validation</b> set is used to <b>evaluate and adjust</b> your model,</li>
+        <li>and the <b>test</b> set is used to <b>measure the final performance</b> of your model.</li>
+      </ul>
+      A typical split ratio is 60:20:20 for training, validation, and test sets, respectively. But note (below) about cross validation preference.
+      </td></tr>
+      <tr><td>What can go wrong if you tune the hyperparameters with the test set?</td><td>If you tune the hyperparameters with the test set, you risk <b>overfitting</b>
+      the test set, and the <b>generalization error</b> you measure will be <b>optimistic</b> - you may launch a model that preforms worse than expected.</td></tr>
+  <tr id="cross"><td>What is <b>cross validation</b> and why would you prefer it to a validation set.</td><td><b>Cross-validation</b> is a techniques that makes it possible to
+  compare models (for model selection and hyperparameter tuning) without the need for a separate validation set. This saves precisous training data.
+  The technique involves using the usual training + test sets, but then splits the training set into smaller groups that are mixed in different ways to generate
+  different (overlapping) training+validation sets</td></tr>
+  <tr><td>What are <b>Bias</b> and <b>Variance</b>?</td><td>
       The terms are properties of the learning algorithm:
       <ul>
         <li>A <b>Bias</b> occurs when an algorithm has limited flexibility to learn from data.

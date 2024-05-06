@@ -6,12 +6,12 @@
  */
 
 const jsonmap = { 
-    "yaml" : { "space" : "&nbsp;", "lf" : "\n<br/>", "clazz" : "yamltext"},
+    "yaml"   : { "space" : "&nbsp;", "lf" : "\n<br/>", "clazz" : "yamltext"},
     "output" : { "space" : "&nbsp;", "lf" : "\n<br/>", "clazz" : "htmltext"},
-    "job"  : { "space" : "&nbsp;", "lf" : "\n",      "clazz" : "htmltext grayback"},
-    "html" : { "space" : " ",      "lf" : "\n",      "clazz" : "htmltext grayback"},
-    "htm2" : { "space" : " ",      "lf" : "\n",      "clazz" : "grayback" },
-    "htm"  : { "space" : " ",      "lf" : "\n",      "clazz" : "grayback100"}, 
+    "job"    : { "space" : "&nbsp;", "lf" : "\n",      "clazz" : "htmltext grayback"},
+    "html"   : { "space" : " ",      "lf" : "\n",      "clazz" : "htmltext grayback"},
+    "htm2"   : { "space" : " ",      "lf" : "\n",      "clazz" : "grayback" },
+    "htm"    : { "space" : " ",      "lf" : "\n",      "clazz" : "grayback100"}, 
 }
 
 function clickButton(id) {

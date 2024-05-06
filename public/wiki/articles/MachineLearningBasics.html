@@ -1,0 +1,299 @@
+
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"> -->
+<head>
+  <title>Machine Learning Basics</title>
+  <link rel="stylesheet" href="../css/v1.css">
+  <script src="../js/utils.js"></script>
+</head>
+
+<body class="w3-light-grey"">
+<div class="w3-content" style="max-width:1400px">
+  <span class="myhtml">
+<h2> Machine Learning </h2>
+<h3 id="back_to_top">Table of contents</h3>
+<ul>
+<li><a href="#intro">Introduction</a></li>
+<li><a href="#q-and-a">Question and Answers</a></li>
+<li><a href="#python-libs">Using python libraries</a></li>
+</ul>
+<h3 id="intro">Introduction</h3>
+<p>This is a collection of useful notes gathered from books and web sites.</p>
+<h3 id="q-and-a">Question answer session</h3>
+<table>
+  <thead>
+    <tr><th width="25%">Question</th><th width="75%">Answer</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>What is the purpose of ML?</td><td><b>Machine Learning</b> is about building systems that can learn from <b>data</b>.
+       Learning means getting better at some task, given some performance measure</td></tr>
+    <tr><td>What is ML good for?</td><td><b>Machine Learnng is great</b> for
+      <ul>
+        <li><b>complex problems</b> for which we have no algorithmic solution.</li>
+        <li>to <b>replace</b> long lists of <b>hand-tuned rules</b>.</li>
+        <li>to build systems that <b>adapt to changes</b> in conditions and environments.</li>
+        <li>to <b>help humans learn</b> by giving them insights (e.g. <b><i>data mining</i></b>).</li>
+      </ul>
+    </td></tr>
+    <tr><td>What is a <b>labeled training set</b>?</td><td>A <b>labeled training set</b> is one where each instance is associated with the desired solution (a.k.a. the label)</td></tr>
+    <tr><td>What are the 2 most common <b>supervised</b> tasks?</td><td>The 2 most common <b>supervised</b> tasks are <b>regression</b> and <b>classification</b>:
+      <ul>
+        <li><b>Regression</b>: Predicts a continuous value, such as price, income, or age. Regression algorithms are used with continuous data to solve problems like predicting house prices and weather patterns.</li>
+        <li><b>Classification</b>: Predicts a categorical value, such as real or false, male or female, or spam or not spam. Classification algorithms are used with discrete data to solve problems like identifying spam emails, spotting cancer cells, and speech recognition.
+          </li>
+      </ul>
+    </td></tr>
+    <tr><td>Can you name 4 unsupervised tasks?</td><td>Common <b>unsupervised</b> include <b>clustering</b>,
+    <b>visualization</b>, dimensionality reduction, and association rule learning</td>.</tr>
+    <tr><td>What type of learning would you use to teach a robot to walk?</td><td>
+      <b>Reinforcement learning</b> is likely to perform well and be superior to other ML techniques when the desired outcome 
+      is not easily gleaned from trial and error data or the desired outcome is hard to define - as in different terrain walks.
+      When we want a robot to learn to walk or a machine to excel in a race driving game around a complex track - these are
+      examples where the machine needs positive and negative feedback to reinforce behaviors that push it in
+      the right direction and steer it away from disasters/undesirable outcomes. It might be possible to do these 
+      in supervised or unsupervised learning but reinforcement can improve success by orders of magnitude.
+    </td></tr>
+    <tr><td>What type of algorithm would you use to segment your customers into multiple groups?</td>
+      <td>Segmenting into groups depends on the use case:
+      <ul>
+        <li>If you don't know how to define the groups, then you can use a <b>clustering</b> algorithm
+          (i.e. unsupervised learning)
+          to segment your customers into clusters based on similarity of characteristics.</li>
+        <li>If you know what groups you would like to have, then you can feed many labelled examples of each groups
+          to a <b>classification</b> algorithmn (i.e. <i>supervised learning</i>) which will then be able to classify all 
+          your customers into these groups. Of course... knowing how many examples for good accuracy is part of the problem.
+        </li>
+      </ul>
+      </td></tr>
+    <tr><td>Would you frame the problem of fraud detection as supervised of unsupervised learning?</td><td>
+      <b>Fraud</b> (or spam) detection is a typical <b>supervised learning</b> problem e.g. the algorithm is fed
+      many emails with their label (fraud or valid). This needs more clarification please.
+    </td></tr>
+    <tr><td>What is an <b>on-line learning</b> system</td><td>An <b>on-line learning</b> system is one that can learn incrementally
+    as opposed to a <b>batch learning</b> system. This makes it capable of adapting rapidly to <b>changing</b> data and 
+    autonomous systems. It also makes it capable of training on large quantities of data by using incremental updates 
+    with the latest data - but without re-learning all the old data (please check).</td></tr>
+    <tr><td>What is <b>out-of-core</b> learning?</td><td><b>Out-of-core</b> algorithms can handle vast quantities of data that Cannot
+    fit in a single computer's main ,memory. An out-of-core learning algorithm chops data into mini-batches and uses on line learning
+    techniques to learn from those.</td></tr>
+    <tr><td>What type of learning algorithm relies on a similarity measure to make predictions?</td>
+        <td>An <b>instance-based</b> learning sysmtem - it learns the training data by heart \; then, when given a new
+          instance, it uses the similarity measure to find the most similar learned instances and uses them to make predictions.</td></tr>
+    <tr><td>What is the difference between a <b>model parameter</b> and a learning algorithm's <b>hyperparameter</b>?</td>
+        <td><ul>
+          <li><b>Model parameter</b>: A model has one or more parameters that determine what it will predict given a new 
+              instance (e.g. the slope of a linear model). A learning algorithm tries to find optimal values for these parameters so that the model generalizes well to new
+              instances</li>
+          <li><b>Hyperparameter</b>: A parameter of the learning algorithm itself, not of the model
+              (e.g. the amount of <i>regularization</i> to apply).</li> 
+        </ul>
+        </td></tr>
+    <tr><td>
+      What do model-based learning algorithms search for? 
+      What is the most common startegy they use to succeed?
+      How do they make predictions? 
+    </td><td>Model-based algorithms feed the features of an instance into its prediction function to try to classify it:
+      <ul>
+      <li><b>Model-based algorithms</b> search for an <b>optimal value</b> for the <b><i>model parameters</i></b> such that the
+      model will generalize to new instances. The initial goal is to compute these parameter values for the model so that when 
+      combined with a feature values for a new instance, it should be a good predictor of that instance's type.
+      </li>
+      <li>The strategy used is usually to train such systems by <b>minimizing the cost function</b> (i.e. error) that 
+      measures how bad the system is at making predictions, plus a penalty for model complexity if the model
+      is <b>regularized</b>.
+      </li>
+      <li>To make predictions on an unseen instance, we feed the new instance's features into the model's prediction function
+      as identified above (using the parameters values computed by the learning algorithm).
+      </li>
+      </ul>
+    </td></tr>
+    <tr><td>Can you name 4 main challenges of machine learning?</td><td>These are:
+      <ul>
+        <li><b>Lack of data</b> which leads to noise bias problems etc.</li>
+        <li><b>Poor quality or non-representative data</b> either due to inaccurate or poor survey and bias towards a subsection of the population.</li>
+        <li><b>Uninformative features</b>, or correlated features, leading to lack of anything useful for classification.</li>
+        <li><b>Excessively simple models</b> that underfit the training data.</li>
+        <li><b>Excessively complex models</b> that overfitfit the training data.</li>
+      </ul>
+    </td></tr>
+    <tr><td>If your model performs great on training data but poorly on new instances, what is happening? 
+      Can you name 3 possible solutons</td><td>This is likely due to overfitting or we had some sort of fluke luck.
+        Possible solitions are:
+        <ul>
+          <li><b>Use more data</b> in the training phase, of better quality if possible (see challenges above). 
+          and ensure adequate test data is used to validate the prediction function.</li>
+          <li><b>Simplify</b> the model by selecting a simpler algorithm or reducing the parameters/features used.</li>
+          <li><b>Regularize</b> the model: (add explanation) </li>
+          <li><b>Reduce the noise</b> in training data by rejecting outliers etc. </li>
+        </ul>
+      </td></tr>
+    <tr><td>Can you explain <b>regularization</b>?</td><td><b>Regularization</b> works by making the model's
+      answer simpler, which can be done by adding a penalty to the model to encourage it to be more conservative.
+      <br/>Regularization refers to techniques that are used to calibrate machine learning models in order to 
+      minimize the adjusted loss function and prevent overfitting or underfitting. 
+      <br/>See this link for more details <a href="https://www.simplilearn.com/tutorials/machine-learning-tutorial/regularization-in-machine-learning">
+        regularization in machine learning</a>.
+      </a>
+      <br/>Regularization can be explicit or implicit.
+      <ul> 
+      <li>Explicit regularization adds a term to the optimization problem, such as a penalty, prior, or constraint.</li>
+      <li>Implicit regularization includes techniques like early stopping, using a robust loss function, and discarding outliers.</li>
+     </ul>
+     Regularization can lead to model underfitting if it introduces too much bias.
+     A model with high bias and low variance is considered underfitted.
+  </td></tr>
+    <tr><td></td><td></td></tr>
+    <tr><td></td><td></td></tr>
+    <tr><td></td><td></td></tr>
+    <tr><td>What are <b>Bias</b> and <b>Variance</b>?</td><td>
+      The terms are properties of the learning algorithm:
+      <ul>
+        <li>A <b>Bias</b> occurs when an algorithm has limited flexibility to learn from data.
+           Such models pay very little attention to the training data and oversimplify the model therefore
+           the validation error or prediction error and training error follow similar trends.
+           Such models always lead to a high error on training and test data. High Bias causes underfitting in our model.
+        </li>
+        <li><b>Variance</b> defines the algorithm’s sensitivity to specific sets of data.
+           A model with a high variance pays a lot of attention to training data and does not generalize
+            therefore the validation error or prediction error are far apart from each other.
+             Such models usually perform very well on training data but have high error rates on test data. 
+             High Variance causes overfitting in our model.
+        </li>
+      </ul>
+      An <b>optimal</b> model is one in which the model is sensitive to the pattern in our model, but at the same time 
+      can generalize to new data. This happens when Bias and Variance are both optimal.
+       We call this Bias-Variance Tradeoff and we can achieve it in over or under fitted models by using Regression.
+    </td></tr>
+  </tbody>
+</table>
+
+
+
+<h2 id="python-libs">Using Python Libraries</h2>
+<h3>Overview</h3>
+<p>Data analysis and management are essential in every data-driven company.
+   <a href="https://www.naukri.com/code360/library/popular-python-libraries">
+   Python Pandas</a> library has excellent functions to perform different tasks.
+   The Pandas library's main objective is to select rows and columns from a dataset according to our needs. 
+   This dataset may contain text or numerical data.</p> 
+<p>The two most essential and <a href="https://www.naukri.com/code360/library/must-know-functions-in-pandas">Must Know Functions in pandas</a> 
+  library has are <b>loc</b> and <b>iloc</b>. We will explore the difference between loc and iloc features,
+    and how these work in different circumstances.
+</p>
+Also, Read - <a href="https://www.naukri.com/code360/library/advanced-functions-in-pandas">Advanced functions in Pandas</a>
+
+<h3>The <i>loc</i> function in Python</h3>
+<b><i>Loc</i></b> is a method in the Pandas library of Python. 
+It is both a <b>dataframe</b> and <b>series</b> method which means we can call it on either pandas' objects.
+<ul>
+Dataframe can be referred to as a spreadsheet or a table.
+It consists of columns representing a variable and row as an observation. 
+There are two arguments we need to pass when we are using this function. 
+The first arguments represent the row label and the second argument represents a column label. 
+We can even use colon (:) if we want to select all rows or columns. 
+We use boolean expressions to solve it.
+</ul>
+<h4>Syntax</h4>
+We have to follow the syntax below:
+<div class="codeblock">
+  Dataframe.loc[specific rows, specific columns]
+</div>
+<h3>Use Cases of <i>loc</i> Function</h3>
+To understand it more in-depth, let's look at an example. Let's create a sample Dataframe using Pandas: 
+<h4>Code Implementation</h4>
+<div class="codeblock">
+# import python library
+<br/>Import pandas as pd
+<br/># create a sample DataFrame with attributes name, department and salary.
+<br/>df = pd.DataFrame({
+<br/>&nbsp;&nbsp;‘Name’ : [‘Ninja_1’,‘Ninja_2’,‘Ninja_3’,‘Ninja_4’,
+<br/>&nbsp;&nbsp;‘Department’ : [‘Marketing’,’Sales’,’Marketing,’Engineering’],
+<br/>&nbsp;&nbsp;‘Salary’ : [50000,60000,55000,70000]
+<br/>&nbsp;&nbsp;})    
+</div>
+<p>We have created a sample DataFrame which consists of 3 columns named 'name,' 'Department,' and' Salary.' 
+</p>
+<h4>Output</h4>
+<table>
+  <thead>
+    <tr> <th>Name</th>  <th>Department</th> <th>Salary</th> </tr>
+  </thead>
+  <tbody>
+    <tr><td>Ninja_1</td><td>Marketing</td><td>50000</td></tr>
+    <tr><td>Ninja_2</td><td>Sales</td><td>60000</td></tr>
+    <tr><td>Ninja_3</td><td>Marketing</td><td>55000</td></tr>
+    <tr><td>Ninja_4</td><td>Engineering</td><td>70000</td></tr>
+  </tbody>
+</table>
+
+<h3>Use case: Selecting A Single Row</h3>
+<div class="codeblock">
+  Row = df.loc[2]
+</div>
+<h4>Output</h4>
+<table>
+  <thead>
+    <tr> <th>Name</th>  <th>Department</th> <th>Salary</th> </tr>
+  </thead>
+  <tbody>
+    <tr><td>Ninja_1</td><td>Marketing</td><td>50000</td></tr>
+  </tbody>
+</table>
+<h3>Use case: Selecting Multiple Rows</h3>
+<div class="codeblock">
+  Rows = df.loc[[0,2]]
+</div>
+<h4>Output</h4>
+Note rows are indexed at 0 upwards:
+<table>
+  <thead>
+    <tr> <th>Name</th>  <th>Department</th> <th>Salary</th> </tr>
+  </thead>
+  <tbody>
+    <tr><td>Ninja_1</td><td>Marketing</td><td>50000</td></tr>
+    <tr><td>Ninja_3</td><td>Marketing</td><td>55000</td></tr>
+  </tbody>
+</table>
+
+<h3>Use case: Selecting Multiple Columns</h3>
+<div class="codeblock">
+  Cols = df.loc[:, ['Name', 'Salary']]
+</div>
+<h4>Output</h4>
+<table>
+  <thead>
+    <tr> <th>Name</th>   <th>Salary</th> </tr>
+  </thead>
+  <tbody>
+    <tr><td>Ninja_1</td><td>50000</td></tr>
+    <tr><td>Ninja_2</td><td>60000</td></tr>
+    <tr><td>Ninja_3</td><td>55000</td></tr>
+    <tr><td>Ninja_4</td><td>70000</td></tr> 
+   </tbody>
+</table>
+
+<h3>Use case: Selecting a cell value</h3>
+<div class="codeblock">
+  value = df.loc[1, 'Salary']
+</div>
+<h4>Output</h4>
+<table>
+  <thead>
+    <tr> <th>Name</th>   <th>Salary</th> </tr>
+  </thead>
+  <tbody>
+    <tr><td>Ninja_1</td><td>50000</td></tr>
+    <tr><td>Ninja_3</td><td>55000</td></tr>
+   </tbody>
+</table>
+
+
+
+</span>
+</div> <!-- End of the main content -->
+
+</body>
+</html>

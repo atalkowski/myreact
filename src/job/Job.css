@@ -6,52 +6,54 @@ section {
 }
 
 table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+  border: #0b0404;
+}
+
+table {
   width: 90%;
   align-self: center;  
 }
 
-.skinny, table{
+.update {
   width: 500px;
-  vertical-align: center;  
+  align-self: center;  
 }
 
+
 p {
-  margin: 2px;
+  margin: 3px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: left;
 }
 
+.maintab tr:nth-child(even) {
+  background-color: hwb(293 87% 6%);
+}
+
 td {
-  margin: 3px;
+  text-align: left;
+  margin: 5px;
+  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.update th {
+  text-align: left;
+  margin: 5px;
   font-style: bold;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.counter-container {
-  text-align: center;
+th {
+  text-align: left;
+  margin: 5px;
+  font-style: bold;
   font-family: Arial, Helvetica, sans-serif;
 }
-.counter_display {
-  font-size: 10em;
-  margin-top: 0;
-  margin-bottom: 50px;
-}
 
-.counter-button {
-  width: 150px;
-  height: 50px;
-  font-size: 1.5em;
-  font-weight: bold;
-  margin: 0px 5px;
-  background-color: #61dafb;
-  color: white;
-  border: none;
-  border-radius: 7px;
-  cursor: pointer;
-}
-.counter-button:hover {
-  background-color:hsl(211, 95%, 68%)
-}
 
 .App-logo {
   height: 40vmin;
@@ -87,25 +89,11 @@ label {
   padding: 10px;
 }
 
-.blogEdit {
-   background-color: hsl(47, 69%, 81%);
-   margin: 0px 5px;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .create input, .create textarea, .create select {
-  width:100%;
+  
   padding: 6px 10px;
   margin: 10px 0;
-  border: 1px solid #ddd;
+  border: 1px solid hsl(255, 70%, 26%);
   box-sizing: border-box;
   display: block;
 }
@@ -139,7 +127,8 @@ input {
   padding: 8px;
   border-radius: 5px;
   font-size: large;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial', Arial, sans-serif;
+  width: 100%;
   min-width: 60;
 }
 

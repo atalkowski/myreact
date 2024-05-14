@@ -10,6 +10,7 @@ const Navbar = () => {
       <table width="100%"><tbody>
         <tr>
         <td width={wid}> <Link to="/">Users</Link></td>
+        <td width={wid}> <Link to="/jobs">Jobs</Link></td>
         <td width={wid}> <Link to="/blogpage">Blogs</Link></td>
         <td width={wid}> <NavLink to="/counter">Counter</NavLink></td>
         <td width={wid}> <Link to="/wiki">My Wiki</Link></td>

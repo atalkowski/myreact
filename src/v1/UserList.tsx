@@ -22,7 +22,7 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
             <Link to={"/user-create"}><button className="create">Add User</button></Link></div>
         </div>
         <div>
-          <table text-align="center">
+          <table className="skinny" align="center">
             <thead>
               <tr><th>Name</th><th>Email</th><th>Details</th>
               </tr>

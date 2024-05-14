@@ -1,7 +1,7 @@
 
 import React from 'react';
 import BlogList from './BlogList';
-import useFetch from './useFetch.tsx';
+import useFetch from '../useFetch.tsx';
 
 const BlogPage = () => {
 

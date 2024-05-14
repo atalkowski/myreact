@@ -42,20 +42,22 @@ const UserCreate = () => {
     <React.Fragment>
     <div>
       <h3>Create New User</h3>
-      <form className="create" onSubmit={handleSubmit}> 
-        <label>Name:  
+      <form onSubmit={handleSubmit}> 
+        <table className="skinny" align="center">
+        <tr><th>Name</th><td>  
            <input type="text" required value={name} onChange={(e) => setName(e.target.value)}/>
-        </label>
-        <label>Email:  
+        </td></tr>
+        <tr><th>Email</th><td>  
           <input type="text"  required value={email}  onChange={(e) => setEmail(e.target.value)}/>  
-        </label>
-        <label>Number:
+        </td></tr>
+        <tr><th>Number</th><td>
            <input type="text" value={number} onChange={(e) => setNumber(e.target.value)}/>
-        </label>
+        </td></tr>
         { !isPending && !error && <button>Add User</button> }
         { isPending && !error && <button disabled>Saving User...</button> }
         { error && <div className="error">{error} </div>}
         <button onClick={handleCancel}>Cancel</button>
+        </table>
         </form>
     </div>
   </React.Fragment>

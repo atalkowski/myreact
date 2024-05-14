@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import useFetch from './useFetch.tsx';
+import useFetch from '../useFetch.tsx';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../App.css';
 
@@ -89,19 +89,19 @@ const User = () => {
         {isPending && <p>Loading user...</p>}
         {!isPending && initialized(user) && ( <div>
             <form onSubmit={handleSubmit}> 
-              <table align="center"><tbody>
-              <tr><td>User ID</td><td><div> {user.id} <a href="/" onClick={handleDelete}>Delete this entry</a> </div>  
+              <table className="skinny" align="center"><tbody>
+              <tr><th>User ID</th><td><div> {user.id} <a href="/" onClick={handleDelete}>Delete this entry</a> </div>  
               </td></tr>
-              <tr><td>Name  </td><td> <label><input type="text" value={name} 
-                      required onChange={(e) => setName(e.target.value)}/>  </label></td></tr>
-              <tr><td>Email </td><td> <label><input type="text" value={email} 
-                      required onChange={(e) => setEmail(e.target.value)}/> </label></td></tr>
-              <tr><td>Number </td><td> <label> <input type="text" required value={number} 
-                   onChange={(e) => setNumber(e.target.value)}/> </label></td></tr>
-              <tr><td>
+              <tr><th>Name  </th><td> <input type="text" value={name} 
+                      required onChange={(e) => setName(e.target.value)}/>  </td></tr>
+              <tr><th>Email </th><td> <input type="text" value={email} 
+                      required onChange={(e) => setEmail(e.target.value)}/> </td></tr>
+              <tr><th>Number </th><td>  <input type="text" required value={number} 
+                   onChange={(e) => setNumber(e.target.value)}/> </td></tr>
+              <tr><th>
               { !savePending && !saveError && <div><button type="submit">Update User</button></div> }
               { savePending  && !saveError && <div><button disabled>Saving User...</button></div> }
-              </td><td>
+              </th><td>
               <div>&nbsp; <button onClick={handleCancel}>Cancel</button></div></td></tr>
               </tbody>
               </table>

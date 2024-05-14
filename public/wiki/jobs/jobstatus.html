@@ -24,19 +24,30 @@
     toggleTextFile(path, target, button);
   }
  
-  function loadQs(name) {
-      if (!name) name = "tips";
+  function loadQs(name, ext) {
+      if (!name) return; // name = "tips.htm";
       var butn = document.getElementById(name);
-      switchDetail("details/" + name + ".htm", "job-details", butn);
+      switchDetail("details/" + name + ext, "job-details", butn);
   }
   </script>
 </head>
-<body class="w3-light-grey" onLoad="loadQs()">
+<body class="w3-light-grey">
 <div class="w3-content" style="max-width:1400px">
 <h1>Jobs</h1>
-<h2>Useful</h2>
-<p>Tips on life       : <button id="tips" onclick='loadQs("tips")'>View tips</button></p>
-<p>Interview questions: <button id="questions" onclick='loadQs("questions")'>View questions</button></p>
+<h2>Useful job docs</h2>
+ <table>
+  <tbody>
+    <tr>
+      <td>General Tips
+        <button id="tips"        onclick='loadQs("tips",        ".htm")' >View tips</button></td>
+      <td>Interview answers to common questions
+        <button id="questions"   onclick='loadQs("questions",   ".htm")' >View answers</button></td>
+      <td>Interview questions to ask
+        <button id="myquestions" onclick='loadQs("myquestions", ".htm")' >View questions</button></td>
+      <td>About me summary
+        <button id="aboutme"     onclick='loadQs("aboutme",     ".htm")'>View about me</button></td></tr>
+  </tbody>
+ </table>
 <span id="articles">
 <h2>Job Application Status</h2>
 <div id="job-details"></div>
@@ -50,6 +61,12 @@
     <th width=20%>Link</th></tr>
 </thead>
 <tbody>
+  <tr><td>862</td><td>Sequoia</td><td>Senior Software Engineer (Node stack)</td><td></td><td>05/13/2024</td><td>
+    <button onclick='switchDetail("details/sequoia.htm", "job-details", this)'>View job</button></td></tr>
+  <tr><td>863</td><td>Early Warning</td><td>Staff SE</td><td></td><td>05/13/2024</td><td>
+    <button onclick='switchDetail("details/earlywarn.htm", "job-details", this)'>View job</button></td></tr>
+  <tr><td>864</td><td>MavenAPI (Remote)</td><td>Staff SE</td><td>200-220K</td><td>05/08/2024</td><td>
+    <button onclick='switchDetail("details/mavenagi.htm", "job-details", this)'>View job</button></td></tr>
   <tr><td>865</td><td>Brio Digital (Onsite)</td><td>SSE</td><td>200-220K</td><td>05/01/2024</td><td>
     <button onclick='switchDetail("details/brio.htm", "job-details", this)'>View job</button></td></tr>
   <tr><td>866</td><td>Talent Bull (Remote)</td><td>SSE</td><td>160-170K</td><td>04/30/2024</td><td>

@@ -74,5 +74,34 @@
       "email": "jbloggs1123@gmail.com",
       "number": "123-456-7890"
     }
+  ],
+  "jobs": [
+    {
+      "id": "51a4",
+      "company": "Peanuts R Us",
+      "title": "Chief Mechanic / Foreman",
+      "location": "Half Moon Bay",
+      "salary": "40$/hr",
+      "applied": "05/13/2024",
+      "workat": "On Site"
+    },
+    {
+      "id": "4b13",
+      "company": "Santa's Grotto",
+      "title": "Senior Manager",
+      "location": "North Pole",
+      "salary": "100K",
+      "applied": "12/23/2023",
+      "workat": "Office"
+    },
+    {
+      "id": "c266",
+      "company": "Texaco Oils",
+      "title": "Data Scientist",
+      "location": "Galveston",
+      "salary": "125K",
+      "applied": "10/10/2023",
+      "workat": "Hybrid"
+    }
   ]
 }

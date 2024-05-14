@@ -33,11 +33,19 @@
     <li><a href="#regular">Regularization of model</a></li>
     <li><a href="#problem1">When things go wrong - overfit/underfit</a></li>
     <li><a href="#testet">Test</a> set versus <a href="#testet">Validation</a> set versus <a href="#cross">Cross validation</a></li>
-    
-    
   </ul>
 </li>
-<li><a href="#python-libs">Using python libraries</a></li>
+<li><a href="#python-libs">Using python libraries</a>
+   <ul>
+    <li><a href="#locfunc">Loc function</a> for selecting from pandas</li>
+    <li><a href="#syntax">Loc function syntax</a></li>
+    <li><a href="#singlerow">Select a Single row</a></li>
+    <li><a href="#rowrange">Select a Range of Rows</a></li>
+    <li><a href="#variousrows">Select Various Rows</a></li>
+    <li><a href="#multicol">Selecting Multiple Columns</a></li>
+    <li><a href="#specific">Selecting Specific Row/Col Cell</a></li>
+   </ul>
+</li>
 </ul>
 <h3 id="intro">Introduction</h3>
 <p>This is a collection of useful notes gathered from books and web sites.</p>
@@ -132,8 +140,8 @@
     <tr id="challenges"><td>Can you name 4 main challenges of machine learning?</td><td>These are:
       <ul>
         <li><b>Lack of data</b> which leads to noise bias problems etc.</li>
-        <li><b>Poor quality or non-representative data</b> either due to inaccurate or poor survey and bias towards a subsection of the population.</li>
-        <li><b>Uninformative features</b>, or correlated features, leading to lack of anything useful for classification.</li>
+        <li><b>Poor quality or non-representative data</b> due to inaccuracies in survey and/or bias towards a subset of a population.</li>
+        <li><b>Uninformative features</b>, or too many correlated features, leading to lack of anything useful for classification.</li>
         <li><b>Excessively simple models</b> that underfit the training data.</li>
         <li><b>Excessively complex models</b> that overfitfit the training data.</li>
       </ul>
@@ -222,7 +230,7 @@
 </p>
 Also, Read - <a href="https://www.naukri.com/code360/library/advanced-functions-in-pandas">Advanced functions in Pandas</a>
 
-<h3>The <i>loc</i> function in Python</h3>
+<h3 id="locfunc">The <i>loc</i> function in Python</h3>
 <b><i>Loc</i></b> is a method in the Pandas library of Python. 
 It is both a <b>dataframe</b> and <b>series</b> method which means we can call it on either pandas' objects.
 <ul>
@@ -233,97 +241,150 @@ The first arguments represent the row label and the second argument represents a
 We can even use colon (:) if we want to select all rows or columns. 
 We use boolean expressions to solve it.
 </ul>
-<h4>Syntax</h4>
-We have to follow the syntax below:
+<h4 id="syntax">Syntax</h4>
+We have to follow the generic syntax below:
 <div class="codeblock">
   Dataframe.loc[specific rows, specific columns]
 </div>
+<p>Rows and columns are indexed from 0 as in most languages.
+<h3>BNF for the loc function</h3>
+ The BNF definition below is similar to the Python range for a 2D array, but ranges are inclusive of the upperbound which
+is not the same as array ranges so for example:</p>
+<div class="codeblock">
+a = [0, 1, 2, 3, 4, 5]  # a is 1D array of length 6<br/>
+print(a[0:5])<br/> # This slice is from 0 thru  4 - it excludes value 5 at index 5. So the above would print this:<br/>
+[0, 1, 2, 3, 4]<br/>
+</div>
+<p>
+  The above not how loc range [0:5] works for rows - it includes rows 0 thru 5 <b>inclusive</b> of value at row 5.
+</p>
+<table>
+  <thead>
+    <tr> <th  width="20%">Symbol</th>  <th width="40%">Definition</th> <th width="40%">Examples</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>panda-range</td>      <td>[ row-range col-range ]</td><td>[ [0,4], [ 'heading1', 'heading2'] ]</td></tr>
+    <tr><td>row-range</td>        <td>number-range<br/>selected-numbers</td><td></td></tr>
+    <tr><td>col-range</td>        <td>, headings<br/><i>Not selected at all implying use all columns</i></td><td>, ['heading1']<br/><i>nothing-at-all</i></td></tr>
+    <tr><td>number-range</td>     <td>number<br/>:<br/>number:<br/>:number<br/>number:number</td><td>6 # just row 6<br/>: # all rows<br/>3: # all rows from 3<br/>
+      :5 # all rows from 0 upto and including 5<br/>1:5 # rows 1 thru 5</td></tr>
+    <tr><td>selected-numbers</td> <td>number<br/>[number-list]</td><td>6<br/>[2,4,6]</td></tr>
+    <tr><td>number-list</td>      <td>number<br/>number,number-list</td><td></td></tr>
+    <tr><td>headings</td>         <td>key-value<br/>[key-value-list]</td><td>'heading1' <br/>[ 'North', 'South', 'East' ]</td></tr>
+    <tr><td>key-value-list</td>   <td>key-value<br/>key-value, key-value-list</td><td></td></tr>
+    <tr><td>number</td>           <td><i>An integer value directly indexing on the panda row</i></td><td>0, 1, .. Note negatives don't work like normal Python array indexing</td></tr>
+    <tr><td>key-value</td>         <td><i>A key value matching the column heading</i></td><td>'rate'</td></tr>
+  </tbody>
+</table>
 <h3>Use Cases of <i>loc</i> Function</h3>
 To understand it more in-depth, let's look at an example. Let's create a sample Dataframe using Pandas: 
-<h4>Code Implementation</h4>
+<h4>Code Implementations</h4>
 <div class="codeblock">
 # import python library
 <br/>Import pandas as pd
 <br/># create a sample DataFrame with attributes name, department and salary.
 <br/>df = pd.DataFrame({
-<br/>&nbsp;&nbsp;‘Name’ : [‘Ninja_1’,‘Ninja_2’,‘Ninja_3’,‘Ninja_4’,
+<br/>&nbsp;&nbsp;‘Name’ : [‘Ninja_1’,‘Ninja_2’,‘Ninja_3’,‘Ninja_4’],
 <br/>&nbsp;&nbsp;‘Department’ : [‘Marketing’,’Sales’,’Marketing,’Engineering’],
 <br/>&nbsp;&nbsp;‘Salary’ : [50000,60000,55000,70000]
 <br/>&nbsp;&nbsp;})    
 </div>
-<p>We have created a sample DataFrame which consists of 3 columns named 'name,' 'Department,' and' Salary.' 
+<p>We have created a sample DataFrame which consists of 3 columns named 'Name', 'Department', and 'Salary'. 
 </p>
 <h4>Output</h4>
 <table>
   <thead>
-    <tr> <th>Name</th>  <th>Department</th> <th>Salary</th> </tr>
+    <tr><th width="5%">#</th> <th>Name</th>  <th>Department</th> <th>Salary</th> </tr>
   </thead>
   <tbody>
-    <tr><td>Ninja_1</td><td>Marketing</td><td>50000</td></tr>
-    <tr><td>Ninja_2</td><td>Sales</td><td>60000</td></tr>
-    <tr><td>Ninja_3</td><td>Marketing</td><td>55000</td></tr>
-    <tr><td>Ninja_4</td><td>Engineering</td><td>70000</td></tr>
+    <tr><td>0</td><td>Ninja_1</td><td>Marketing</td><td>50000</td></tr>
+    <tr><td>1</td><td>Ninja_2</td><td>Sales</td><td>60000</td></tr>
+    <tr><td>2</td><td>Ninja_3</td><td>Marketing</td><td>55000</td></tr>
+    <tr><td>3</td><td>Ninja_4</td><td>Engineering</td><td>70000</td></tr>
   </tbody>
 </table>
 
-<h3>Use case: Selecting A Single Row</h3>
+<h3 id="singlerow">Use case: Selecting a Single Row</h3>
 <div class="codeblock">
   Row = df.loc[2]
+  Row
 </div>
 <h4>Output</h4>
 <table>
   <thead>
-    <tr> <th>Name</th>  <th>Department</th> <th>Salary</th> </tr>
+    <tr><th width="5%">#</th> <th>Name</th>  <th>Department</th> <th>Salary</th> </tr>
   </thead>
   <tbody>
-    <tr><td>Ninja_1</td><td>Marketing</td><td>50000</td></tr>
+    <tr><td>2</td><td>Ninja_3</td><td>Marketing</td><td>55000</td></tr>
   </tbody>
 </table>
-<h3>Use case: Selecting Multiple Rows</h3>
+Note that by invoking "Row" here that the objects is displayed in the Panda nice format in Jupyter. Using print(Row) is nearly as good.
+<h3 id="rowrange">Use case: Selecting a row ranges</h3>
 <div class="codeblock">
-  Rows = df.loc[[0,2]]
+  Rows = df.loc[1:3]
+  Rows
 </div>
 <h4>Output</h4>
-Note rows are indexed at 0 upwards:
+<p>So [0:4] is a row selector for panda index rows 0 thru 4 inclusive; again because column range is missing then all columns are assumed.
+</p>
 <table>
   <thead>
-    <tr> <th>Name</th>  <th>Department</th> <th>Salary</th> </tr>
+    <tr><th width="5%">#</th> <th>Name</th>  <th>Department</th> <th>Salary</th> </tr>
   </thead>
   <tbody>
-    <tr><td>Ninja_1</td><td>Marketing</td><td>50000</td></tr>
-    <tr><td>Ninja_3</td><td>Marketing</td><td>55000</td></tr>
+    <tr><td>1</td><td>Ninja_2</td><td>Sales</td><td>60000</td></tr>
+    <tr><td>2</td><td>Ninja_3</td><td>Marketing</td><td>55000</td></tr>
+    <tr><td>3</td><td>Ninja_4</td><td>Engineering</td><td>70000</td></tr>
+  </tbody>
+</table>
+<h3 id="variousrows">Use case: Selecting Several Specific Rows</h3>
+<div class="codeblock">
+  Rows = df.loc[[0,2]]
+  Rows
+</div>
+<h4>Output</h4>
+<p>So [[0,2]] is a row selector only of panda index rows 0 and 2; the optional column range is missing - meaning all columns are assumed.
+</p>
+<table>
+  <thead>
+    <tr><th width="5%">#</th> <th>Name</th>  <th>Department</th> <th>Salary</th> </tr>
+  </thead>
+  <tbody>
+    <tr><td>0</td><td>Ninja_1</td><td>Marketing</td><td>50000</td></tr>
+    <tr><td>2</td><td>Ninja_3</td><td>Marketing</td><td>55000</td></tr>
   </tbody>
 </table>
 
-<h3>Use case: Selecting Multiple Columns</h3>
+<h3 id="multicols">Use case: Selecting Multiple Columns</h3>
 <div class="codeblock">
   Cols = df.loc[:, ['Name', 'Salary']]
+  Cols
 </div>
 <h4>Output</h4>
 <table>
   <thead>
-    <tr> <th>Name</th>   <th>Salary</th> </tr>
+    <tr><th width="5%">#</th> <th>Name</th>   <th>Salary</th> </tr>
   </thead>
   <tbody>
-    <tr><td>Ninja_1</td><td>50000</td></tr>
-    <tr><td>Ninja_2</td><td>60000</td></tr>
-    <tr><td>Ninja_3</td><td>55000</td></tr>
-    <tr><td>Ninja_4</td><td>70000</td></tr> 
+    <tr><td>0</td><td>Ninja_1</td><td>50000</td></tr>
+    <tr><td>1</td><td>Ninja_2</td><td>60000</td></tr>
+    <tr><td>2</td><td>Ninja_3</td><td>55000</td></tr>
+    <tr><td>3</td><td>Ninja_4</td><td>70000</td></tr> 
    </tbody>
 </table>
 
-<h3>Use case: Selecting a cell value</h3>
+<h3 id="specific">Use case: Selecting a cell value</h3>
 <div class="codeblock">
-  value = df.loc[1, 'Salary']
+  value = df.loc[1, 'Salary']<br/>
+  print(value)
 </div>
 <h4>Output</h4>
 <table>
   <thead>
-    <tr> <th>Name</th>   <th>Salary</th> </tr>
+    <tr><th>Salary</th> </tr>
   </thead>
   <tbody>
-    <tr><td>Ninja_1</td><td>50000</td></tr>
-    <tr><td>Ninja_3</td><td>55000</td></tr>
+    <tr><td>55000</td></tr>
    </tbody>
 </table>
 

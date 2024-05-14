@@ -1,6 +1,6 @@
 import React from 'react';
 import UserList from './UserList.tsx';
-import useFetch from './useFetch.tsx';
+import useFetch from '../useFetch.tsx';
 import "../App.css";
 const Home = () => {
     const { data: users, isPending, error } = useFetch('http://localhost:8000/users')

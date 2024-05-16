@@ -7,6 +7,8 @@
   <title>Job Status</title>
   <link rel="stylesheet" href="../css/v1.css">
   <script src="../js/utils.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
+  <script src="../js/dbutils.js"></script>
   <script>
   var currentbutton;
   function switchButtonForTarget(target, button) {
@@ -29,6 +31,7 @@
       var butn = document.getElementById(name);
       switchDetail("details/" + name + ext, "job-details", butn);
   }
+
   </script>
 </head>
 <body class="w3-light-grey">
@@ -46,12 +49,15 @@
         <button id="myquestions" onclick='loadQs("myquestions", ".htm")' >View questions</button></td>
       <td>About me summary
         <button id="aboutme"     onclick='loadQs("aboutme",     ".htm")'>View about me</button></td></tr>
-  </tbody>
+      <td>Test fetchjobs
+        <button id="aboutme"     onclick='displayJobs("test-jobs")'>View jobs</button></td></tr>
+   </tbody>
  </table>
 <span id="articles">
 <h2>Job Application Status</h2>
 <div id="job-details"></div>
 <div id="job-details-label"></div>
+<div id="test-jobs"></div>
 <table><thead>
 <tr><th width=5% >ID </th>
     <th width=20%>Organization/Location  </th>
@@ -61,6 +67,7 @@
     <th width=20%>Link</th></tr>
 </thead>
 <tbody>
+
   <tr><td>862</td><td>Sequoia</td><td>Senior Software Engineer (Node stack)</td><td></td><td>05/13/2024</td><td>
     <button onclick='switchDetail("details/sequoia.htm", "job-details", this)'>View job</button></td></tr>
   <tr><td>863</td><td>Early Warning</td><td>Staff SE</td><td></td><td>05/13/2024</td><td>

@@ -1,0 +1,87 @@
+
+
+# <tr><td>993</td><td>Cruise SF                  </td><td>Sen Security Soft Eng II  </td><td>             </td><td>Not Java  &nbsp;</td><td>&nbsp;</td></tr>
+#<tr><td>994</td><td>SAP -                      </td><td>Sen Soft Eng              </td><td>             </td><td>To do? &nbsp;</td><td>&nbsp;</td></tr>
+#<tr><td>995</td><td>Apple – Cupertino          </td><td>Sen Soft Eng Apple Pay FT </td><td>140-256K     </td><td>Req rcvd &nbsp;</td><td>&nbsp;</td></tr>
+# <button onclick='switchDetail("details/smartsheet.job", "job-details", this)'>View job</button>
+
+function part1() {
+cat jobstatus.html | egrep "(onclick=.switchDetail|<tr>)" | sed 's/<td>/|/g
+s/<tr>//g
+s/<.td>//g
+s/<.tr>//g
+s/     / /g
+s/.nbsp;/ /g
+s/<button.*Detail../JOB-DETAIL|/
+s/"[, "]*job-details.* /|/'
+}
+
+# x = 0 => nothing done yet
+# x = 1 => time to capture the current line
+# x = 2 => Ready to print line and capture next line 
+# x = 3 => Ready to print line but do not capture line
+
+function part2() {
+  cat | sed 's/ *|/|/g
+s/| */|/g' | awk -F'|' 'BEGIN { x=0; line=""; details=""; }
+    /JOB-DETAIL/ {
+      details=$2; 
+      x = 0;
+    }
+    { 
+      if ( line != "" ) {
+        print(sprintf("%s| %s", line, details));
+        details = "";
+        line = "";
+      }
+      if (x == 1) { 
+        line=sprintf("%s| %s | %s | %s | %s | %s", $2, $3, $4, $5, $6, $7);
+        details = "";
+      }
+      x = 1;
+    }
+    END {
+      if (line != "") {
+          print(sprintf("%s| %s", line, details));
+      }
+    }'
+} 
+
+function part3() {
+  cat | sed 's/| */|/g
+s/ *|/|/g' | awk -F'|' 'BEGIN { loc=""; delim="";
+          print(", DQjobsDQ: [");
+        }
+        /lingam/ { loc="Burlingame"; }
+        /ateo/  { loc="San Mateo"; }
+        /(SF|San F)/ { loc="San Francisco"; }
+        /Jose/  { loc="San Hose"; }
+        /M.*view/  { loc="Mt View"; }
+        /upert/ { loc="Cupertino"; }
+        /Palo/  { loc="Palo Alto"; }
+        /[Hh]ybrid/ { workat="Hybrid"; }
+        /[sS]ite/  { workat="Site";   }
+        /[Rr]emote/ { workat="Remote"; }
+        { 
+          company=$2;
+          title=$3;
+          apply=$5;
+          salary=$4;
+          type=$6;
+          details=$7;
+          if ( company != "" ) {
+          print sprintf("{DQcompanyDQ:DQ%sDQ, DQtitleDQ:DQ%sDQ, DQappliedDQ:DQ%sDQ, DQlocationDQ:DQ%sDQ, DQsalaryDQ:DQ%sDQ, DQworkatDQ:DQ%sDQ, DQlinkDQ:DQ%sDQ },",
+                           company,            title,             apply,              loc,                salary,           workat, details);
+          }
+          loc= ""; workat="";
+        }
+        END { print "]LINEFEED}"; }' | sed 's/DQ/"/g
+s/LINEFEED/\n/'
+}
+
+
+ case "$1" in
+  1) part1;;
+  2) part1 | part2;;
+  *) part1 | part2 | part3;;
+ esac

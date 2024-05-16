@@ -178,7 +178,7 @@ function toggleTextFile(file, name, button) {
 
 /*
    export testable function here:
-*/
+
 module.exports = {
   mapToHTML,
   toggleTextFile,
@@ -186,4 +186,4 @@ module.exports = {
 }
 // module.exports.mapToHTML = mapToHTML;
 // module.exports.toggleTextFile = toggleTextFile;
-
+*/

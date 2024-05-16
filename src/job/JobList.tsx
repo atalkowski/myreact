@@ -8,16 +8,20 @@ interface JobListProps {
 }
 
 /*
-  id: number;
-  company: string;  
-  title: string;
-  location: string;
-  salary: string;
-  link: string;
-  lingtype: string;
-  status: string;
-  applydate: Date;
-  workat: string;
+ {
+  "jobs": [ {
+     "id": "number",
+     "company": string,  
+     "title": "string",
+     "location": "string",
+     "salary": "string",
+     "link": "string",
+     "lingtype": "string",
+     "status": "string",
+     "applydate": "string",
+     "workat": "string" }
+   ]
+  }
 */
 
 const JobList: React.FC<JobListProps> = ({ jobs }) => {
@@ -25,10 +29,9 @@ const JobList: React.FC<JobListProps> = ({ jobs }) => {
   return (
     <>
       <div>
-        <div>
+        <div>          
           <h3>Jobs List</h3>
-          <div>
-            <Link to={"/job-create"}><button className="create">Add Job</button></Link></div>
+          <div><Link to={"/job-create"}><button className="create">Add Job</button></Link></div>
         </div>
         <div>
           <table className="maintab" align="center" text-align="left">

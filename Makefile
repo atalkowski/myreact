@@ -6,6 +6,8 @@ help:
 start:
 	cd src && npm start
 
+app:	start
+
 test:
 	cd src && npm test
 

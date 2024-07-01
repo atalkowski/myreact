@@ -9,12 +9,13 @@ Note please also see the README.md which explains other things about the usage e
 
 Target list:
    make .............. default : shows this help file
-   make start ........ compiles and runs the App in developer mode... as in this command:
+   make start ........ compiles and runs the notes/react App in developer mode... as in this command:
                        cd src && npm start
                        Runs the app in the development mode.
                        Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
                        The page will reload when you make changes.
                        You may also see any lint errors in the console.
+   make app .......... As above
    make test ......... compiles and runs tests as here:
                        cd src && npm test
    make build ........ Builds the app for production to the build folder.

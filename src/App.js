@@ -9,7 +9,7 @@ import NotFound from './v1/NotFound.js';
 import Navbar from './Navbar.js';
 import MyWiki from './MyWiki.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './Dark.css';
+import './App.css';
 
 function App() {
   return (

@@ -1,30 +1,29 @@
 
-The makefile is used to assist with various tasks for the react application.
+The makefile is used to assist with various tasks for this react application.
 Usage:
-  make ............... this will make the default target - to show this help text.
+  make ............... the default target i.e. to show this help text.
   make target ........ to make the given target (see target list below). 
-  make -n target ..... to show what commands are issued to build the given target.
+  make -n target ..... dry run - to show what commands are issued to build the given target.
 
 Note please also see the README.md which explains other things about the usage etc.
 
 Target list:
-   make .............. default : shows this help file
-   make start ........ compiles and runs the notes/react App in developer mode... as in this command:
+  make ............... default : shows this help file
+  make start ......... compiles and runs the notes/react App in developer mode... as in this command:
                        cd src && npm start
                        Runs the app in the development mode.
                        Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
                        The page will reload when you make changes.
                        You may also see any lint errors in the console.
-   make app .......... As above
-   make test ......... compiles and runs tests as here:
+  make app ........... As above
+  make test .......... compiles and runs tests as here:
                        cd src && npm test
-   make build ........ Builds the app for production to the build folder.
+  make build ......... Builds the app for production to the build folder.
                        cd src && npm run build
                        It bundles React in production mode and optimizes the build.
-  make jsondb ........ Installs the json-server to monitor/maintain the data/db.json
-                       Starts the test json in data/db.json to expose data endpoints:
+  make jsondb ........ Starts the test json in data/db.json to expose data endpoints:
                          json-server --watch data/db.json --port 8000
   make gotodo ........ starts a go REST server listening at http://localhost:9090/todos
   make go ............ as above
   make node .......... installs node on macbook using brew 
-  make json-server ... installs the json-server for the jsondb at data/db.json
+  make json-server ... installs json-server on macbook using npm

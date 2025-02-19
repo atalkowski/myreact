@@ -11,8 +11,11 @@ app:	start
 test:
 	cd src && npm test
 
+install:
+	cd src && npm install
+
 build:
-	cd src && npm build
+	cd src && npm run build
 
 json: jsondb
 
@@ -26,4 +29,13 @@ go: gotodo
 gotodo:
 	cd go && go run main.go
 
+# Installs you will require for this project
+node:
+	brew install node
+
+json-server: node
+	npm install -g json-server
+
+
+	
 

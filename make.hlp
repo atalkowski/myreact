@@ -21,7 +21,10 @@ Target list:
    make build ........ Builds the app for production to the build folder.
                        cd src && npm run build
                        It bundles React in production mode and optimizes the build.
-  make jsondb ........ Starts the test json in data/db.json to expose data endpoints:
-                       json-server --watch data/db.json --port 8000
+  make jsondb ........ Installs the json-server to monitor/maintain the data/db.json
+                       Starts the test json in data/db.json to expose data endpoints:
+                         json-server --watch data/db.json --port 8000
   make gotodo ........ starts a go REST server listening at http://localhost:9090/todos
   make go ............ as above
+  make node .......... installs node on macbook using brew 
+  make json-server ... installs the json-server for the jsondb at data/db.json

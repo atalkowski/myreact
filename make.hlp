@@ -9,6 +9,10 @@ Note please also see the README.md which explains other things about the usage e
 
 Target list:
   make ............... default : shows this help file
+  make node .......... installs required node on macbook using brew 
+  make json-server ... installs required json-server on macbook using npm
+  make install ....... builds the application ready for use
+
   make start ......... compiles and runs the notes/react App in developer mode... as in this command:
                        cd src && npm start
                        Runs the app in the development mode.
@@ -16,14 +20,15 @@ Target list:
                        The page will reload when you make changes.
                        You may also see any lint errors in the console.
   make app ........... As above
-  make test .......... compiles and runs tests as here:
+  make test .......... compiles and runs tests as here (note tests to be added):
                        cd src && npm test
   make build ......... Builds the app for production to the build folder.
                        cd src && npm run build
                        It bundles React in production mode and optimizes the build.
   make jsondb ........ Starts the test json in data/db.json to expose data endpoints:
                          json-server --watch data/db.json --port 8000
+
+Todo: this is currently broken - probably an architecture issue since original was created.
   make gotodo ........ starts a go REST server listening at http://localhost:9090/todos
   make go ............ as above
-  make node .......... installs node on macbook using brew 
-  make json-server ... installs json-server on macbook using npm
+  

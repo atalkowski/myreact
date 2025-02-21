@@ -31,7 +31,7 @@ const EntreeList: React.FC<EntreeListProps> = ({ entrees, groups }) => {
 
   function showLink(url: string) {
      if (url.length > 50) {
-       url = url.substring(47) + "...";
+       url = url.substring(0,47) + "...";
      }
      return encodeURI(url);
   }
@@ -41,24 +41,27 @@ const EntreeList: React.FC<EntreeListProps> = ({ entrees, groups }) => {
       <div>
         <div>          
           <h3>My Links List</h3>
-          <div><Link to={"/entree-create"}><button className="create">Add New Link</button></Link></div>
+          <div><Link to={"/entree-create"}><button className="create">Add New Link</button></Link>
+               &nbsp;&nbsp;&nbsp;&nbsp;
+               <Link to={"/group-create"}><button className="create">Add New Group</button></Link></div>
         </div>
         <div>
           <table className="maintab" align="center" text-align="left">
             <thead>
               <tr>
+                <th>Group</th>
                 <th>Title (link name)</th>
                 <th>Url</th>
-                <th>Group</th>
               </tr> 
             </thead>
             <tbody>
               {entrees.map((entree) => (
                 <tr key={entree.id}>
-                  <td>{entree.title}</td>
+                  <td>{getGroup(entree.group)}</td>
+                  <td><a href={entree.url} target="_blank" rel="noreferrer">{entree.title}</a>
+                  </td>
                   <td>
                     <a href={entree.url} target="_blank" rel="noreferrer">{showLink(entree.url)}</a></td>
-                  <td>{getGroup(entree.group)}</td>
                   <td><Link to={`/entrees/${entree.id}`}>
                       Edit
                       </Link>

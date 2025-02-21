@@ -1,7 +1,0 @@
-
-cat $* | sed '
-s/13px/18px/g
-s/13.0pt/18.0pt/g
-s/10.5pt/16.0pt/g
-s/10.0pt/15.0pt/g
-s/9.0pt/13.0pt/g' 

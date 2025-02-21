@@ -18,6 +18,8 @@ import NotFound from './v1/NotFound.js';
 import Navbar from './Navbar.js';
 import MyWiki from './MyWiki.jsx';
 
+import MyTabBar from './MyTabBar.tsx'
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
@@ -25,13 +27,12 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <h1>Demo Personal Wiki - EA Growth week</h1>
-        <table>
-          <tr>
-            <td valign="top" width="70">
-            <Navbar />
-            </td>
-            <td>
+        <h1>Aide Memoire - Growth week demo</h1>
+        <table><tbody>
+          <tr><td valign="top" width="100%">
+            <MyTabBar />
+            </td></tr>
+          <tr><td>
             <div className="content>">
             <Routes>
               <Route exact path="/" element={<Groups/>}       ></Route>
@@ -57,6 +58,7 @@ function App() {
             </div>
             </td>
           </tr>
+        </tbody>
         </table>
 
       </div>

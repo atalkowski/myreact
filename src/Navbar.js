@@ -6,12 +6,13 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="navbar">
-       <table width="50"><tbody>
-      <tr><td><Link to="/groups">Groups</Link></td></tr>
-      <tr><td><Link to="/entrees">Links</Link></td></tr>
-      <tr><td><Link to="/jobs">Jobs</Link></td></tr>
-      <tr><td><Link to="/wiki">My Wiki</Link></td></tr>
-      </tbody>
+       <table width="50%">
+       <tr>
+        <td><Link to="/groups">Groups</Link></td>
+        <td><Link to="/entrees">Links</Link></td>
+        <td><Link to="/jobs">Jobs</Link></td>
+        { false && <td><Link to="/wiki">My Wiki</Link></td> }
+      </tr>
       </table>
      </nav>
   );

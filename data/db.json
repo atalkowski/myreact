@@ -1,21 +1,9 @@
 {
   "entrees": [
     {
-      "id": "2866",
-      "title": "Jobs example",
-      "url": "wiki/jobs/jobstatus.html",
-      "group": "4"
-    },
-    {
-      "id": "5d39",
-      "title": "Css grammar",
-      "url": "wiki/articles/CssGrammar.html",
-      "group": "f0f8"
-    },
-    {
       "id": "4149",
-      "title": "Game servers",
-      "url": "wiki/articles/GameServers.html",
+      "title": "Docker overview",
+      "url": "articles/Docker.html",
       "group": "f0f8"
     },
     {
@@ -59,43 +47,54 @@
       "title": "Cloud Native Landscape Intro",
       "url": "https://landscape.cncf.io/guide#introduction",
       "group": "896b"
+    },
+    {
+      "id": "626d",
+      "title": "Kubernetes notes",
+      "url": "articles/Kubernetes.html",
+      "group": "f0f8"
+    },
+    {
+      "id": "bfca",
+      "title": "Python Numpy tutorial",
+      "url": "https://cs231n.github.io/python-numpy-tutorial/",
+      "group": "f0ba"
+    },
+    {
+      "id": "8214",
+      "title": "Original Aide Memoire",
+      "url": "notes/mylinks.htm",
+      "group": "afa7"
     }
   ],
   "groups": [
     {
       "name": "My Team ",
-      "span": "left",
       "id": "1"
     },
     {
       "name": "Current Work",
-      "span": "right",
       "id": "2"
     },
     {
       "name": "Onboarding",
-      "span": "left",
       "id": "3"
     },
     {
       "name": "Career",
-      "span": "left",
       "id": "4"
     },
     {
       "name": "Legal and Admin",
-      "span": "left",
       "id": "5"
     },
     {
       "id": "896b",
-      "name": "External Topics",
-      "span": "right"
+      "name": "External Topics"
     },
     {
       "id": "3a14",
-      "name": "Miscellaneous",
-      "span": "right"
+      "name": "Miscellaneous"
     },
     {
       "id": "4a4a",
@@ -116,6 +115,14 @@
     {
       "id": "ef05",
       "name": "Hot topics"
+    },
+    {
+      "id": "c331",
+      "name": "Slack"
+    },
+    {
+      "id": "afa7",
+      "name": "Demo Only"
     }
   ],
   "users": [
@@ -150,7 +157,7 @@
       "id": "b474"
     },
     {
-      "company": "Rippling (SF - Onsite)",
+      "company": "Rippling",
       "title": "Staff SE",
       "applied": "04/22/2024",
       "location": "San Francisco",
@@ -180,7 +187,7 @@
       "id": "fa58"
     },
     {
-      "company": "Reddit (San Francisco - Remote)",
+      "company": "Reddit",
       "title": "Senior Software Engineer, Storage",
       "applied": "04/12/2024",
       "location": "San Francisco",
@@ -190,62 +197,62 @@
       "id": "2f74"
     },
     {
-      "company": "Vartana (San Francisco)",
+      "company": "Vartana",
       "title": "Senior Software Engineer (BE)",
       "applied": "04/04/2024",
       "location": "San Francisco",
       "salary": "144-190K",
-      "workat": "",
+      "workat": "?",
       "link": "details/vartana.htm",
       "id": "e69d"
     },
     {
-      "company": "Rosetta Stone (San Mateo)",
+      "company": "Rosetta Stone",
       "title": "Senior Software Developer",
       "applied": "03/18/2024",
       "location": "San Mateo",
       "salary": "Not known",
-      "workat": "",
+      "workat": "?",
       "link": "details/rosetta.htm",
       "id": "8b98"
     },
     {
-      "company": "Software Resource Inc (Remote)",
+      "company": "Software Resource Inc ",
       "title": "Senior Java Developer",
       "applied": "03/18/2024",
-      "location": "",
+      "location": "?",
       "salary": "Not known",
       "workat": "Remote",
       "link": "details/srinc.htm",
       "id": "b9c9"
     },
     {
-      "company": "Salesforce San Francisco",
+      "company": "Salesforce SF",
       "title": "Senior Software Engineer",
       "applied": "03/15/2024",
       "location": "San Francisco",
       "salary": "215-232K",
-      "workat": "",
+      "workat": "?",
       "link": "details/salesforce.htm",
       "id": "bd3e"
     },
     {
-      "company": "Intellibee Palo Alto",
+      "company": "Intellibee",
       "title": "Java Full stack Lead",
       "applied": "03/13/2024",
       "location": "Palo Alto",
-      "salary": "",
-      "workat": "",
+      "salary": "?",
+      "workat": "?",
       "link": "details/intellibee.htm",
       "id": "4fb0"
     },
     {
-      "company": "Elactronic Arts (EA) Redwood City",
-      "title": "Senior Software Engineer - Social Platform",
+      "company": "Electronic Arts (EA)",
+      "title": "Software Engineer - Social Platform",
       "applied": "03/13/2024",
-      "location": "",
-      "salary": "149K-234K",
-      "workat": "",
+      "location": "Redwood Shores Pkwy",
+      "salary": "170-220K",
+      "workat": "Hybrid",
       "link": "details/ea.htm",
       "id": "1935"
     },

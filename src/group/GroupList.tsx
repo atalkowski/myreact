@@ -2,11 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import IGroup from './IGroup';
 import '../App.css';
+import '../sortTool.tsx';
+import sortData from '../sortTool.tsx';
 
 interface GroupListProps {
   groups: IGroup[];
 }
 
+function makeSort(fld:string, asc: boolean) {
+  return { field: fld, ascending: asc};
+}
 /*
  {
   "groups": [ {
@@ -18,7 +23,7 @@ interface GroupListProps {
 */
 
 const GroupList: React.FC<GroupListProps> = ({ groups }) => {
- 
+  groups = sortData(groups, makeSort("name", true)) 
   return (
     <>
       <div>

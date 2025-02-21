@@ -1,0 +1,253 @@
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"> -->
+<head>
+  <title>GitOps and Kubernetes</title>
+  <link rel="stylesheet" href="../css/v1.css">
+  <script src="../js/utils.js"></script>
+</head>
+<body class="w3-light-grey"">
+<div class="w3-content" style="max-width:1400px">
+<div class="myhtml">
+<h2>What is GitOps?</h2>
+<p>GitOps uses Git repositories as a single source of truth to deliver infrastructure as code.
+  Submitted code checks the CI process, while the CD process checks and applies requirements for things like security,
+  infrastructure as code, or any other boundaries set for the application framework. 
+  All changes to code are tracked, making updates easy while also providing version control should a rollback be needed.</p>
+<h3>GitOps delivers:</h3>
+<ul>
+ <li>A standard workflow for application development</li>
+ <li>Increased security for setting application requirements upfront</li>
+ <li>Improved reliability with visibility and version control through Git</li>
+ <li>Consistency across any cluster, any cloud, and any on premise environment</li>
+ <li>By using the same Git-based workflows that developers are familiar with, GitOps expands upon existing processes from application development to deployment, application life cycle management, and infrastructure configuration:</li>
+ <li>For developers, they can now code at their own pace without waiting on resources to be assigned or approved by operations teams.</li>
+ <li>For ops teams, visibility to change means the ability to trace and reproduce issues quickly, improving overall security.</li>
+ <li>For organizations, with an up-to-date audit trail they can reduce the risk of unwanted changes and correct them before they go into production.</li>
+ <li>Using platforms of QA, Stage and Prod we can try solutions and infrastructure/ops updates in a systematic and controlled way.</li>
+</ul>
+<h3>Using GitOps</h3>
+<p>To use GitOps we need infrastructure that can be declaratively managed.
+  Because of this, GitOps is often used as an operating model for Kubernetes and cloud-native application development
+  and can enable continuous deployment for Kubernetes.
+</p>
+<h3>A Typical CI/CD Pipeline using ArgoCD</h3>
+<h4>What's ArgoCD?</h4>
+<p>Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. What it brings:</p>
+<ul>
+ <li>Application definitions, configurations, and environments should be declarative and version controlled. </li>
+ <li>Application deployment and lifecycle management should be automated, auditable, and easy to understand.</li>
+ <li>A nice user friendly Web UI onto the deployments pods and configuration components, allowing restarts, inspection etc etc.</li>
+</ul>
+
+<span valign="middle">
+  <img src="../images/argocd-pipeline.png">
+  </span>
+  <h4> Explanation of diagram</h4>
+<p>To understand the GitOps with ArgoCD Pipeline Workflow Diagram - there are effectively two workflows:</p>
+<ul>
+  <li>The top CI half: Gitops used for <b>Image creation</b> - by pushing source code to a git repo (e.g. github), using CI pipeline to build docker image with new ID and push to image repo:     <ul>
+      <li>The code is pushed to the code repository like <b>GitHub, GitLab</b> or <b>BitBucket</b> etc</li>
+      <li>The code is built and tested in the CI platform using <b>GitHub Actions, GitLab CI, Jenkins</b></li>
+      <li>The code target outputs are shipped to <b>artifactory</b> if necessary (e.g. updated jars or wars etc)</li>
+      <li>A Docker image is built based on the Dockerfile and pushed to the <b>Image registry</b> - either in Docker hub or AWS EKS repo etc</li>
+      </ul>
+    </li>
+  <li>The bottom CD half: <b>Deployment to affected cluster(s)</b> - the K8S deployment manifest is updated with the new ID and published to the GitOps Repo used for cluster state
+    - which ArgoCD will take as the source of truth and update the cluster(s) to match it:
+    <ul>
+      <li>The CI pipeline (either <b>Jenkins</b> or <b>Gitlag</b> etc or a manual update by developer) commits and pushes a new version ID
+         into to the Gitops Repo e.g. within a deployment.yaml - along with any other cluster changes needed.</li>
+      <li>The <b>Gitops Repo</b> is the source for cluster state and (depending on ArgoCD sync policy) will affect one or more Kubernetes clusters</li>
+      <li>Argo CD supports multiple config management options (based on kustomize, Helm, Jsonnet, and/or plain-YAML)</li>
+      <li>The push to the repo triggers a synchronization event in ArgoCD:
+         the new cluster state is checked and compared to existing state and the affected clusters are updated to match it</li>
+    </ul>
+   </li>
+   <li>Finally the Kubernetes clusters are monitored and alerting by tools like Prometheus, Grafana, Cloudwatch, etc.</li>
+  </ul>
+<h3>How ArgoCD Works</h3>
+<p>The CD in ArgoCD follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state:</p>
+<ul>
+  <li><b>Application Definition</b>: Developers define the desired state of applications in Git repositories, using manifests or declarative files. These manifests specify the desired configuration for the application’s components, such as pods, services, and deployments.</li>
+  <li><b>Git Repository Changes</b>: When changes are made to the application manifests in the Git repository, a webhook triggers Argo CD to initiate the synchronization process.</li>
+  <li><b>Cluster Reconciliation</b> : Argo CD compares the desired state from the Git repository with the actual state of the Kubernetes cluster. It identifies any discrepancies and generates a list of required changes.</li>
+  <li><b>Kubernetes Controller</b> : Argo CD, acting as a Kubernetes controller, applies the necessary changes to the cluster resources to bring them in line with the desired state. This includes creating, updating, and deleting Kubernetes objects according to the manifests.</li>
+  <li><b>Continuous Monitoring</b> : Argo CD continuously monitors the cluster and compares the updated state with the desired state. If there are any further discrepancies, it automatically applies the necessary changes to maintain synchronization.</li>
+  <li> <b>Status Reporting</b>: Argo CD provides a visual dashboard and status reports that indicate the current state of applications, along with any discrepancies or pending synchronization actions.</li>
+ </ul>
+<p>In summary, Argo CD simplifies and automates the CD part - deployment and management of applications in Kubernetes environments. 
+  It promotes consistency, reduces manual intervention, and enables developers to focus on building applications rather than 
+  managing infrastructure details.
+</p>
+  
+<h2>Appendix: What is Kubernetes?</h2>
+<p>Kubernetes (also known as k8s or " kube ”) is an
+   <a href="https://www.redhat.com/en/topics/open-source/what-is-open-source">open source</a>
+   <b>container orchestration platform</b>
+that automates many of the manual processes involved in deploying, managing, and
+scaling containerized applications. See detail in appendix: Kubernetes Steps
+and https://www.redhat.com/en/topics/containers/what-is-kubernetes. 
+You can cluster together groups of hosts running Linux® <a href="https://www.redhat.com/en/topics/containers">containers</a>,
+and Kubernetes helps you easily and efficiently manage those clusters. See also <b><i> ArgoCD</i></b> below.
+</p>
+<p><a href="https://www.redhat.com/en/topics/containers/what-is-a-kubernetes-cluster">Kubernetes clusters</a> can span hosts across on-premise, 
+ <a href="https://www.redhat.com/en/topics/cloud-computing/what-is-public-cloud"> public</a>,
+ <a href="https://www.redhat.com/en/topics/cloud-computing/what-is-private-cloud">private </a>, or 
+ <a href="https://www.redhat.com/en/topics/cloud-computing/what-is-hybrid-cloud">hybrid clouds</a>.
+For this reason, Kubernetes is an ideal platform for hosting 
+  <a href="https://www.redhat.com/en/topics/cloud-native-apps">cloud-native applications</a>
+ that require rapid scaling (like real-time data streaming through 
+  <a href="https://www.redhat.com/en/topics/integration/what-is-apache-kafka"> Apache Kafka </a>.
+Note though we have seen some abrasion between Kafka and AWS cloud services –
+we need to investigate. It was probably dopey implementation but beware. See more later.
+</p>
+<p>The Kubernetes manifests are the basis for maintaining cluster state and can be specified in several ways:
+  <ul>
+    <li>kustomize applications</li>
+    <li>helm charts</li>
+    <li>jsonnet files</li>
+    <li>Plain directory of YAML/json manifests</li>
+    <li>Any custom config management tool configured as a config management plugin</li>
+    <li>Argo CD automates the deployment of the desired application states in the specified target environments.</li>
+    <li>Application deployments can track updates to branches, tags, or pinned to a specific version of manifests at a Git commit.</li>
+    <li>See tracking strategies for additional details about the different tracking strategies available.</li>
+  </ul>
+</p>
+
+<h3>Kubernetes dependencies</h3>
+<p>Kubernetes relies on other projects to fully provide these orchestrated services.
+With the addition of other open source projects, you can fully realize the power of Kubernetes.
+These necessary pieces include (among others):
+</p>
+<ul>
+ <li>Registry, through projects like Docker Registry.</li>
+ <li>Networking, through projects like OpenvSwitch and intelligent edge routing.</li>
+ <li>Telemetry, through projects such as Kibana, Hawkular, and Elastic.</li>
+ <li>Security, through projects like LDAP, SELinux, RBAC, and OAUTH with multitenancy layers.</li>
+ <li>Automation, with the addition of Ansible playbooks for installation and cluster life cycle management.</li>
+ <li>Services, through a rich catalog of popular app patterns.</li>
+</ul>
+
+<h2>Appendix: Argo setup and comparisons</h2>
+<h3>ArgoCD Quick Start</h3>
+<ul>
+ <li>kubectl create namespace argocd</li>
+ <li>kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml</li>
+ <li>See also the <a href="https://argo-cd.readthedocs.io/en/stable/getting_started/">getting started guide</a>. </li>
+ <li>And the <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/">user oriented</a> documentation and upgrade guide.</li>
+ <li>On Mac: <span class="code"> brew install argocd</span></li>
+</ul>
+<h3>ArgoCD vs Jenkins vs Terraform</h3>
+<ul>
+<li><b>Jenkins</b> is a more traditional automation server that is suitable for a wide range of applications.</li>
+<li><b>ArgoCD</b> is designed specifically for Kubernetes environments.</li>
+<li><b>Terraform</b> is very useful for automating infrastructure - especially for repetitive variants and contorl over CLOUD based infrastructure such as AWS SNS and SQS</li>
+<li>On the other hand, <b>ArgoCD</b> helps us implement GitOps and continuous delivery for our applications.</li>
+<li>We can successfully combine <b>ArgoCD</b> and <b>Terraform</b>: Argo taking care of K8S deployments and Terraform for (AWS) infrastructure updates.</li>
+</ul>
+<h3>Helm charts.</h3>
+Install with:
+ <span cass=""code2">brew install helm.</span>
+<p>For Helm, there are three important concepts:</p>
+<ul>
+ <li>The chart is a bundle of information necessary to create an instance of a Kubernetes application.</li>
+ <li>The config contains configuration information that can be merged into a packaged chart to create a releasable object.</li>
+ <li>A release is a running instance of a chart, combined with a specific config.</li>
+</ul>
+<h4>Helm Implementation</h4>
+<ul>
+ <li>The Helm client and library is written in the Go programming language.</li>
+ <li>The library uses the Kubernetes client library to communicate with Kubernetes.</li>
+ <li>Currently, that library uses REST+JSON. It stores information in Secrets located inside of Kubernetes.</li>
+ <li>It does not need its own database.</li>
+ <li>Configuration files are, when possible, written in YAML.</li>
+ <li>See <a href="https://helm.sh/docs">https://helm.sh/docs</a> for further info.</li>
+</ul>
+<h3>Kubernetes goals.</h3>
+<p>The primary advantage of using Kubernetes in your environment, especially if you are optimizing app dev for the cloud, is that it gives you the platform to schedule and run containers on clusters of physical or virtual machines (VMs).
+  More broadly, it helps you fully implement and rely on a container-based infrastructure in production environments. And because Kubernetes is all about automation of operational tasks, you can do many of the same things other application platforms or management systems let you do—but for your containers.
+  Developers can also create cloud-native apps with Kubernetes as a runtime platform by using Kubernetes patterns. Patterns are the tools a Kubernetes developer needs to build container-based applications and services.
+</p>
+<ul>
+ <li>Orchestrate containers across multiple hosts.</li>
+ <li>Make better use of hardware to maximize resources needed to run your enterprise apps.</li>
+ <li>Control and automate application deployments and updates.</li>
+ <li>Mount and add storage to run stateful apps.</li>
+ <li>Scale containerized applications and their resources on the fly.</li>
+ <li>Declaratively manage services, which guarantees the deployed applications are always running the way you intended them to run.</li>
+ <li>Health-check and self-heal your apps with autoplacement, autorestart, autoreplication, and autoscaling.</li>
+</ul>
+<h2>Appendix: IaaS, PaaS and SaaS.</h2>
+IaaS – Infrastructure as a Service - model used by network architects - providing virtualized computing resources over the internet. It gives access to the resources like virtual machines and virtual storage – tech knowledge required.
+PaaS – Platform as a Service – model used by developers, a cloud computing model that delivers tools for the development of applications – such as AWS Services platform for RDS, SQS etc. It allows access to a run time environment for deployment and use of development tools – tech knowledge is required.
+SaaS – Software as a Service – model used by end user clients, a cloud computing model that hosts software (as developed by the vendor) to make it available to clients (the users). No technical knowledge is required by consumer – all provided by the SaaS company.
+<h2>Appendix : The HF Pipeline example use case</h2>
+<p>This was a work in progress, not fully automated. This was partly because things were still being developed at the cluster level
+   and partly for the production and stage platforms to ensure an authorized deveops person was involved in live updates.
+</p>
+Pipeline were affected by the switch from Jenkins to AWS CodeBuild to GitLab.
+We used the following process for managing CI/CD at HF.
+<ul>
+<li><b>Stage 1: Get a basic service built:</b>
+  <ul>
+    <li>Using (say) Java + Spring Boot and embedded Tomcat</li>
+    <li>Use Maven build</li>
+    <li>Use Artifactory repositories for dependencies and code libs</li>
+    <li>All original source code stored in a specific GIT repo.</li>
+    <li>Auto or manual updates to Artifactory repo may be required.</li>
+    <li>Output of stage 1 will be repo of all the service’s source code above in GIT and jar or war updated to Artifactory.</li>
+  </ul>
+  </li>
+<li><b>Stage 2: Containerize the app/service as a docker image and push to AWS:</b>
+  <ul>
+    <li>Use Dockerfile to define how the docker image is built.</li>
+    <li>Use of makefile and make for other needs e.g. local launch/test</li>
+    <li>Added to the same GIT repo as above.</li>
+    <li>Gitlab (previously jenkins) had step to push docker image to AWS</li>
+    <li>Output of stage 2 will be docker versioned image held in specific AWS repo for the platform (qa, prod etc).</li>
+  </ul>
+</li>
+<li><b>Stage 3: Setup/update K8S specificatiom for the app/service and manage in git.</b>
+  <ul>
+    <li>Use a separate dedicated repo for all K8s config manifests yml files.</li>
+    <li>The service will use its own special subdirectory within that repo and..</li>
+    <li>Within that directory the subdirs define platform specific variants for qa, stage, production for the app.</li>
+    <li>This structure allows us to define platform specific namespaces that are version controlled and will be managed by K8s</li>
+    <li>The K8s application/implementation will constantly use the repo state as it definition of what should be deployed:</li>
+    <li>Within these we have the K8S deployment, configMap, service, service account, service monitor and virtual service yaml files.</li>
+    <li>We had specific scripts to help modify these yaml files with precision and ease - but these were manually applied.</li>
+    <li>Output of stage 3 will be the platform specific kubernetes repos representing the desired state of K8s cluster(s).</li>
+  </ul>
+</li>
+<li><b>Stage 4: Use Argo CD to act as the preferred K8s <i>control plane</i></b>
+  <ul>
+    <li>Argo CD was installed on top of K8s (EKS) to augment the control plane and visualize status etc.</li>
+    <li>See <a href="https://argo-cd.readthedocs.io/en/stable/getting_started/">https://argo-cd.readthedocs.io/en/stable/getting_started/</a>"</li>
+    <li>This repo is then capable of setting being deployed in kubernetes using the installation instructions to act as a bootstrap for out cluster.</li>
+    <li>Output of stage 4 is a working K8s using from gitops repo for all our ns/pods.</li>
+  </ul>
+</li>
+<li><b>Stage 5: Maintaining AWS configurations and manage in git - apply using terraForm/Grunt.</b>
+  <ul>
+    <li>A separate repo was used to maintain the AWS dependencies / configs such as SQS, SNS, DynamoDB, IAM and component permissions</li>
+    <li>AWS specific definitions are held in YAML files but Helm was sometimes used to manage the configuration</li>
+    <li>Configuration had to be checked into gitops and approved before committing to main branch in git</li>
+    <li>We used Terraform (and Terragrunt) to check and apply the updates to the live platforms when approved</li>
+  </ul>
+</li>  
+</ul>
+<h3>Use of Gitab?</h3>
+The conversion from Jenkins then AWS CodeCommit/Build to Gitlab was still a work in progress on many projects.
+<h3>Useful links</h3>
+<ul>
+  <li><a href="https://www.fosstechnix.com/gitops-with-argocd-pipeline">ArgoCD Pipeline</a></li>
+</ul>
+
+
+</div>
+</div> <!-- End of the main content -->
+</body>
+</html>

@@ -1,22 +1,64 @@
 {
-  "blogs": [
+  "entrees": [
     {
-      "title": "My new website",
-      "body": "lorem ipsum bunsl...",
-      "author": "Rabby",
-      "id": "1"
+      "id": "2866",
+      "title": "Jobs example",
+      "url": "wiki/jobs/jobstatus.html",
+      "group": "4"
     },
     {
-      "title": "Hello world",
-      "body": "lorem ipsum schneble...",
-      "author": "Peanut",
-      "id": "2"
+      "id": "5d39",
+      "title": "Css grammar",
+      "url": "wiki/articles/CssGrammar.html",
+      "group": "f0f8"
     },
     {
-      "title": "Web dev tips",
-      "body": "lorem ipsum caveat...",
-      "author": "Rabby",
-      "id": "3"
+      "id": "4149",
+      "title": "Game servers",
+      "url": "wiki/articles/GameServers.html",
+      "group": "f0f8"
+    },
+    {
+      "id": "7830",
+      "title": "Agile overview",
+      "url": "articles/AgileNotes.html",
+      "group": "f0f8"
+    },
+    {
+      "id": "9165",
+      "title": "Flux documentation",
+      "url": "https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html",
+      "group": "896b"
+    },
+    {
+      "id": "41d0",
+      "title": "Go by example",
+      "url": "https://gobyexample.com",
+      "group": "fa68"
+    },
+    {
+      "id": "c21c",
+      "title": "Go strings and runes",
+      "url": "https://go.dev/blog/strings",
+      "group": "fa68"
+    },
+    {
+      "id": "3635",
+      "title": "Go - build a rest server",
+      "url": "https://www.youtube.com/watch?v=PWukxD1DC0I",
+      "group": "fa68"
+    },
+    {
+      "id": "5d45",
+      "title": "Python ML Basics",
+      "url": "articles/MachineLearningBasics.html",
+      "group": "f0ba"
+    },
+    {
+      "id": "51ab",
+      "title": "Cloud Native Landscape Intro",
+      "url": "https://landscape.cncf.io/guide#introduction",
+      "group": "896b"
     }
   ],
   "groups": [
@@ -49,6 +91,31 @@
       "id": "896b",
       "name": "External Topics",
       "span": "right"
+    },
+    {
+      "id": "3a14",
+      "name": "Miscellaneous",
+      "span": "right"
+    },
+    {
+      "id": "4a4a",
+      "name": "Presence Squad"
+    },
+    {
+      "id": "f0f8",
+      "name": "Articles"
+    },
+    {
+      "id": "f0ba",
+      "name": "AI and ML"
+    },
+    {
+      "id": "fa68",
+      "name": "Go and Protobuf"
+    },
+    {
+      "id": "ef05",
+      "name": "Hot topics"
     }
   ],
   "users": [
@@ -69,45 +136,9 @@
       "name": "Berty Basset",
       "email": "bbasset@aol.com",
       "number": "Unlisted"
-    },
-    {
-      "id": "3d06",
-      "name": "John Bloggs",
-      "email": "jbloggs1123@gmail.com",
-      "number": "123-456-7890"
     }
   ],
   "jobs": [
-    {
-      "company": "Sequoia",
-      "title": "Senior Software Engineer (Node stack)",
-      "applied": "05/13/2024",
-      "location": "",
-      "salary": "",
-      "workat": "",
-      "link": "details/sequoia.htm",
-      "id": "8bbf"
-    },
-    {
-      "company": "Early Warning",
-      "title": "Staff SE",
-      "applied": "05/13/2024",
-      "location": "",
-      "salary": "",
-      "workat": "",
-      "link": "details/earlywarn.htm",
-      "id": "0451"
-    },
-    {
-      "company": "MavenAPI (Remote)",
-      "title": "Staff SE",
-      "applied": "05/08/2024",
-      "location": "",
-      "salary": "200-220K",
-      "workat": "Remote",
-      "link": "details/mavenagi.htm",
-      "id": "3bc8"
-    },
     {
       "company": "Brio Digital",
       "title": "SSE",
@@ -117,26 +148,6 @@
       "workat": "Onsite",
       "link": "details/brio.htm",
       "id": "b474"
-    },
-    {
-      "company": "Talent Bull (Remote)",
-      "title": "SSE",
-      "applied": "04/30/2024",
-      "location": "",
-      "salary": "160-170K",
-      "workat": "Remote",
-      "link": "details/talentbull.htm",
-      "id": "d73f"
-    },
-    {
-      "company": "Highnote (SF)",
-      "title": "SE",
-      "applied": "04/23/2024",
-      "location": "San Francisco",
-      "salary": "Unknown",
-      "workat": "",
-      "link": "details/highnote.htm",
-      "id": "ac4a"
     },
     {
       "company": "Rippling (SF - Onsite)",
@@ -149,54 +160,14 @@
       "id": "331f"
     },
     {
-      "company": "VSP Vision Care (Remote)",
-      "title": "SSE",
-      "applied": "04/22/2024",
-      "location": "",
-      "salary": "80-130K",
-      "workat": "Remote",
-      "link": "details/vsp.htm",
-      "id": "5961"
-    },
-    {
-      "company": "Mashgin (Palo Alto)",
+      "company": "Mashgin",
       "title": "SSE Backend",
       "applied": "04/22/2024",
       "location": "Palo Alto",
       "salary": "225-350K",
-      "workat": "",
+      "workat": "Onsite",
       "link": "details/mashgin.htm",
       "id": "0b7b"
-    },
-    {
-      "company": "Apptio (IBM takeover)",
-      "title": "Principal Software Engineer",
-      "applied": "04/17/2024",
-      "location": "",
-      "salary": "Who knows",
-      "workat": "",
-      "link": "details/apptio.htm",
-      "id": "6ce5"
-    },
-    {
-      "company": "Oracle (Remote)",
-      "title": "Senior Software Engineer",
-      "applied": "04/16/2024",
-      "location": "",
-      "salary": "Who knows",
-      "workat": "Remote",
-      "link": "details/oracle1.htm",
-      "id": "7d48"
-    },
-    {
-      "company": "Medallion (San Francisco - Remote)",
-      "title": "Senior Software Engineer",
-      "applied": "04/15/2024",
-      "location": "San Francisco",
-      "salary": "Who knows",
-      "workat": "Remote",
-      "link": "details/medallion.htm",
-      "id": "a936"
     },
     {
       "company": "Valerian",
@@ -227,26 +198,6 @@
       "workat": "",
       "link": "details/vartana.htm",
       "id": "e69d"
-    },
-    {
-      "company": "Modius (San Francisco)",
-      "title": "Senior Software Engineer",
-      "applied": "04/04/2024",
-      "location": "San Francisco",
-      "salary": "120-180K",
-      "workat": "",
-      "link": "details/modius.htm",
-      "id": "1291"
-    },
-    {
-      "company": "Shipt via Intellij (San Francisco)",
-      "title": "Senior Software Developer",
-      "applied": "03/28/2024",
-      "location": "San Francisco",
-      "salary": "75hr W2",
-      "workat": "",
-      "link": "details/shipt.htm",
-      "id": "bf68"
     },
     {
       "company": "Rosetta Stone (San Mateo)",
@@ -317,26 +268,6 @@
       "workat": "",
       "link": "",
       "id": "81b8"
-    },
-    {
-      "company": "Cruise SF",
-      "title": "Sen Security Soft Eng II",
-      "applied": "Not Java",
-      "location": "San Francisco",
-      "salary": "",
-      "workat": "",
-      "link": "",
-      "id": "ba08"
-    },
-    {
-      "company": "SAP -",
-      "title": "Sen Soft Eng",
-      "applied": "To do?",
-      "location": "",
-      "salary": "",
-      "workat": "",
-      "link": "",
-      "id": "78bf"
     }
   ]
 }

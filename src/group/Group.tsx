@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import useFetch from '../useFetch.tsx';
 import { useParams, useNavigate } from 'react-router-dom';
-import './Group.css';
+import '../App.css';
 
 const Group = () => {
   const { groupId } = useParams();
@@ -9,7 +9,6 @@ const Group = () => {
   const { data: group, isPending, error } = useFetch('http://localhost:8000/groups/' + groupId);
 
   const [name, setName] = useState("");
-  const [span, setSpan] = useState("");
 
   const [savePending, setSavePending]  = useState(false);
   const [saveError, setSaveError] = useState(null);
@@ -45,7 +44,6 @@ const Group = () => {
     if (!group) return false;
     if (!initDone) {
       setName(group.name);
-      setSpan(group.span);
       setInitDone(true);
     }
     return true;
@@ -56,7 +54,6 @@ const Group = () => {
     setSavePending(true);
     if (initialized(group)) {
       group.name = name;
-      group.span = span;
     } 
     console.log(`saving this group data ${group}`);
     fetch('http://localhost:8000/groups/' + groupId, {
@@ -91,8 +88,6 @@ const Group = () => {
               </td></tr>
               <tr><th>Name  </th><td> <input type="text" value={name} 
                       required onChange={(e) => setName(e.target.value)}/>  </td></tr>
-              <tr><th>Span  </th><td> <input type="text" value={span} 
-                      required onChange={(e) => setSpan(e.target.value)}/>  </td></tr>
               <tr><th>
               { !savePending && !saveError && <div><button type="submit">Update Group</button></div> }
               { savePending  && !saveError && <div><button disabled>Saving Group...</button></div> }

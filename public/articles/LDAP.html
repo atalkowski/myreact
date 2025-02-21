@@ -1,0 +1,76 @@
+
+
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"> -->
+<head>
+  <title>Put title here</title>
+  <link rel="stylesheet" href="../css/v1.css">
+  <script src="../js/utils.js"></script>
+</head>
+
+<body class="w3-light-grey"">
+<div class="w3-content" style="max-width:1400px">
+  <span class="myhtml">
+
+<h1>LDAP - all you need to know</h1>
+<p>The Lightweight Directory Access Protocol (LDAP) is a vendor-neutral software protocol used to lookup information or devices within a network. Whether you want to build a central authentication server for your organization or want to simplify access to internal servers and printers, LDAP is the answer.
+</p>
+<h3>What is LDAP?
+</h3>
+<ul>
+ <li>LDAP is a standard protocol designed to maintain and access “directory services” within a network. Think of a directory service as a phonebook for different network resources like files, printers, users, devices, and servers, etc.</li>
+ <li>For example, an organization may store information for all their printers in a directory. LDAP can enable users to search for a specific printer, locate it on the network, and securely connect to it.</li>
+ <li>LDAP is widely used to build central authentication servers. These servers contain usernames and passwords for all the users within a network. Any-and-all applications and services can connect to the LDAP server to authenticate and authorize users.</li>
+ <li>LDAP directories typically contain data that is regularly accessed, but rarely changed. LDAP is designed to deliver exceptionally fast READ performance, even for larger datasets. However, the WRITE performance is significantly lower.</li>
+</ul>
+<h3>How does LDAP work?</h3>
+<p>To connect to a LDAP directory, a user must have an LDAP client installed on their device. Here’s how a typical LDAP workflow looks like:
+</p>
+<ul>
+ <li>Using the client, the user establishes a secure connection with the LDAP directory.</li>
+ <li>They send a “search” query to the directory for a specific printer.</li>
+ <li>The LDAP directory authenticates the user.</li>
+ <li>The search operation is performed within the directory, and the address of the requested printer is returned.</li>
+ <li>The secure connection to the LDAP directory is closed.</li>
+ <li>The user connects to the printer.</li>
+</ul>
+<h3>Is LDAP secure?</h3>
+<p>Just like any other protocol, LDAP is as secure as its implementation. There are numerous security best practices to keep in mind, especially if your directories store security-critical information.
+</p>
+<ul>
+ <li>Use SSL/TLS to encrypt LDAP requests and responses.</li>
+ <li>When using LDAP authentication, don’t store passwords as plaintext. Instead, use a cryptographically strong hash function.</li>
+ <li>Establish an access control policy. E.g.,grant WRITE permissions only to administrators.</li>
+ <li>Don’t have a single point of failure. Maintain multiple replications of directory data.</li>
+ <li>Use well-configured firewalls to control access to directory services.</li>
+ <li>Log access to LDAP directories, and audit for anomalies.</li>
+</ul>
+<h3>What is LDAP authentication?</h3>
+<p>LDAP authentication is the process of verifying usernames and passwords stored in a directory service, like OpenLDAP or Microsoft Active Directory. Administrators can create user accounts within a directory and grant them permissions.
+</p>
+<p>When a user tries to access a resource, a request is sent to the LDAP authentication server. The LDAP server validates the entered username-password against the data in the directory. If there is a match, it then checks whether the user is authorized to access the requested resource.
+</p>
+<h3>LDAP vs Active Directory</h3>
+<p>LDAP and Active Directory are sometimes used interchangeably, but they are not the same thing. Active Directory is a proprietary directory service developed by Microsoft. It can be used for authentication, and/or storing information about network resources. LDAP is one of the protocols that is used to create or query objects in Active Directory.
+</p>
+<p>In a nutshell, LDAP is a language to talk to directory services, and Active Directory is one such directory service.
+</p>
+<h3>What is virtual LDAP (vLDAP)?
+</h3>
+<p>Virtual LDAP (aka LDAP-as-a-service) is LDAP hosted and managed in the cloud. It enables organizations to build cloud-ready LDAP applications, without having to run and maintain in-house LDAP servers. Any-and-all applications and services can integrate with the LDAP directory hosted in the cloud.
+There are numerous benefits to this:
+</p>
+<ul>
+ <li>Instead of having to integrate with different directories, integrate with one virtual LDAP service that unifies data from different directories. Build a single source of truth.</li>
+ <li>Scale at will. Spin as many new servers as required to cater for your growing datasets.</li>
+ <li>Kick-start your digital transformation journey without having to forego legacy protocols like LDAP.</li>
+</ul>
+<p>LDAP is a standard protocol that simplifies secure access to vital information and resources. When set up right, LDAP directories can enhance productivity and efficiency. Organizations have been using LDAP in their infrastructures for decades. With virtual LDAP now a reality, we don’t expect the popularity and prevalence of LDAP to diminish any time soon.</p>
+</span>
+</div> <!-- End of the main content -->
+
+</body>
+</html>

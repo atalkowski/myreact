@@ -1,0 +1,69 @@
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <title>Typescript and Angular</title>
+  <link rel="stylesheet" href="../css/v1.css">
+  <style>
+    .brightb b { color: #FFFFFF; }
+  </style>
+  <script src="../js/utils.js"></script>
+  <script>
+    function showOpener(buttonId, divId, url) {
+       var button = document.getElementById(buttonId);
+       if (button) { 
+        toggleTextFile(url, divId, button);
+      }
+    }
+    function showOpener1() {
+      showOpener("angular-button", "angular-setup", "examples/angular-setup.html");
+    }
+  </script>
+</head>
+
+<body onload="showOpener1()" class="w3-light-grey">
+<div class="w3-content" style="max-width:1400px">
+
+<span class="myhtml">
+<h1>Apache Storm</h1>
+Courtesy of tutorials point <a href="https://www.tutorialspoint.com/apache_storm/apache_storm_distributed_messaging_system.htm">Apache Storm</a>
+<p>Apache Storm processes real-time data and the input normally comes from a message queuing system. An external distributed messaging system will provide the input necessary for the realtime computation. Spout will read the data from the messaging system and convert it into tuples and input into the Apache Storm. The interesting fact is that Apache Storm uses its own distributed messaging system internally for the communication between its <b>nimbus</b> and <b>supervisor</b>.</p>
+
+<h2>What is Distributed Messaging System?</h2>
+<p>Distributed messaging is based on the concept of reliable message queuing. Messages are queued asynchronously between client applications and messaging systems. A distributed messaging system provides the benefits of reliability, scalability, and persistence.</p>
+
+<p>Most of the messaging patterns follow the publish-subscribe model (simply Pub-Sub) where the senders of the messages are called publishers and those who want to receive the messages are called subscribers.</p>
+
+<p>Once the message has been published by the sender, the subscribers can receive the selected message with the help of a filtering option. Usually we have two types of filtering, one is topic-based filtering and another one is content-based filtering.</p>
+
+<p>Note that the pub-sub model can communicate only via messages. It is a very loosely coupled architecture; even the senders don’t know who their subscribers are. Many of the message patterns enable with message broker to exchange publish messages for timely access by many subscribers. A real-life example is Dish TV, which publishes different channels like sports, movies, music, etc., and anyone can subscribe to their own set of channels and get them whenever their subscribed channels are available.</p>
+<span valign="middle">
+<img src="../images/apache-storm1.png">
+</span>
+<p>The following table describes some of the popular high throughput messaging systems −</p>
+<table><tr><th>
+Distributed messaging system</th><th>Description</th></tr>
+<tr><td>Apache Kafka</td><td>Kafka was developed at LinkedIn corporation and later it became a sub-project of Apache. Apache Kafka is based on brokerenabled, persistent, distributed publish-subscribe model. Kafka is fast, scalable, and highly efficient.</td></tr>
+<tr><td>RabbitMQ</td><td>RabbitMQ is an open source distributed robust messaging application. It is easy to use and runs on all platforms.</td></tr>
+<tr><td>JMS(Java Message Service)</td><td>JMS is an open source API that supports creating, reading, and sending messages from one application to another. It provides guaranteed message delivery and follows publish-subscribe model.</td></tr>
+<tr><td>ActiveMQ</td><td>ActiveMQ messaging system is an open source API of JMS.</td></tr>
+<tr><td>ZeroMQ</td><td>ZeroMQ is broker-less peer-peer message processing. It provides push-pull, router-dealer message patterns.</td></tr>
+<tr><td>Kestrel</td><td>Kestrel is a fast, reliable, and simple distributed message queue.</td></tr>
+</table>
+
+<h2>Thrift Protocol</h2>
+<p>Thrift was built at Facebook for cross-language services development and remote procedure call (RPC). Later, it became an open source Apache project. Apache Thrift is an <b>Interface Definition Language</b> and allows to define new data types and services implementation on top of the defined data types in an easy manner.</p>
+
+<p>Apache Thrift is also a communication framework that supports embedded systems, mobile applications, web applications, and many other programming languages. Some of the key features associated with Apache Thrift are its modularity, flexibility, and high performance. In addition, it can perform streaming, messaging, and RPC in distributed applications.</p>
+
+<p>Storm extensively uses Thrift Protocol for its internal communication and data definition. Storm topology is simply <b>Thrift Structs</b>. Storm Nimbus that runs the topology in Apache Storm is a <b>Thrift service</b>.</p>
+
+<h2>Installing Apache Storm</h2>
+See the pdf document <a href="../pdf/apache-storm-installation.pdf">here</a>.
+
+</span>
+
+</div> <!-- End of the main content -->
+
+</body>
+</html>

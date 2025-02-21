@@ -1,0 +1,153 @@
+
+<html>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">-->
+<head>
+  <title>NoSQL and Map Reduce</title>
+  <style>
+    body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+  </style>
+</head>
+
+<body class="w3-light-grey"">
+<div class="w3-content" style="max-width:1400px">
+<span id="articles">
+<h2>NOSQL and .. Map Reduce</h2>
+<h3>Main points</h3>
+<ul style="list-style-type:square">
+  <li>Non relational</li>
+  <li>Procedural (not declarative like SQL)</li>
+  <li>Need to access variable data</li>
+</ul>
+<h4>Example: How to count total subscribers for each mobile within USA</h4>
+Think of how you would solicit (statistically speaking) the answer to this last problem by polling the people in the Empire State building.
+<br/> Step 1: Send a person to each floor and get them to tally the counts on that floor (<i>map step</i>)
+<br/> Step 2: Send results to a couple of departments A, B, C for final tallying (<i>reduce step</i>)
+
+<div>
+  This mechanism fits well with the cloud clustering technology (elastic) although you can DIY on the IaaS (infrastructure).
+  <br/><h4>Examples of EC:</h4>
+<ul style="list-style-type:square">
+  <li>Amazon DynamoDB (simpleDB), ElasticMapREduce</li>
+  <li>Microsoft Azure, Hadoop on Azure.Hbase</li>
+  <li>DB specific - MogoHQ on MongoDB, or CouchDB on Cloudant</li>
+</ul>
+<h4> Why use No SQL?</h4>
+<ul style="list-style-type:square">
+  <li>When you have large volumes of structured, semi structures and unstructured data</li>
+  <li>When you have quick iterations between agile sprints and frequent code pushes</li>
+  <li>When data storage of object-oriented is needed and no time to plan</li>
+  <li>When there is a need to have an efficient <b>scale out</b> architecture</li>
+</ul>
+In such cases you can use one of MongoDB, HBase, Redis or Cassandra.
+<h5> Advantages of NoSQL</h5>
+  <ul style="list-style-type:square">
+  <li>Dynamic schema - bypass the relation DB table update and the need to know in advance</li>
+  <li>Auto sharding - this can also be done in SQL but is more complex - usually supported in NoSQL dbs</li>
+  <li>Bypass monolithic DB Server</li>
+  <li>Suited to cloud ability to scale out</li>
+  <li>Replication - typically supported to maintain availability and against any failure - some are fully self-healing</li>
+  <li>Integrated caching - often built in - which will improve performance. Compare SQL where you can cache reads but if your write frequently the latency becomes a major issue</li>
+  <li>Many types : key-value, document DB, wide column store, graph DB</li>
+  <li>Scalable, multi-structures data, GEO distributed</li>
+</ul>
+<h5> Disadvantages</h5>
+<ul style="list-style-type:square">
+  <li>Transactions are not ACID**</li>
+  <li>Lack of structure can lead to lack of discipline with data leading to data semantic gaps</li>
+  <li>Query support very limited compared to SQL</li>
+</ul>
+<h6> ** Meaning of ACID</h6>
+<ul style="list-style-type:square">
+  <li>A =&gt; Atomic - either succeeds or fails completely</li>
+  <li>C =&gt; Consistency - data will be valid</li>
+  <li>I =&gt; Isolation - ensures concurrent update works just as if it were sequential</li>
+  <li>D =&gt; Durability - will remain persisted if successful</li>
+</ul>
+
+
+So summing up - when and when not to use NoSql:
+<table>
+  <tr><th>Relational SQL</th><th>NoSQL - non relational</th></tr>
+  <tr><td>Standard line of business</td><td>Large public (consumer) businesses</td></tr>
+  <tr><td>Complex data model</td><td>Big data</td></tr>
+  <tr><td>Transactional</td><td>Content management</td></tr>
+  <tr><td>Enterprise</td><td>Consumer web</td></tr>
+</table>
+
+<h4>Types of NoSQL databases</h4>
+<h5>Key value stores</h5>
+These can be schema free - where eery record can have different key fields (even!) ... in other words anything goes.
+<br/>Examples: RIAK, Redis, Azure, Amazon SimpleDB, Amazon DynamoDB, Dynamite
+
+<h5>Documents</h5>
+Storing either Json obects or schema free data; applicable to WEB.mobile REST applications. 
+<br/>Examples: CouchDB, MongoDB
+
+<h5>Wide column stores</h5>
+With these you have to know the <b>groups</b> of columns, so they are semi-schematic
+<br/>Examples: HBase, Cassandra
+
+<h5>Graph databases</h5>
+These are relationship focussed - heterogeneous relations supported using edges. Useful for social relationships.
+<br/>Examples: Neo4j
+
+<h4>Image overview of the 4 NoSQL database types</h4>
+<table>
+  <tr>
+    <td><img src="../images/NoSQL-Key-ValueStores.jpg" width="600" height="400" alt="NoSQL: Key-Value stores"></td>
+    <td><img src="../images/NoSQL-DocumentStores.jpg" width="600" height="400" alt="NoSQL: Document stores"></td>  
+  </tr>
+  <tr>
+    <td><img src="../images/NoSQL-WideColumnStores.jpg" width="600" height="400" alt="NoSQL: Wide Column Stores"></td>
+    <td><img src="../images/NoSQL-GraphDatabases.jpg" width="600" height="400" alt="NoSQL: Graph databases"></td>  
+  </tr>
+</table>
+
+<h4>NoSQL do&quot;s and don&quot;ts</h4>
+<h6>Performance:</h6>
+For simple key access on LARGE datasets NoSQL can be faster, but don't use for small datasets.
+<h6>Appropriateness:</h6>
+SQL:
+<ul style="list-style-type:square">
+  <li>Transactional</li>
+  <li>Stock trades</li>
+  <li>Account debits</li>
+  <li>Credit cards</li>
+</ul>
+NoSQL:
+<ul style="list-style-type:square">
+  <li>Config data</li>
+  <li>Environment data, settings</li>
+  <li>Log file</li>
+  <li>Event data</li>
+</ul>
+<h4>What about business intelligence (BI)?</h4>
+<ul style="list-style-type:square">
+  <li>NoSQL databases NOT designed for query and data warehousing</li>
+  <li>BI apps involve models - which rely on schema</li>
+  <li>So ... Extract, Transform and Load (ETL) may be the key</li>
+  <li>Wide column stores ARE good for "Big Data"</li>
+</ul>
+Note that Big Data is not the same sas NoSQL - but they are interrelated. Big data often used on Wide-Column stores (e.g HBase) and the prime example of this is HBase + Hadoop.
+<br/>So why?
+<ul style="list-style-type:square">
+  <li>Lack of indexing is not an issue</li>
+  <li>Consistency is not an issue</li>
+  <li>Fast reads are very important</li>
+  <li>DFS (Distributed File System) is important</li>
+  <li>Commodity hardware and disk assumption important</li>
+  <li>Not web-scale but massive-scale - so there are similar concerns</li>
+</ul>
+
+</div>
+</span>
+</div> <!-- End of the main content -->
+
+</body>
+</html>
+      

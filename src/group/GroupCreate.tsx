@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Group.css';
+import '../App.css';
+
 const GroupCreate = () => {
   const [name, setName] = useState('');
-  const [span, setSpan] = useState('');
-  
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
 
@@ -17,7 +16,7 @@ const GroupCreate = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newGroup = { name, span };
+    const newGroup = { name };
     setIsPending(true);
     fetch('http://localhost:8000/groups', {
       method: 'POST', headers: { "Content-Type": "application/json" },
@@ -46,13 +45,10 @@ const GroupCreate = () => {
           <tr><th>Name</th>
           <td><input type="text" required value={name} onChange={(e) => setName(e.target.value)}/></td>
           </tr>
-        <tr><th>Span</th><td> 
-          <input type="text" required value={span}  onChange={(e) => setSpan(e.target.value)}/>  
-        </td></tr>
-        <tr><th>
-          { !isPending && !error && <button>Add Group</button> }
-          { isPending && !error && <button disabled>Saving User...</button> }
-        </th><td>
+          <tr><th>
+           { !isPending && !error && <button>Add Group</button> }
+           { isPending && !error && <button disabled>Saving User...</button> }
+          </th><td>
           { error && <div className="error">{error} </div>}
           <button onClick={handleCancel}>Cancel</button>
         </td></tr>

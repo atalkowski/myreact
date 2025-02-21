@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import IGroup from './IGroup';
-import './Group.css';
+import '../App.css';
 
 interface GroupListProps {
   groups: IGroup[];
@@ -31,17 +31,15 @@ const GroupList: React.FC<GroupListProps> = ({ groups }) => {
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Span</th>
-                <th>Id</th>
+                <th>Update</th>
               </tr> 
             </thead>
             <tbody>
               {groups.map((group) => (
                 <tr key={group.id}>
                   <td>{group.name}</td>
-                  <td>{group.span}</td>
                   <td><Link to={`/groups/${group.id}`}>
-                      Edit
+                      Edit/Delete
                       </Link>
                   </td>
                 </tr>

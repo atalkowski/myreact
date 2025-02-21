@@ -6,11 +6,11 @@ interface UseFetchResult {
     error: any | null;
 }
 
-const useFetch = (url: string): UseFetchResult => {
+const useFetch = (url:string): UseFetchResult => {
     const [data, setData] = useState<any | null>(null);
     const [isPending, setIsPending] = useState<boolean>(true);
     const [error, setError] = useState<any | null>(null);
-
+    
     useEffect(() => {
         const abortFetch = new AbortController();
         setTimeout(() => {
@@ -21,7 +21,7 @@ const useFetch = (url: string): UseFetchResult => {
                     }
                     return res.json();
                 })
-                .then(data => {
+                .then(data => {     
                     setData(data);
                     setIsPending(false);
                     setError(null);
@@ -41,4 +41,4 @@ const useFetch = (url: string): UseFetchResult => {
     return { data, isPending, error };
 }
 
-export default useFetch;
+export default useFetch

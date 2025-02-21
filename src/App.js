@@ -10,6 +10,10 @@ import Groups from './group/Groups.tsx';
 import Group from './group/Group.tsx';
 import GroupCreate from './group/GroupCreate.tsx';
 
+import Entrees from './entree/Entrees.tsx';
+import Entree from './entree/Entree.tsx';
+import EntreeCreate from './entree/EntreeCreate.tsx';
+
 import NotFound from './v1/NotFound.js';
 import Navbar from './Navbar.js';
 import MyWiki from './MyWiki.jsx';
@@ -30,13 +34,19 @@ function App() {
             <td>
             <div className="content>">
             <Routes>
-              <Route exact path="/" element={<Home/>}       ></Route>
+              <Route exact path="/" element={<Groups/>}       ></Route>
               <Route exact path="/users" element={<Home/>}  ></Route>
               <Route exact path="/users/:userId" element={<User />} />
               <Route exact path="/user-create" element={<UserCreate />} />
               <Route exact path="/groups" element={<Groups/>}  ></Route>
               <Route exact path="/groups/:groupId" element={<Group />} />
               <Route exact path="/group-create" element={<GroupCreate />} />
+
+              <Route exact path="/entrees" element={<Entrees/>}  ></Route>
+              <Route exact path="/entrees/:entreeId" element={<Entree />} />
+              <Route exact path="/entree-create" element={<EntreeCreate />} />
+\
+
               <Route exact path="/jobs" element={<Jobs/>}  ></Route>
               <Route exact path="/jobs/:jobId" element={<Job />} />
               <Route exact path="/job-create" element={<JobCreate />} />

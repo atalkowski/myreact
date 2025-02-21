@@ -1,14 +1,7 @@
-interface IJob {
+interface IGroup {
   id: number;
-  company: string;  
-  title: string;
-  location: string;
-  salary: string;
-  link: string;
-  lingtype: string;
-  status: string;
-  applied: string;
-  workat: string;
+  name: string;  
+  span: string;
 }
 
-export default IJob;
+export default IGroup;

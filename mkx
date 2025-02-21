@@ -1,0 +1,83 @@
+
+
+
+exe="$0"
+Xxxx=""
+xxxx=""
+fields=""
+fcommas=""
+
+function blurb() {
+   echo "Use $exe to generate an entity for React usage
+Usage:
+  $exe Entity f1 f2 f3 f4 ....
+
+where
+  Entity ....... is teh entity being created
+  f1 ........... is the first field (assumed a string)
+  f2 f3 etc .... are the other fields required 
+"
+}
+
+Xxxx="$1"
+xxxx=`echo "$Xxxx" | tr '[A-Z]' '[a-z]'`
+shift
+if [ $# = 0 ]; then
+  blurb "Please supply an entity name plus at least one field name"
+  exit 1
+fi
+fields=$*
+if [ "$Xxxx" = "" ]; then 
+   blurb "Missing entity definition"
+   exit 1
+fi
+
+for f in $fields; do
+  if [ "$fcommas" = "" ]; then
+     fcommas="$f"
+  else
+     fcommas="$fcommas, $f"
+  fi
+done
+
+function Ucase() {
+   h=`echo "$*" | cut -c1 | tr '[a-z]' '[A-Z]'`
+   t=`echo "$*" | cut -c2-`
+   echo "$h$t"
+}
+
+function addfield() {
+   field="$1"
+   Field=`Ucase "$1"`
+   cat "$2" | awk  '
+     { print $0; }
+     /[Ff]fff/ { gsub(/ffff/, "'$field'");
+                  gsub(/Ffff/, "'$Field'");
+                   print; }' > $3
+}
+
+function createFile() {
+  src="../react/src/xxxx/$1"
+  temp1="/tmp/x/$xxxx/1"
+  temp2="/tmp/x/$xxxx/2"
+  temp3="../react/src/$xxxx"
+  
+  mkdir -p $Xxxx
+  mkdir -p $temp1 $temp2 $temp3
+  stub=`echo "$1" | sed "s/Xxxx/$Xxxx/g"`
+  title "Build $stub"
+  dst="$temp1/$stub"
+  sed "s/Xxxx/$Xxxx/g" "$src" > $dst
+  src="$dst"
+  for f in $fields; do
+    dst="$temp2/$stub.$f"
+    addfield $f $src $dst
+    src="$dst"
+  done
+  dst="$temp3/$stub"
+  cat $src | sed "s/xxxx/$xxxx/g" | egrep -v '(Ffff|ffff)' | tee $dst 
+}
+
+for src in IXxxx.tsx Xxxx.css Xxxx.tsx XxxxCreate.tsx XxxxList.tsx Xxxxs.tsx; do
+   createFile $src
+done

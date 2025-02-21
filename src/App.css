@@ -111,7 +111,7 @@ label {
 }
 
 h3 {
-  background: rgb(174, 58, 79);
+  background: rgb(91, 58, 174);
   color: #fff;
   width:100%;
   padding: 6px 10px;
@@ -122,7 +122,7 @@ h3 {
 }
 
 button {
-  background: hwb(349 25% 37%);
+  background: hwb(259 25% 37%);
   color: #fff;
   border: 1;
   border-color: hsl(313, 82%, 11%);

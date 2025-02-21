@@ -1,0 +1,42 @@
+
+<h3>Preflight Requests</h3>
+<p>In contrast to simple requests, the browser sends preflight requests for operations that intend to change anything in the cross-origin server like an HTTP PUT method to update a resource or HTTP DELETE for deleting a resource.</p>
+
+<p>These requests are not considered safe so the web browser first makes sure that cross-origin communication is allowed by first sending a preflight request before sending the actual request to the cross-origin server. Requests which do not satisfy the criteria for simple request also fall under this category.</p>
+
+<p>The preflight request is an HTTP OPTIONS method which is sent automatically by the browser to the cross-origin server, to check that the cross-origin server will permit the actual request. Along with the preflight request, the browser sends the following headers:</p>
+<ul>
+	<li>Access-Control-Request-Method: This header contains the HTTP method which will be used when the actual request is made.</li>
+	<li>Access-Control-Request-Headers: This is a list of headers that will be sent with the request including any custom headers.</li>
+	<li>Origin: The origin header that contains the source origin of the request similar to the simple request.</li>
+	<li>The actual request to the cross-origin server will not be sent if the result of the OPTIONS method is that the request cannot be made.</li>
+</ul>
+
+<p>After the preflight request is complete, the actual PUT method with CORS headers is sent.</p>
+<h3>CORS Handling for Preflight Request</h3>
+<p>Note - the <b>express</b> method <i>app.use([path,] function(req, res, next))</i> is used to control the headers that are applied to the response (res) object.</p>
+<p>	We can use a default by omitting the path so that it applies to all responses. This effectively gives our app the ability to control
+	which methods and urls are allowed in any cross origin requests by the browser. Clearly (?) this needs to be used with caution.<p>
+<p>Now we will modify our code in the cross-origin server application to handle preflight request for calls made to the PUT method:</p>
+<div class="codeblock">
+app.use(function(req, res, next) {
+<br/>&nbsp;&nbsp;res.header("Access-Control-Allow-Origin", "http://localhost:9000");
+<br/>&nbsp;&nbsp;res.header(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Access-Control-Allow-Headers",
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Origin, X-Requested-With, Content-Type, Accept"
+<br/>&nbsp;&nbsp;);
+<br/>&nbsp;&nbsp;res.header(
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Access-Control-Allow-Methods",
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;"GET, POST, PUT, DELETE"
+<br/>&nbsp;&nbsp;);
+<br/>&nbsp;&nbsp;next();
+<br/>});
+<br/>app.put('/orders', (req, res) => {
+<br/>&nbsp;&nbsp;console.log('updating orders');
+<br/>&nbsp;&nbsp;res.send(orders);
+<br/>});
+</div>
+<p>For handling the preflight request, we are returning two more headers:</p>
+<ul><li><b>Access-Control-Allow-Headers</b> containing the headers Origin, X-Requested-With, Content-Type, Accept the server should accept.</li>
+<li> <b>Access-Control-Allow-Methods</b> containing the HTTP methods GET, POST, PUT, DELETE that the browser should send to the server if the preflight request is successful.</li>
+</ul></p>

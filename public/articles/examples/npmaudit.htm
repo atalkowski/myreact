@@ -1,0 +1,41 @@
+<h3>Sample output from a npm audit call</h3>
+<br/>andy@Andys-MBP-3 usecallbackdemo % npm audit
+<br/><span class="mustard"># npm audit report</span>
+<br/>
+<br/><span class="mustard">nth-check</span>  &lt;2.0.1
+<br/>Severity: <span class="high">high</span>
+<br/><span class="mustard">Inefficient Regular Expression Complexity in nth-check</span> - https://github.com/advisories/GHSA-rp65-9cf3-cjxr
+<br/>fix available via `npm audit fix --force`
+<br/>Will install react-scripts@3.0.1, which is a breaking change
+<br/><span class="low">node_modules/svgo/node_modules/nth-check</span>
+<br/>&nbsp;&nbsp;<span class="mustard">css-select</span>&nbsp;&nbsp;&lt;=3.1.0
+<br/>&nbsp;&nbsp;Depends on vulnerable versions of nth-check
+<br/>&nbsp;&nbsp;<span class="low">node_modules/svgo/node_modules/css-select</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="mustard">svgo</span>&nbsp;&nbsp;1.0.0 - 1.3.2
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;Depends on vulnerable versions of css-select
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="low">node_modules/svgo</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="mustard">@svgr/plugin-svgo</span>&nbsp;&nbsp;&lt;=5.5.0
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Depends on vulnerable versions of svgo
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="low">node_modules/@svgr/plugin-svgo</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="mustard">@svgr/webpack</span>&nbsp;&nbsp;4.0.0 - 5.5.0
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Depends on vulnerable versions of @svgr/plugin-svgo
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="low">node_modules/@svgr/webpack</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="mustard">react-scripts</span>&nbsp;&nbsp;&gt;=2.1.4
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Depends on vulnerable versions of <span class="mustard">@svgr/webpack</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Depends on vulnerable versions of <span class="mustard">resolve-url-loader</span>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="low">node_modules/react-scripts</span>
+<br/>
+<br/><span class="mustard">postcss</span>&nbsp;&nbsp;&lt;8.4.31
+<br/>Severity: moderate
+<br/><span class="mustard">PostCSS line return parsing error</span> - https://github.com/advisories/GHSA-7fh5-64p2-3v2j
+<br/><b color="#808000">fix available</span> via `npm audit fix --force`
+<br/>Will install react-scripts@3.0.1, which is a breaking change
+<br/><span class="low">node_modules/resolve-url-loader/node_modules/postcss</span>
+<br/>&nbsp;&nbsp;<span class="mustard">resolve-url-loader</span>&nbsp;&nbsp;0.0.1-experiment-postcss || 3.0.0-alpha.1 - 4.0.0
+<br/>&nbsp;&nbsp;Depends on vulnerable versions of <span class="mustard">postcss</span>
+<br/>&nbsp;&nbsp;<span class="low">node_modules/resolve-url-loader</span>
+<br/>
+<br/><span class="mustard">8</span> vulnerabilities (2 <span class="mustard">moderate</span>, 6 <span class="high">high</span>)
+<br/>
+<br/>To address all issues (including breaking changes), run:
+<br/>&nbsp;&nbsp;npm audit fix --force

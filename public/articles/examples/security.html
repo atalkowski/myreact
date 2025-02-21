@@ -1,0 +1,37 @@
+
+<h1>Web Application Security</h1>
+ 
+<h2>Introduction and definitions.</h2>
+<ul> 
+<li><b>Authentication</b> – the process of verifying the identify of an entity – who you are.
+</li><li><b>Authorization</b> – the process of verifying if a request is approved for an entity – what permission you have.
+</li><li><b>2FA or MFA</b> – two factor or multifactor authentication – where a secondary device such as your phone or secondary email account can be used to verify that you are who you say you are.
+</li>
+<li><b>Undesirable outcome</b> – any negative outcome of a security breach such as:
+   <ul><li><b>Exposure</b> of private or secret valuable data – to fraudsters to misuse for ransom or access to user’s accounts, identity theft, loss of intellectual property and any undesirable access of sensitive data by the public
+     </li><li><b>Financial or property loss</b> – either of individuals or corporations. 
+     </li><li><b>Damage to reputation</b> – and the subsequent effects of that.
+     </li><li><b>A violation</b> of existing laws causing criminal liability and law suits – such as HIPAA where such violations can lead to huge fines and loss of an organization’s reputation, customer base and even its ability to stay in business.
+     </li><li><b>Degradation</b> of application site – such as the DOS (Denial of Service attack) by causing the application to be overloaded, too busy to respond or simply crash.
+     </li><li><b>Ransom</b> – where a site’s purpose has been disrupted or sensitive and private data (usually affecting many customers) has been extracted.  The threat of exposure or continued down time is made unless ransom is paid.
+     </li>
+  </ul>
+</li>
+</ul>	
+<h2>The OWASP Top 10 CWE</h2>
+CWE = <b>Common Weakness Enumerations</b> - as follows:
+<ul>
+<li><b>Broken Access Control</b> – a failure in an application which leads to a breach of the authorization process – e.g. where some actor gains privileges that were not intended for them to have.
+</li><li><b>Cryptographic Failure – and Sensitive Data Exposure</b> – e.g. due to encryption  failure causing sensitive data to be exposed to an unauthorized entity leading to the undesirable outcomes mentioned earlier.
+</li><li><b>Injection</b> – such as SQL injection, XSSF or Cross Site Scripting where an entity exploits these techniques in poorly written applications to achieve some malicious goal =and inevitable undesirable outcome. 
+</li><li><b>Insecure Design</b> – a broad category of critical design and architectural flaws that hackers can exploit. These require security controls to mitigate this threat and such controls must be considered as part of the design. Simple example is that we should NOT allow login with only a user name – it must require at least a password and better still password +  MFA . Any inadequate validation of request input or the frequency these are made without raising concern are other examples. 
+</li><li><b>Security Misconfiguration</b> – as applications get more sophisticated and highly configurable the scope for misconfiguration is more likely. XML external entities are part of this category. 
+</li><li><b>Vulnerable and Outdated Components</b> - we need to check for latest security vulnerabilities in shared public libraries and tool sets used by our applications – and have processes to keep these in check (and so need vulnerability tools and checks). 
+</li><li><b>Identification and Authentication Failures</b> – clearly there is scope here for applications to have faulty logic leading to – say – the wrong user ID being assigned as the current user or things like that. Allowing weak passwords would be an obvious loop hole that could be exploited. But any weak program logic or design could lead to more subtle failures. However, the use of standardized frameworks is helping make this less of an issue – such as automated hard to guess passwords stored in the client using sophisticated encryption.
+</li><li><b>Software and Data Integrity Failures</b> – arising from making assumptions about software updates, critical data and CI/CD (Constant Integration and Deployment tools) without verifying integrity. Insecure deserialization is in this category.
+</li><li><b>Security Logging and Monitoring Failures</b> – due to insufficient logging and monitoring, and also inadequate checks within the application to check for misuse (e.g. frequency of access). Classic example is the exploitation of a well trusted web site’s email system to piggy back spam email to the web site’s user population by exploiting the trust that mail services have for the site and reputation.
+</li><li><b>Server Side Request Forgery – or SSRF</b> – where an attacker can abuse server functionality to access or modify resources. Typical attack is where the application supports data imports from URLs that allows the server to read data. But the URLs can be manipulated by an attacker and then the server is fooled into sending internal critical data to the attacker’s own URL. As an example this can lead to attacker gaining access to an Amazon EC2 instance’s credentials and then using that instance with whatever privileges are allowed for its IAM role to cause harm.
+</li><li><b>Other information</b> – can be gleaned by attackers based on the server response time – to allow them to figure out if the request was successful. If a port and host can be pinpointed – the attacker can port-scan the app server’s network for a Cross-Site Port Attack (XSPA). 
+</li>
+</ul>
+ 

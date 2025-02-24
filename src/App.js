@@ -28,7 +28,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <h1>My Personal Notes - Demo</h1>
+        <h1>Demo : Personal WIKI - Growth Week</h1>
         <table><tbody>
           <tr><td valign="top" width="100%">
             <MyTabBar />

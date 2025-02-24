@@ -4,27 +4,31 @@ const Home = () => {
    
     return (
       <div>
-          <h3>Demo Idea for Growth Week - 2025</h3>
-          <h4>Background</h4>
-          <p>Capturing information we use each day - like a <i>personal Wiki</i>.
-            <ul>
+          <h3>Home page Demo Growth Week - 2025</h3>
+          <h4>Motivation</h4>
+          <p>To develop simple app to capture and keep track of information and reduce information overload.
+          </p>
+          <p>
+          Examples:
+          </p>
+          <ul>
               <li>Company or External web pages</li>
               <li>Slack channel conversations</li>
               <li>Company document links</li>
               <li>Personal notes, screenshots etc</li>
-            </ul> 
-          </p>
-
-          <h4>Current demo</h4>
+          </ul> 
+          
+          <h4>Demo goals</h4>
            <ul>
-            <li>Simple React application - code as a learning aid.</li>
-            <li>Personal assistant for recording links and grouping these.</li>
+           <li>Extend personal knowledge of React.</li>
+           <li>Build basic Personal WIKI for managing information overload.</li>
           </ul>
 
-          <h4>Extended goals</h4>
+          <h4>Future goals</h4>
           <ul>
           <li>Record notes/snippets.</li>
           <li>Create an image carousel from screen shots, adding notes to these.</li>
+          <li>Explore use node for gRPC applications</li>
           </ul>
         </div>
     );

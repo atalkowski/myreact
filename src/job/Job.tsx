@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import useFetch from '../useFetch.tsx';
 import { useParams, useNavigate } from 'react-router-dom';
-import './Job.css';
+import '../App.css';
 
 const Job = () => {
   const { jobId } = useParams();

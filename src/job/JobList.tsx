@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import IJob from './IJob';
-import './Job.css';
+import '../App.css';
 
 interface JobListProps {
   jobs: IJob[];

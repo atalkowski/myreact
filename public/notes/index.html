@@ -1,0 +1,806 @@
+
+<html>
+  <head>
+  <title>Admin, Tech Notes, Links</title>
+  <link rel="stylesheet" href="css/v1.css">
+  <script src="js/utils.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
+  <script>
+  var currentbutton;
+  function switchButtonForTarget(target, button) {
+    if (!currentbutton || currentbutton == button) {
+      currentbutton = button;
+    } else {
+      resetButton(currentbutton, "View");
+      clearInnerHtml(target);
+      currentbutton = button;
+    }
+  }
+
+  function resetDetail(name, htmID) {
+    var htm = document.getElementById(htmID);
+    if (!htm) {
+      console.log("Target " + htmID + " not found");
+      return;
+    }
+    contents='<h4>' + name + '</h4><img src="images/' + name + '.png" style="width:100%">'
+    console.log("Setting contents to " + contents);
+    htm.innerHTML = contents;
+  }
+      
+  function switchDetail(name, htmID, button) {
+    // switchButtonForTarget(htmID, button);
+    resetDetail(name, htmID)
+  }
+ 
+  </script>
+  </head>
+<body>
+<table width="100%">
+<tbody>
+<tr><td>
+ <h3>EA address</h3>
+ 209 Redwood Shores Pkwy, Redwood City, CA 94065
+<!--
+ ######                           #####                              
+ #     # #####  ######  ####     #     #  ####  #    #   ##   #####  
+ #     # #    # #      #         #       #    # #    #  #  #  #    # 
+ ######  #    # #####   ####      #####  #    # #    # #    # #    # 
+ #       #####  #           #          # #  # # #    # ###### #    # 
+ #       #   #  #      #    #    #     # #   #  #    # #    # #    # 
+ #       #    # ######  ####      #####   ### #  ####  #    # #####  
+
+  <a href="yyy" target="_blank">xxx</a>
+  <a href="yyy" target="_blank">xxx</a>  
+ <li> <a href="yyy" target="_blank">xxx</a></li>
+ <li> <a href="yyy" target="_blank">xxx</a></li>
+   -->
+
+<h3>Hot topics</h3>
+<ul> 
+  <li>S2S <a href="https://docs.google.com/document/d/1v7dqhqZ2IX0bbaJvbViOkekiDGKrDp1m49f0Tiz0S7Q/edit?tab=t.0" target="_blank">Infra doc</a>,
+      NATS <a href="https://docs.google.com/document/d/1hi8wH68VD8E6ZJJ7TpUaAcCRrefkM7TaRWXx71DQGdA/edit?tab=t.0" target="_blank">infra doc</a>, 
+      RTM - <a href="https://docs.google.com/document/d/1ubcQWnWRZ3Oa8FpZW9ltX3VjG7gV3gR1FOD4ohGMqAk/edit?tab=t.0#heading=h.e7uv5el0jib7" target="_blank">Reactions draft</a>
+  </li>
+  <li>Presence Planning <a href="https://docs.google.com/spreadsheets/d/1RJjT9MeKaoJ0O-lzk9tDP5y9ucoSPFnwJuMHgGqe-LY/edit?gid=2078357833#gid=2078357833" target="_blank">FY26 Intve</a>, 
+    <a href="https://docs.google.com/spreadsheets/d/13MBhfLdLRBmAl30RBvLv8lKoI9Gty_5AhYeWxtxVgT4/edit?pli=1&gid=407406781#gid=407406781" target="_blank">FY25Q3</a>
+    <a href="https://docs.google.com/spreadsheets/d/1G0pTJY5nT8Z2kjk0M_TR4YxPymLfiN7V6Nl2KkZZt70/edit?gid=268887818#gid=268887818" target="_blank">FY25Q4</a>
+    <a href="https://docs.google.com/spreadsheets/d/1WoehH4iixkiXoBTfGc3f3QMAmrT1Ct5jwskjn5cp5UA/edit?pli=1&gid=514249899#gid=514249899" target="_blank">FY25Q2</a>  
+  </li>
+   <li>Content Mart
+    <a href="https://docs.google.com/document/d/14IFJYHjVWJuh1K14V3zeZCtgSftAyl5Joua4S8vjGlg/edit?tab=t.0" target="_blank">Cat data automation</a>, 
+    <a href="https://docs.google.com/document/d/1I8fuB4EXTuo9xUOTrcx3VgxT9gpjoQkqF9DOWSmq-i8/edit?tab=t.0#heading=h.v7ziqxjfnxge" target="_blank">Proto Doc</a>
+  </li>
+  <li>
+    <a href="https://docs.google.com/document/d/1U21ixAFq_750wQIJ1CG415iHBUuxRXwtEynYot1Iz88/edit?tab=t.0#heading=h.emgf1jogdlab" target="_blank">Long lived sessions</a>
+  </li>
+  <li>Protos : 
+    <a href="https://docs.google.com/document/d/17XjGsJN69Iawb7yxdOTeLBlWzTJCrN32akIKVWktw6s/edit?tab=t.0#heading=h.a63yil9lty0z" target="_blank">C2S/S2S</a>
+    <a href="https://gitlab.ea.com/eadp-social/presence/presence-protos/-/releases" target="_blank">releases</a>, 
+    <a href="https://eadp-social.gitlab.ea.com/-/presence/presence-protos/-/jobs/48241794/artifacts/public/index.html" target="_blank">Docs</a>,
+    <a href="https://developer.ea.com/display/ER/Service+Interface+Standard+-+gRPC#ServiceInterfaceStandardgRPC-PrivilegeSeparation" target="_blank"> Service Interface Standard:</a>
+  </li>
+  <li>
+    Tech chat: <a href="https://crawshaw.io/blog/programming-with-llms" target="_blank">LLMS</a>,
+    Config Manager <a href="https://developer.ea.com/display/PDE/CM+-+Config+Flow" target="_blank">flow</a>,
+    <a href="https://learn.microsoft.com/en-us/entra/msal/dotnet/advanced/proof-of-possession-tokens" target="_blank">POP</a> tokens    
+  </li>
+  <li> Health checks MRs: 
+    <a href="https://gitlab.ea.com/eadp-social/presence/presence-frontend-grpc/-/merge_requests/372#a78466d15bc5cbe796de50b0df576797606c6c6e" target="_blank">hosts</a>, 
+    <a href="https://gitlab.ea.com/eadp-social/presence/presence-frontend-grpc/-/blob/develop/kustomize/overlays/common/development-like/kustomization.yaml?ref_type=heads#L38" target="_blank">ENS</a>
+  </li>
+  <li><a href="https://electronicarts.csod.com/phnx/driver.aspx?routename=Social/UniversalProfile/Transcript&TargetUser=68977&RESET=TRUE&tab_page_id=-8" target="_blank">Training</a> to do
+  </li>  
+</ul>
+
+<h3>Strategy, Presence status</h3>
+<ul>
+  <li> <a href="https://docs.google.com/presentation/d/18W1ve_6s08C6udCnom1HUm94uMOVyowI8uaIrP0oTRE/edit#slide=id.g2c4d4fdfa09_0_0" target="_blank">EADP strategy</a>; 
+    <a href="https://eaworld.work.ea.com/training/training" target="_blank">EA training</a> and 
+    <a href="https://eaworld.work.ea.com/training/udemy" target="_blank">Udemy</a>,
+    <a href="https://docs.google.com/document/d/1lGFgnu4r8K2Dwstkv2NedGb5u1kblotFomzn-YPU8Zc/edit?pli=1&tab=t.0" target="_blank">Creative</a>
+  </li>
+  <li>EA Digital Platform <a href="https://docs.ea.com/" target="_blank">Documentation</a> page; 
+    <a href="https://manytools.org/hacker-tools/ascii-banner/" target="_blank">Ascii banner</a>
+  </li>
+  <li>Presence status: 
+    <a href="https://yardmaster.ea.com/grafana/d/5DsOwlm7k/eax-home?orgId=1&from=now-7d&to=now&timezone=browser&var-top_slugs=$__all&var-client_version=$__all" target="_blank">Yardmaster</a>,    
+    <a href="https://yardmaster.ea.com/grafana/d/p-dsh-presence/eadp-presence-service?orgId=1&from=now-1h&to=now" target="_blank"> .. Presence</a>
+    <a href="https://grafana.social-prod-use1.stellar.eadp.cloud/k8s/clusters/c-q52fl/api/v1/namespaces/cattle-monitoring-system/services/http:rancher-monitoring-grafana:80/proxy/d/HSGoaxo7k/presence-game-invites?orgId=1" target="_blank">
+       Game Invites</a>; 
+       <a href="https://docs.google.com/document/d/13Tiu9Th1O0gHPa5evq6SOGNg0SG5TI0_s_ZipNBeSTE/edit?tab=t.0" target="_blank">Presence &amp; Game invite</a> autoscaling tests.
+  </li>
+  <li> Presence String Localization: 
+    <a href="https://electronic-arts.slack.com/archives/C06JQU7TGMA/p1725399478709569" target="_blank">Slack link</a>
+    <a href="https://docs.ea.com/presence/guides/integrating-localization/" target="_blank">Integrating</a>; 
+    <a href="https://docs.ea.com/presence/guides/integrating-localization/defining-templates-for-string-interpolation/" target="_blank">Interpolation</a> doc;
+  </li>
+  <li> Presence <a href="https://drive.google.com/file/d/1aUzSIqGBgH4w5duRYAihcG410Vpokh4T/view?pli=1" target="_blank">Architecture</a> Notifications</li>
+  <li> Chat: <a href="https://docs.google.com/document/d/10DKMRKkTa8Qo4dExrgU5NTMfg6pHypYftx7gzqqsvKE/edit?usp=sharing" target="_blank">Channel</a> requests in RTM</li>
+  <li> Krew: kubectl plugins <a href="https://krew.sigs.k8s.io/docs/user-guide/quickstart/" target="_blank">Quickstart</a> install</li>
+</ul>
+<!--
+ #     #                      
+ #     # ###### #      #####  
+ #     # #      #      #    # 
+ ####### #####  #      #    # 
+ #     # #      #      #####  
+ #     # #      #      #      
+ #     # ###### ###### #    
+-->
+<h3>Events, Help, Pager Duty, Datadog</h3>
+<ul>
+  <li> EA <a href="https://eaworld.work.ea.com/help/" target="_blank">HELP!</a>, service <a href="https://eaworld.work.ea.com/global-service-desk/global-service-desk-home" target="_blank">desk home</a></li>
+  <li> <a href="https://ea.epochapp.com/event/48331" target="_blank">Dec 7th 2024 Party</a></li>
+  <li> 
+    <a href="https://developer.ea.com/display/SocialInternal/Social+Holiday+On-Call+Process" target="_blank">On call Process</a>,  
+    <a href="https://docs.google.com/spreadsheets/d/1M6puPGV7wyEfBT31dt1VC7v9iRfh0wX-2sWcimazzjo/edit?gid=0#gid=0" target="_blank">Holiday Sheet</a>
+    , Presence <a href="https://developer.ea.com/display/SocialInternal/Presence+Oncall+Runbook" target="_blank">Runbook</a>
+    <a href="https://tnt-ea.pagerduty.com/analytics/overview-dashboard/vsAD42tFrDljAgqhqJZGdA" target="_blank">Pager duty</a>
+  </li>
+  <li>
+    <a href="https://docs.google.com/spreadsheets/d/1M6puPGV7wyEfBT31dt1VC7v9iRfh0wX-2sWcimazzjo/edit?gid=0#gid=0" target="_blank">2025 spreadsheet</a>
+    <a href="https://developer.ea.com/display/SocialInternal/FNS+Runbook#Acrh" target="_blank">FNS Runbook</a>,
+    <a href="https://tnt-ea.pagerduty.com/service-directory/PCXFWW2" target="_blank">FND PD</a>,
+    <a href="https://opensearch.darkside.ea.com/_dashboards/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:'2024-11-27T08:00:00.000Z',to:'2024-11-29T03:00:00.000Z'))&_a=(columns:!(_source),filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:social-presence-prod-logs,key:kubernetes.namespace_name,negate:!f,params:(query:presence-prod),type:phrase),query:(match_phrase:(kubernetes.namespace_name:presence-prod)))),index:social-presence-prod-logs,interval:auto,query:(language:kuery,query:''),sort:!())" target="_blank">Kibana Open Search</a>,
+    <a href="https://customerpdu.pagerduty.com/pagerduty-fundamentals" target="_blank">Course</a>, 
+    <a href="images/Pager-Event-LifeCycle.png" target="_blank">Events image</a>
+  </li>
+  <li> 
+    <a href="https://eadp-social.datadoghq.com/dashboard/euy-d7z-q8z/fns?fromUser=false&refresh_mode=sliding&view=spans&from_ts=1712318298781&to_ts=1712923098781&live=true" target="_blank">Metrics</a>, 
+    <a href="https://eadp-social.datadoghq.com/monitors/manage?order=desc" target="_blank">Datadog</a>
+  </li>
+  <li> <a href="https://docs.google.com/document/d/1ashCPADOJSpZpvKYIJWsdMdBVzDHHhBs2sel9lYP1BY/edit?tab=t.0#heading=h.d88o3woub931" target="_blank">Meeting Practices</a></li>
+  <li> <a href="https://drive.google.com/drive/my-drive" target="_blank">My Google drive</a></li>
+  <li> <a href="https://us-eacompanystore.work.ea.com/" target="_blank">EA On line shop</a></li>
+  <!-- 
+  <a href="yyy" target="_blank">xxx</a>
+  <a href="yyy" target="_blank">xxx</a>
+  <a href="yyy" target="_blank">xxx</a>
+ <li> <a href="yyy" target="_blank">xxx</a></li>
+ <li> <a href="yyy" target="_blank">xxx</a></li>
+   -->
+
+  <li> <a href="https://app.betterworks.com/app/#/goals?currentView=goals&owner=u768603&date_range=today&filterId=2353469" target="_blank">Betterworks goals</a></li>
+  <li> <a href="https://docs.google.com/document/d/1hV85CG3D0LydhSySnvYcynMUM1CKvp1ZmBRPfqWszvg/edit" target="_blank">EUID notes</a></li>
+  <li> <a href="https://docs.google.com/spreadsheets/d/1WoehH4iixkiXoBTfGc3f3QMAmrT1Ct5jwskjn5cp5UA/edit#gid=1268968107" target="_blank">Presence Squad</a> FY25Q2 Plan</li>
+  <li> <a href="https://jaas.ea.com/browse/SOCIALPLAT-16453" target="_blank">Presence race condition</a></li>
+  <li>    <a href="https://gitlab.ea.com/eadp-social/presence/presence-frontend-grpc/-/blob/develop/TOOLS.md?ref_type=heads#change-threshold-level-of-a-logger" target="_blank">Logger level</a> config,</li>
+  <li> <a href="https://wd5.myworkday.com/ea/d/home.htmld" target="_blank">Work day</a>,
+       <a href="https://eaworld.work.ea.com/benefits-us/time-off" target="_blank">Time off</a>,
+       <a href="https://nam02.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.eabenefitsus.com%2F&data=05%7C02%7Catalkowski%40ea.com%7Cd9a981788253421c70f708dc84c54731%7Ccc74fc124142400ea653f98bfa4b03ba%7C1%7C0%7C638531230091928550%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=fpvz9NT6Fm2Ynh0vJZl68tlzPNRAg3aGUtU5IRrjw6Y%3D&reserved=0" target="_blank">
+        EA benefits</a>
+  </li>
+  <li> <a href="https://docs.google.com/spreadsheets/d/1-j9EfeMxalY6OogiiM9n4T3lKAY5MF1HW7hxNnjRSC4/edit?pli=1#gid=58268141" target="_blank">Game on template</a></li>
+    
+  <li> <a href="https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fproductboard-03c0aee67dc1.intercom-clicks.com%2Fvia%2Fe%3Fob%3DSOgMMz4sH5vyufyDJ0FsjZBs%252B3zdnWFS%252BYN8bRX8HPC%252FEzs%252F%252FXmwO2skzUGkg5R4MUh0h4%252FCHgd9VYjsWKKqJcA3HSeR%252FfITmRib66sFIEj05JTLtE0%252BfvbSdOhvQzmzbjPzLVVSrbPZzT%252BxITi%252FB5liy280QUb8Qz%252BEYGugqzTHlkoXobppKEGjV0jxcRxx%26h%3Db2ef38cb07a66e6922d78edb9569b74011584b82-a6o4je0_5366704564529%26l%3D740ded9e347e07b1e6a0cf5d06d5ca3c1e694deb-92722827&data=05%7C02%7Catalkowski%40ea.com%7C9728c1db3eb94688596e08dc841a81f9%7Ccc74fc124142400ea653f98bfa4b03ba%7C1%7C0%7C638530496601974612%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=2FS3TRu3EAdHjbV7AfPiHs2WyLCyJzhDg%2FQQkjYol8Y%3D&reserved=0" target="_blank">Product board link</a> check this out
+  </li>
+  <li> <a href="https://ea.okta.com/app/cornerstone/exklkijdagUG11o8I0x7/sso/saml?RelayState=%252fdeeplink%252fLaunchTraining.aspx%253flaunchLo%253d69e6af38-0853-4636-be8d-97f147b701be" target="_blank">Launch training</a> - on Thursday 10:00am June 13th - see calendar</li>
+</ul>
+
+
+
+
+<!--
+    #    #     #  #####  
+   # #   #  #  # #     # 
+  #   #  #  #  # #       
+ #     # #  #  #  #####  
+ ####### #  #  #       # 
+ #     # #  #  # #     # 
+ #     #  ## ##   #####  
+-->
+<h3>AWS links</h3>
+<ul>
+  <li>
+    <a href="https://docs.google.com/document/d/19Ndji_dOgq4XJhW_yi12jJxoUOABES72BlLnhtJvZ_Q/edit?tab=t.0" target="_blank">SSO setup doc</a> / 
+      <a href="https://docs.aws.amazon.com/cli/latest/userguide/sso-configure-profile-token.html#sso-configure-profile-token-auto-sso" target="_blank">Configure SSO</a></li> 
+  <li> <a href="https://canopy.work.ea.com/" target="_blank">tntdev-powerusers</a> access AWS CLI SSO, and <a href="https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-2#/users" target="_blank">IAM users</a>
+  </li>
+  <li>AWS IAM update: <a href="https://developer.ea.com/pages/viewpage.action?pageId=413283982" target="_blank">Canopy</a> doc;
+        <a href="https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.aws.amazon.com%2Fcli%2Flatest%2Fuserguide%2Fcli-configure-sso.html&data=05%7C02%7Catalkowski%40ea.com%7Cbcd37603842d414ac0bd08dcd19fd7f3%7Ccc74fc124142400ea653f98bfa4b03ba%7C1%7C0%7C638615731733027564%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=i6gtUb96x%2BRBGJYssfgRxHuFfs%2BugmNLPUoouxFI8GM%3D&reserved=0" target="_blank">
+            config IAM central</a>; 
+        <a href="mailto:eascloudsecurity@ea.com" target="_blank">security contact</a>;
+        <a href="mailto:pie-cloud-security-governance@ea.com" target="_blank">email</a>; 
+        <a href="https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Felectronic-arts.enterprise.slack.com%2Farchives%2FC07L657SKKN&data=05%7C02%7Catalkowski%40ea.com%7Cbcd37603842d414ac0bd08dcd19fd7f3%7Ccc74fc124142400ea653f98bfa4b03ba%7C1%7C0%7C638615731733039285%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C0%7C%7C%7C&sdata=2k5BIiyj8XaZUHL9D%2BsTLzfrXSqD0%2F1n6FeT3HpDebM%3D&reserved=0" target="_blank">Slack</a>
+           
+  </li>
+</ul>
+<!--
+ ####### #     #  #####           #     #####  #     # 
+ #       ##    # #     #         #     #     # ##   ## 
+ #       # #   # #              #      #       # # # # 
+ #####   #  #  #  #####        #       #       #  #  # 
+ #       #   # #       #      #        #       #     # 
+ #       #    ## #     #     #         #     # #     # 
+ #       #     #  #####     #           #####  #     # 
+-->
+<h3>Content Mart, Localization, ENS, Friends, FNS</h3>
+<ul>
+  <li><a href="https://docs.google.com/document/d/1fAHljTMujyC2_QMRUxUF3oDzA2VzywLpikylbdVN3XQ/edit?tab=t.0" target="_blank">Friends Push Notification to Offline Friends</a>
+  </li>
+  <li> 
+    <a href="https://docs.google.com/document/d/15ZT4f4FRH_0rl7bntPK8dxLxhMJ84xVocG_1MhjIGtA/edit?tab=t.0#heading=h.4fhj6dl63stb" target="_blank">Catalog support</a>,
+    <a href="https://docs.google.com/document/d/1rKvV97wpWEbNlG5jWsmJ8CQlhObYAe3urZzntrPQMfM/edit?tab=t.0#heading=h.yvu876iisz56" target="_blank">Data management</a>, 
+    <a href="https://docs.google.com/document/d/1EHPAnlTN9XoTnSOyNHiWJ0QwxouKHSL1DftPUx0i45I/edit?tab=t.0#heading=h.akjmvl7hsy8u" target="_blank">Catalog Data</a>
+  </li>
+  <li>   <a href="https://docs.ea.com//presence/guides/integrating-localization/" target="_blank">Localization</a>, 
+         <a href="https://docs.google.com/document/d/14IFJYHjVWJuh1K14V3zeZCtgSftAyl5Joua4S8vjGlg/edit?pli=1&tab=t.0" target="_blank">Automation Module</a> KT, 
+         <a href="https://docs.google.com/document/d/1MX3NIUMnviVORw2f29qa4fM3ja9LcrGcmn-HlBvlKhE/edit?tab=t.0#heading=h.5tytydlqcsqm" target="_blank">Entries Doc</a>  
+  </li>
+</ul>
+<!-- 
+  <a href="yyy" target="_blank">xxx</a>
+  <a href="yyy" target="_blank">xxx</a>
+  <a href="yyy" target="_blank">xxx</a>
+  <a href="yyy" target="_blank">xxx</a>
+ <li> <a href="yyy" target="_blank">xxx</a></li>
+ <li>
+  
+Onsite week and follow ups:
+
+  Reimbursement: 
+     https://eaworld.work.ea.com/benefits-global-perks-and-benefits/flexible-work-perk
+
+ Player Notifications, Social and RTM 
+      https://docs.google.com/presentation/d/1H4f7GAkrp27TtbDN0mK9RN-iVdDJe5x2zBxt05G4jZo/edit#slide=id.g31547e73b95_0_16
+      https://docs.google.com/presentation/d/1Db-YziL6cBqwV11IeDYQUThQGBjSmwSUrsvc0mgLWRE/edit#slide=id.g899e7614bc_1_4
+Friends roadmap
+      https://docs.google.com/presentation/d/1KDAtFusDrFI-6oh09nUG6x3mLKRhcugxfJUikG7FQJ8/edit#slide=id.g3148ddeb10b_0_0
+
+
+ #######                                           
+ #     # #    # #####   ####    ##   #####  #####  
+ #     # ##   # #    # #    #  #  #  #    # #    # 
+ #     # # #  # #####  #    # #    # #    # #    # 
+ #     # #  # # #    # #    # ###### #####  #    # 
+ #     # #   ## #    # #    # #    # #   #  #    # 
+ ####### #    # #####   ####  #    # #    # #####  
+ -->
+
+<h3>Career Dev, Onboarding</h3>
+<ul>
+ <li> Growth week: 
+  <a href="https://docs.google.com/spreadsheets/d/13s2DiNdKj6T-ueExFMcjQqpHZG1FwmFotTCcC2mfl_k/edit?gid=1233468590#gid=1233468590" target="_blank">Excel sheet</a>,
+  VT + Reactive <a href="https://jaas.ea.com/secure/attachment/11469381/GrowthReactiveAndVirtualThreads.pptx" target="_blank">Slides</a>,
+  and <a href="https://electronic-arts.enterprise.slack.com/files/U074DJTJ5SQ/F07KQHLTCKC/growthreactiveandvirtualthreads.pptx" target="_blank">Ditto</a>
+</li>
+ <li> <a href="https://eaworld.work.ea.com/studios/#gravitron-header-logo" target="_blank">EA Learning</a>
+  <a href="https://eaworld.work.ea.com/home/" target="_blank">World and links</a>; 
+  <a href="https://ea.service-now.com/ess/home.do" target="_blank">Help</a>; 
+  <a href="https://eaworld.work.ea.com/ea-it/tools" target="_blank">Tools</a>;
+  <a href="https://eaworld.work.ea.com/ea-it/strategic-areas " target="_blank">How</a>;
+  <a href="https://frostbite.ea.com/pages/viewpage.action?spaceKey=UG&title=Frostbite+User+Guide Frostbite" target="_blank">Frostbite</a>
+  
+</li>
+  
+ <li> <a href="https://eaworld.work.ea.com/our-priorities/" target="_blank">EA World priorities</a></li>
+ <li> <a href="https://developer.ea.com/display/TN/Java+Coding+Standards" target="_blank">Coding standards 2014</a></li>
+ <li> Machina home <a href="https://eaworld.work.ea.com/machina-ai-2024/home" target="_blank">40 live videos</a></li>
+ <li> <a href="https://developer.ea.com/pages/viewpage.action?spaceKey=SocialInternal&title=New+Engineer+on+boarding+doc" target="_blank">New eng onboarding</a></li>
+ <li> <a href="https://developer.ea.com/pages/viewpage.action?spaceKey=SocialInternal&title=Getting+Started+with+Service+Development" target="_blank">Service Dev getting started</a></li>
+ <li> <a href="http://Eaworld.work.ea.com" target="_blank">EA World Work</a></li>
+ <li> <a href="https://ukie.org.uk/about" target="_blank">UKIE about</a></li>
+ <li> <a href="https://developer.ea.com/display/SocialInternal/On+boarding+milestones" target="_blank">Onboarding milestones</a></li>
+ <li> <a href="https://eaworld.work.ea.com/globaltalent/professionalskills" target="_blank">Professional skills</a></li>
+ <li> <a href="https://docs.google.com/document/d/15uopynpaQsgLO_rqUJFBJFXm31Yr5lEDRzDFsYlSsqw/edit#heading=h.smjh8iq4kuo" target="_blank">Career Development Workbook</a></li>
+ <li> <a href="https://eaworld.work.ea.com/globaltalent/professionalskills" target="_blank">Skills develop</a></li>
+ <li> <a href="https://drive.google.com/file/d/1aUzSIqGBgH4w5duRYAihcG410Vpokh4T/view" target="_blank">Architecture diag</a></li>  
+ <li> <a href="https://electronicarts.csod.com/phnx/driver.aspx?routename=Learning/Curriculum/CurriculumPlayer&TargetUser=68977&curriculumLoId=69e6af38-0853-4636-be8d-97f147b701be" target="_blank">Training status etc</a></li>
+ <li> <a href="https://docs.google.com/presentation/d/1xJ5NFWbtcpZ974IU57a9dzoWnr04WRy4T5zg5QQ9H9M/edit#slide=id.ga47800fe45_0_0" target="_blank">Zoom backgrounds</a></li>
+ <li> <a href="https://eaworld.work.ea.com/acronym/acronym-dictionary" target="_blank">Acronyms</a></li>
+ <li> <a href="https://us.etrade.com/etx/pxy/login" target="_blank">ETrade</a></li>
+ <li> Game on level 3 <a href="https://docs.google.com/presentation/d/1fqmv_IGl4m74ehDMzr44V7dyFt8Zx00XBY-ZPNNPFfk/edit#slide=id.g158ecd3326d_0_0" target="_blank">Slides</a></li>
+ 
+</ul>
+
+ <!-- 
+  <a href="yyy" target="_blank">xxx</a>
+  <a href="yyy" target="_blank">xxx</a>
+  <a href="yyy" target="_blank">xxx</a>
+  <a href="yyy" target="_blank">xxx</a>
+ <li> <a href="yyy" target="_blank">xxx</a></li>
+ <li> <a href="yyy" target="_blank">xxx</a></li>
+ <li> <a href="yyy" target="_blank">xxx</a></li>
+
+ #######    #       #######                      
+ #         # #         #    ######  ####  #    # 
+ #        #   #        #    #      #    # #    # 
+ #####   #     #       #    #####  #      ###### 
+ #       #######       #    #      #      #    # 
+ #       #     #       #    #      #    # #    # 
+ ####### #     #       #    ######  ####  #    # 
+                                                 
+
+  -->
+</td>
+<td>
+  <h3> EA Internal Technologies</h3>
+  <ul>
+    <li>EADP <a href="https://docs.ea.com/" target="_blank"> Docs</a>; 
+      <a href="https://docs.ea.com/presence/" target="_blank">Presence</a>; 
+      <a href="https://docs.ea.com/presence/guides/integrating-presence-services/ " target="_blank">Guide</a>
+    </li>
+    <li> ENS   
+      <a href="https://docs.ea.com/ens-overview/" target="_blank">ENS</a> notification service, 
+      <a href="https://developer.ea.com/display/SocialInternal/Architecture+-+Finished+State" target="_blank">State</a>,
+      <a href="https://developer.ea.com/display/SocialInternal/ENS" target="_blank">Pages</a>, 
+      <a href="https://docs.ea.com/ens-overview/guides/getting-started/" target="_blank">getting started</a> and
+      <a href="https://docs.ea.com/ens-overview/guides/integrating-with-ens/" target="_blank">guides</a>
+    </li>
+
+    <li>EADP <a href="https://docs.ea.com/intro-to-eadp-grpc-services/" target="_blank">gRPC services intro</a>; 
+            <a href="https://docs.ea.com/intro-to-eadp-grpc-services/#Authenticated_Tokens" target="_blank">Authenticated Tokens</a>
+            <a href="https://docs.ea.com/identity/guides/managing-access-tokens/" target="_blank">Access Tokens</a>
+    </li>
+    <li> <a href="https://docs.ea.com/identity/guides/managing-access-tokens/integrating-jwt-user-token/" target="_blank">JWT User Token</a> guide</li>
+    <li>Push Notice Service <a href="http://tnt-docs.rws.ad.ea.com/pn/api.html#top" target="_blank">PNS API</a></li>
+    <li> <a href="https://gitlab.ea.com/eadp-social/presence/presence-frontend-grpc/-/blob/develop/TOOLS.md?ref_type=heads" target="_blank">Tools INT</a></li>
+    <li> Presence <a href="https://gitlab.ea.com/eadp-social/presence/presence-frontend-grpc/-/environments/9447" target="_blank">environments</a></li>
+    <li>  <a href="https://management-app-stage.appspot.com/#/" target="_blank">Manager App</a> for games.
+    </li>
+  </ul>
+  <!--
+    <a href="yyy" target="_blank">xxx</a>
+    <li> <a href="yyy" target="_blank">xxx</a></li>
+    <li> <a href="https://ea.udemy.com/course/kubernetesmastery/learn/lecture/17070926?start=0#overview" target="_blank">Kubernetes Overview</a></li>
+    <a href="yyy" target="_blank">xxx</a>
+    <a href="yyy" target="_blank">xxx</a>
+    <li> <a href="yyy" target="_blank">xxx</a></li>
+  
+ #                               #    #  #####      #####                       
+ #        ####    ##   #####     #   #  #     #    #     # #####    ##   ###### 
+ #       #    #  #  #  #    #    #  #   #     #    #       #    #  #  #  #      
+ #       #    # #    # #    #    ###     ######    #  #### #    # #    # #####  
+ #       #    # ###### #    #    #  #         #    #     # #####  ###### #      
+ #       #    # #    # #    #    #   #  #     #    #     # #   #  #    # #      
+ #######  ####  #    # #####     #    #  #####      #####  #    # #    # #     
+    -->
+
+  
+<h3>Releases, Load Testing, k9s, Grafana</h3>
+  <ul>
+    <li>Load testing 
+      <a href="https://docs.google.com/document/d/17KkNIX05ei-mRuH2-mSFI-MrH0vQV2LzK9jgnucVo6w/edit?tab=t.0#heading=h.j8kqh5wha39w" target="_blank">Procedure</a>,     
+      <a href="https://docs.google.com/document/d/1OXmEBm4IzxxW1RwqZ5Ru3Tva_05dkNx3MUoPFs65CH8/edit?tab=t.0" target="_blank">Persona LT</a> doc, Examples:
+      <a href="https://grafana.social-dev-use1.stellar.eadp.cloud/k8s/clusters/c-28k2r/api/v1/namespaces/cattle-monitoring-system/services/http:rancher-monitoring-grafana:80/proxy/d/HSGoaxo7k/presence-load-testing?orgId=1&from=1728289217808&to=1728302047715&var-namespace_label=namespace&var-namespace=presence-test-persona-game-oogmfi" target="_blank">uid v pid</a>,
+      <a href="https://grafana.social-dev-use1.stellar.eadp.cloud/k8s/clusters/c-28k2r/api/v1/namespaces/cattle-monitoring-system/services/http:rancher-monitoring-grafana:80/proxy/d/HSGoaxo7k/presence-load-testing?orgId=1&from=1728556479945&to=1728569939886&var-namespace_label=namespace&var-namespace=presence-test-persona-game-oogmfi" target="_blank">FA</a> favs issues  
+    </li>
+    <li> <a href="https://gitlab.ea.com/eadp-social/presence/presence-frontend-grpc/-/pipelines/6409389" target="_blank">Pipeline</a>
+    ; <a href="https://gitlab.ea.com/eadp-social/presence/presence-frontend-grpc/-/environments/3525" target="_blank">Releases</a>
+    </li>
+    <li> <a href="https://console.ea.com/testautomation/dashboard/154?project=Presence" target="_blank">EADP Presence Svc Dashboard</a></li>
+    <li> Grafana : 
+      <a href="https://grafana.social-dev-use1.stellar.eadp.cloud/k8s/clusters/c-28k2r/api/v1/namespaces/cattle-monitoring-system/services/http:rancher-monitoring-grafana:80/proxy/d/HSGoaxo7k/presence-load-testing?orgId=1&from=1720559336351&to=1720567377881&var-namespace_label=namespace&var-namespace=presence-feat-socialplat-1-dt78k8" target="_blank">Dev</a>
+      <a href="https://grafana.social-prod-use1.stellar.eadp.cloud/k8s/clusters/c-q52fl/api/v1/namespaces/cattle-monitoring-system/services/http:rancher-monitoring-grafana:80/proxy/d/HSGoaxo7kqwwqwq/presence-load-testing?search=open&folder=current&query=folder:current%20" target="_blank">Prod Presence</a>
+    </li>
+    <li> <a href="https://controltower.ea.com/game/FC%2025" target="_blank">Control Tower</a></li>
+    <li> <a href="https://rancher.stellar.eadp.cloud/dashboard/account" target="_blank">Stellar account</a>, 
+    <a href="https://rancher.stellar.eadp.cloud/dashboard/home" target="_blank">Home</a>,
+    <a href="https://rancher.stellar.eadp.cloud/dashboard/c/c-28k2r/explorer#cluster-events" target="_blank">Clusters</a>
+   </li>
+    <li> <a href="https://gitlab.ea.com/eadp-social/social-plus/antelope/-/blob/develop/antelope-server/etc/packer_arm64.json?ref_type=heads" target="_blank">Packer script</a></li>
+    <li> <a href="https://gitlab.ea.com/eadp-social/social-plus/antelope/-/blob/develop/antelope-server/etc/packer_setup_arm64.sh?ref_type=heads" target="_blank">Custom AMI</a></li>
+    <li> Load test scripts:  <a href="https://gitlab.ea.com/eadp-social/presence/presence-testing-scripts/-/blob/feat/enable-whole-social-graph/scenarios/standard/main.go" target="_blank">main</a>
+      <a href="https://gitlab.ea.com/eadp-social/presence/presence-testing-scripts/-/blob/feat/psn-game-invite/scenarios/standard/main.go?ref_type=heads" target="_blank">PSN Game invites</a> 
+    </li>
+    <li> <a href="https://docs.google.com/document/d/14IFJYHjVWJuh1K14V3zeZCtgSftAyl5Joua4S8vjGlg/edit" target="_blank">Nicks doc</a></li>
+    <li> Metrics <a href="https://docs.spring.io/spring-boot/index.html" target="_blank">Spring boot</a>,
+      <a href="https://yidongnan.github.io/grpc-spring-boot-starter/en/actuator.html" target="_blank">Actuator</a> support     
+    </li>
+    </ul>
+    <!--
+    <a href="yyy" target="_blank">xxx</a>
+    <a href="yyy" target="_blank">xxx</a>
+    <li> <a href="yyy" target="_blank">xxx</a></li>
+    <li> <a href="https://ea.udemy.com/course/kubernetesmastery/learn/lecture/17070926?start=0#overview" target="_blank">Kubernetes Overview</a></li>
+    
+ ######                                            
+ #     # ###### #####   ####   ####  #    #   ##   
+ #     # #      #    # #      #    # ##   #  #  #  
+ ######  #####  #    #  ####  #    # # #  # #    # 
+ #       #      #####       # #    # #  # # ###### 
+ #       #      #   #  #    # #    # #   ## #    # 
+ #       ###### #    #  ####   ####  #    # #    # 
+    
+    -->
+  
+  <h3>Persona / Presence work</h2>
+  <ul>
+    <li> <a href="https://docs.google.com/document/d/1cUTGUcZTxFUeCkHilWbu8PMqJadF7X4ocnWsRLfQ2kE/edit?tab=t.0" target="_blank">Session service</a></li>
+  <li> Friends <a href="https://docs.ea.com/friends/guides/integrating-the-friends-restful-api/" target="_blank">Integ</a>,
+    <a href="https://docs.google.com/document/d/1epijO2HAhihPyM8nrGIDgykHK2Yqd42O69PdYAyRuW0/edit#heading=h.9v50cvgmy61s" target="_blank">API doc</a>
+    <a href="https://gitlab.ea.com/eadp-social/presence/common/friends-client" target="_blank">Client</a>, 
+    <a href="https://docs.google.com/document/d/13MxvGDxRC6lj3WMFiX7wwBI4aK6J_66DcftAgUy8brM/edit?tab=t.0#heading=h.31pvlaz0j5qc" target="_blank">Load results doc</a>
+  </li>
+   <li>
+    <a href="https://gitlab.ea.com/eadp-social/friends/friends/-/blob/develop/src/main/java/com/ea/gs/friends/entities/FriendEventType.java" target="_blank">Event types</a>; 
+    <a href="https://gitlab.ea.com/eadp-social/presence/common/friends-client/-/blob/main/src/main/java/eadp/social/presence/common/support/friends/HTTPFriendsClient.java?ref_type=heads" target="_blank">HTTP</a> friend client, 
+    <a href="https://gitlab.ea.com/eadp-social/presence/presence-acceptance/-/merge_requests/55" target="_blank">MR Acceptance</a> clues
+    </li>
+  </ul>
+  
+  <h3>Presence Team, Jira, Planning etc</h3>
+  <ul>
+    <li> <a href="https://jaas.ea.com/secure/RapidBoard.jspa?rapidView=25697&projectKey=SOCIALPLAT" target="_blank">Sprint </a>, 
+      <a href="https://jaas.ea.com/secure/RapidBoard.jspa?rapidView=25697&projectKey=SOCIALPLAT&quickFIlter=60755#" target="_blank">Jira</a></li>
+    <li><a href="https://drive.google.com/drive/my-drive" target="_blank">My EA drive</a></li>
+    <li> <a href="https://eaworld.work.ea.com/help/mytickets" target="_blank">My Help Tickets</a></li>
+    <li> <a href="https://opensearch.darkside.ea.com/_dashboards/app/login?nextUrl=%2F_dashboards%2Fapp%2Fhome#/" target="_blank">Open search</a>, 
+      <a href="https://docs.google.com/presentation/d/1CaSWZzz2JA0C3ee0r_2URwEz7HBAYWsYiQNpQcaPw4k/edit#slide=id.g2e6fdbcf33e_0_0" target="_blank">Quarterly checkin</a> slides
+    </li>
+    <li> <a href="https://gitlab.ea.com/eadp-social/presence" target="_blank">Gitlab</a></li>
+    <li> <a href="https://docs.google.com/spreadsheets/d/1WoehH4iixkiXoBTfGc3f3QMAmrT1Ct5jwskjn5cp5UA/edit#gid=1268968107" target="_blank">FY25Q2 Plan</a></li>
+    <li> <a href="https://eaworld.work.ea.com/help/ticket-details?ticketId=INC7934353&type=incident&sysid=4dec0dab97f28214446cb057f053af54" target="_blank">HELP</a></li>
+    <li> <a href="https://gitlab.ea.com/eadp-social/social-plus/antelope/-/blob/develop/antelope-server/etc/packer_setup_arm64.sh?ref_type=heads" target="_blank">Setup arm64.sh</a></li>
+    <li> <a href="https://github.com/bufbuild/protoc-gen-validate" target="_blank">Proto-validate</a></li>
+    <li> <a href="https://account.jetbrains.com/licenses" target="_blank">Jetbrains prods</a></li>
+    <li> <a href="https://docs.google.com/spreadsheets/d/1vLjrwRvFaJDXzMne7Uy5NNO9bWqrUpUj5xOjznlsaEc/edit?gid=1252291824#gid=1252291824" target="_blank">Weekly Demo activity</a></li>
+    <li> <a href="https://docs.google.com/document/d/1_6w3bdZFrMeqC6n8EKFmwyJgHLNZijGQjSWfx0Dpsrs/edit#heading=h.x05qggdoa23o" target="_blank">Mobile presence</a> states</li>
+    <li> <a href="https://eaoffice-my.sharepoint.com/:x:/g/personal/atalkowski_ea_com/EVxUwp5iAM5MoqQsDozaGPoBdQQxrt4qzYkFaDhlfSkA2w?e=VyX83E" target="_blank">GPSE-3347 spreadsheet </a>security issues</li>
+
+    <!--
+    <li> <a href="https://account.jetbrains.com/licenses" target="_blank">Jetbrains prods</a></li>
+    <li> <a href="yyy" target="_blank">xxx</a></li>
+    <li> <a href="yyy" target="_blank">xxx</a></li>
+    <li> <a href="yyy" target="_blank">xxx</a></li>
+    <li> <a href="yyy" target="_blank">xxx</a></li>
+    <li> <a href="yyy" target="_blank">xxx</a></li>
+
+ #######                                                    #######                      
+ #       #    # ##### ###### #####  #    #   ##   #            #    ######  ####  #    # 
+ #        #  #    #   #      #    # ##   #  #  #  #            #    #      #    # #    # 
+ #####     ##     #   #####  #    # # #  # #    # #            #    #####  #      ###### 
+ #         ##     #   #      #####  #  # # ###### #            #    #      #      #    # 
+ #        #  #    #   #      #   #  #   ## #    # #            #    #      #    # #    # 
+ ####### #    #   #   ###### #    # #    # #    # ######       #    ######  ####  #    # 
+  
+    -->
+  </ul>
+<h3>External Technologies / Notes</h3>
+  <ul>
+    <li> Reactive: <a href="https://docs.spring.io/spring-framework/reference/web/webflux/new-framework.html" target="_blank">Spring Webflux</a>; 
+      <a href="https://www.javaguides.net/2023/04/project-reactor-mono-and-flux-examples.html" target="_blank">Examples</a>;  
+      <a href="https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html" target="_blank">Classx&lt;T&gt;</a>
+    </li>
+    <li> <a href="https://redis.io/cloud/compare-us-with-aws-elasticache/" target="_blank">Redis vs AWS</a> ElasticCache,
+      <a href="https://github.com/hydro-project/anna/blob/master/README.md" target="_blank">Anna version</a>; 
+      <a href="https://docs.google.com/document/d/1iIBkOzR2snLIVCx0wAXP0btZuZ7HmCawk9VPPxqiLxQ/edit" target="_blank">EA FS example</a> 
+      and <a href="https://docs.google.com/document/d/1eWWovqDLRqg3VJwyjcpEYGyyQ5rojg6pw2fgNsRm2qs/edit?usp=sharing" target="_blank">this</a>
+    </li>
+    <li> <a href="https://papers.report/?cats=cs.LG,cs.AI,cs.CL" target="_blank">Papers Report</a> - technical reports LG, AI, CL
+    </li>
+
+    <li> Articles - 
+      <a href="https://www.cockroachlabs.com/blog/doordash-cockroachdb-massive-scale/" target="_blank">Doordash Cockroach Scale</a>
+    </li>
+    <li> <a href="https://www.baeldung.com/configuration-properties-in-spring-boot" target="_blank">Config props Spring</a></li>
+    <li> <a href="https://kubernetes.io/docs/reference/kubernetes-api/" target="_blank">Kubernetes Docs</a>, 
+      <a href=" https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/" target="_blank">Kustomization</a>
+     
+    </li>
+    <li> <a href="https://kubectl.docs.kubernetes.io/guides/config_management/bespoke/" target="_blank">Kustomize</a></li>
+    <li> <a href="https://api.slack.com/legacy/rtm" target="_blank">RTM (slack example)</a> - instant messaging (EA has own impl)</li>
+    <li> <a href="https://jwt.io/introduction" target="_blank">JWT</a> standard web token using JSON format</li>
+    <li> <a href="https://docs.nats.io/nats-concepts/subjects" target="_blank">NATS</a> publish and subscribe in Go</li>
+    <li> Golang <a href="https://engineering.grab.com/profile-guided-optimisation" target="_blank">PGO optimizing</a>; 
+      <a href="https://pkg.go.dev/github.com/ktr0731/evans/grpc/grpcreflection" target="_blank">Reflection</a>; 
+      <a href="https://tpaschalis.me/lock-striping/" target="_blank">Lock Striping</a>;
+      <a href="https://matttproud.com/blog/posts/go-testing-harness.html" target="_blank">Test harness</a>
+      
+    </li>
+    <li> Docker compose <a href="https://devhints.io/docker-compose" target="_blank">cheat sheet</a></li>
+    <li> <a href="https://www.sumerge.com/reactive-programming-spring-webflux/#:~:text=WebFlux%20in%20Java%20Spring%20empowers,with%20less%20resources%2C%20and%20scalability." target="_blank">
+      Reactive - Flux/Mono</a></li>
+    <li> <a href="https://prismic.io/blog/svelte-vs-react" target="_blank">React v Svelte</a></li>
+
+    <li><a href=" https://www.baeldung.com/junit5-test-templates" target="_blank">JUnit test templates</a></li>
+<!--
+    <a href="yyy" target="_blank">xxx</a>
+    <a href="yyy" target="_blank">xxx</a>
+    <a href="yyy" target="_blank">xxx</a>
+
+
+  #####                                       #     #                      
+ #     # #####   ####  #    # ##### #    #    #  #  # ###### ###### #    # 
+ #       #    # #    # #    #   #   #    #    #  #  # #      #      #   #  
+ #  #### #    # #    # #    #   #   ######    #  #  # #####  #####  ####   
+ #     # #####  #    # # ## #   #   #    #    #  #  # #      #      #  #   
+ #     # #   #  #    # ##  ##   #   #    #    #  #  # #      #      #   #  
+  #####  #    #  ####  #    #   #   #    #     ## ##  ###### ###### #    # 
+-->
+  </ul>
+</td>
+<td>
+  <h3>Growth week - Virtual Threads</h3>
+  <li> 
+    Oracle docs:   <a href="https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html#GUID-6444CF1A-FCAD-4F8A-877F-4A72AA0143B7" target="_blank">Virtual threads</a>
+    ; <a href="https://docs.google.com/presentation/d/17EeX00acOcFtJvNFGduYxCSkLNo_2nKzGA80yo-ap-E/edit#slide=id.g11aeabe606f_0_73" target="_blank">Template</a>
+    ; <a href="https://ea.zoom.us/j/92231939804?pwd=Rts0nPtHifd0XWSNAM28sKaEFV1zHF.1&from=addon" target="_blank">Meeting</a>
+    ;<a href="https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html#GUID-6444CF1A-FCAD-4F8A-877F-4A72AA0143B7" target="_blank">Oracle VTS</a> 
+  </li>
+  <h3>Presence Social Tech</h3>
+  <ul>
+    <li>Managing <a href="https://docs.ea.com/identity/guides/managing-access-tokens/" target="_blank">access tokens</a>
+    </li>
+    <li>Event processor 
+      <a href="https://drive.google.com/file/d/1aUzSIqGBgH4w5duRYAihcG410Vpokh4T/view" target="_blank">architecture</a> / 
+      <a href="https://docs.google.com/presentation/d/1c2uhr9opRle_wAJg-l3egzPeJhoZPUtZVhOYblR4TwM/edit#slide=id.g2ca4618ebba_0_957" target="_blank">slides</a> / 
+      <a href="https://drive.google.com/file/d/1zsaoUbO29ij_G_fUi1nhJZqbbyzI0rXO/view?usp=sharing" target="_blank">video</a>
+    </li>
+    <li>Friends Ambassador 
+      <a href="https://docs.google.com/document/d/11GS9CG1QSAS2wefseq2LiPllJJ24IMvTNWN1w03trpY/edit#heading=h.imdrpywmpnb1" target="_blank">Updates</a>
+    </li>
+    <li> Artifactory:  <a href="https://confluence.ea.com/display/Artifactory/Maven+Packages" target="_blank">docs</a>, 
+      <a href="https://artifacts.ea.com/ui/packages" target="_blank">EA</a> and           
+           <a href="https://confluence.ea.com/pages/viewpage.action?pageId=1092979422" target="_blank">Gamekit</a>
+    </li>
+  </ul>
+
+
+
+
+
+  <h3>Useful docs</h3>
+  <!--
+  <li> <a href="yyy" target="_blank">xxx</a></li>
+   <a href="yyy" target="_blank">xxx</a>
+  -->
+  <ul>
+    <li>
+      <a href="https://docs.google.com/document/d/1XywmF2v7MM-IfFmCQ0g79lT7s6fNS2TpcIvQJrsxsMU/edit?tab=t.0#heading=h.lk0s4sm0q346" target="_blank">ID3.0 White paper</a>,
+      <a href="https://docs.google.com/presentation/d/1HlHjJomoF-LlEEbymJueWxWW2c0sjMmxPY-6Voy6ohk/edit?pli=1#slide=id.g12f4520159f_0_558" target="_blank">Interoperabiity</a>, 
+      <a href="https://docs.ea.com/identity/guides/understanding-the-ea-account/" target="_blank">KT vids</a></li>
+    <li>Discord 
+      <a href="https://docs.google.com/document/d/1IeZk-VrdPd5dcE1bSNKzsS-X-3ZU8Hlq8483F9V2CEU/edit" target="_blank">Reqs</a>, 
+      <a href="https://gist.github.com/msciotti/cb21a5a822a2569738b6b649c5a3f79c" target="_blank">API</a>, 
+      <a href="https://discord.com/developers/docs/topics/oauth2" target="_blank">OAuth</a> and 
+      <a href="https://discordapp.com/developers/docs/game-sdk/activities" target="_blank">Activities</a>  
+    </li>
+    <li> <a href="https://developer.ea.com/display/SocialInternal/CFB25+Launch+Readiness+July+2024" target="_blank">CFB 25 Launch Readiness</a></li>
+    <li> <a href="https://grafana.social-dev-use1.stellar.eadp.cloud/k8s/clusters/c-28k2r/api/v1/namespaces/cattle-monitoring-system/services/http:rancher-monitoring-grafana:80/proxy/d/HSGoaxo7k/presence-load-testing?orgId=1&from=now-6h&to=now&var-namespace_label=namespace&var-namespace=presence-feat-socialplat-1-dt78k8" target="_blank">Grafana</a> load testing example</li>
+    <li> <a href="https://docs.google.com/document/d/1f3luzXHePpI9Tp8Zrf5qfjWN5yHT0Mel9mg35WIqohc/edit?usp=sharing" target="_blank">Load Test Results</a></li>
+    
+    <li> Identity 
+      <a href="https://docs.google.com/document/d/1XywmF2v7MM-IfFmCQ0g79lT7s6fNS2TpcIvQJrsxsMU/edit?tab=t.0#heading=h.lk0s4sm0q346" target="_blank">WP</a>, 
+      <a href="https://docs.google.com/document/d/1M2T4Kr5_lIIn6LbDL8uIoFN2xxLIk1YNFJWbJWzmzCw/edit?tab=t.0#heading=h.5d5buzr1527q" target="_blank">Pres</a>,
+      <a href="https://docs.google.com/document/d/1vCEiN7oc_zVvgR8qDWvRyHzCOMmD7-8Ufmu4H42yGfg/edit#heading=h.wise2fjrq4ja" target="_blank">TDD</a>, 
+      <a href="https://docs.ea.com/identity/guides/understanding-the-ea-account/#Personas" target="_blank">Guide</a>,
+      <a href="https://docs.google.com/spreadsheets/d/1m4AMEHRnxxEqoCXukvhZN-7rH3lDH7Rc1UX1_amDTmE/edit?gid=1281428566#gid=1281428566" target="_blank">Matt</a>,
+      <a href="https://docs.google.com/document/d/1007ctru5UKUazvsPwAtAk4wMdErPFpffgMlgcpP6q2A/edit#heading=h.7vraaw5upefr" target="_blank">My</a></li>
+
+
+
+      <li> <a href="https://docs.google.com/document/d/1U55pb2SuIr7q5UwQGtRAagQrxOzBql4X-GbXT5-mGuM/edit" target="_blank">S2S overview</a></li>
+    <li> <a href="https://docs.google.com/document/d/1T5rhiZpJQ_sZ0fExwQfq_AaQuLyGELCmDEShwb-Nu0E/edit#heading=h.67hp43kx9h3a" target="_blank">Player notifications</a></li>
+    <li> <a href="https://docs.google.com/document/d/1kUNnivZHfyDPHkzhReBr6eef9O2EUuyd-buY-4Qmcv0/edit#heading=h.67hp43kx9h3a" target="_blank">Mobile Presence Doc</a></li>
+    <li> <a href="https://docs.google.com/document/d/1awhHywi_E-DUrj2xqBJ3zHryvE4EItADIWEKeKz0jNI/edit#heading=h.xgr813w23hz"  target="_blank">RTM Auto Scaling</a></li>
+    <li> <a href="https://docs.google.com/document/d/1eD73_ObvCMv6-Xrphr8iJ8v31dXA2q9V-1kysym233U/edit#heading=h.cfb8g5ji6bw9" target="_blank">PRD / discord</a></li>
+    <li> <a href="https://docs.google.com/document/d/1rpgyv-uTVjH0WaoSr4B1VxCPCfMGc0wYV_CsQFcCFpc/edit#heading=h.i9rl93yk4l2v" target="_blank">Race Condition</a> and 
+         <a href="https://gitlab.ea.com/eadp-social/presence/presence-frontend-grpc/-/merge_requests/361/diffs" target="_blank">MR diffs</a>
+         and possible 
+         <a href="https://docs.google.com/document/d/1ulUAjhV70o6Oud23k9loZ951IVoQJtHbG2cWxNUxfss/edit#heading=h.lht5cvy124me" target="_blank">soln</a></li>
+    <li> <a href="https://console.ea.com/testautomation/dashboard/154?project=Presence" target="_blank">Load Test Dash</a></li>
+    <li> <a href="https://docs.google.com/document/d/16rQtMZc2Yc98-8GDMujkQy06H_dERIWqo05-iWSvpDc/edit#heading=h.h53o3y218ab" target="_blank">My GAME-ON</a></li>
+    <li> <a href="https://developer.ea.com/display/SocialInternal/How+to+setup+RTM+loadtest" target="_blank">RTM load testing</a>, 
+      <a href="https://docs.google.com/document/d/17KkNIX05ei-mRuH2-mSFI-MrH0vQV2LzK9jgnucVo6w/edit?tab=t.0#heading=h.kz72yb4nyr5s" target="_blank">Document</a>
+    </li>
+    <li> <a href="https://tidyfirst.substack.com/p/measuring-developer-productivity" target="_blank">Dev productivity</a></li>
+  </ul>
+
+
+
+  <h3>Training/Knowledge</h3>
+  <ul>
+    <li> Udemy: <a href="https://ea.udemy.com/organization/home/" target="_blank">Kubernetes</a>, 
+      <a href="https://ea.udemy.com/course/microservices-with-spring-boot-and-spring-cloud/" target="_blank">Springboot</a>
+    </li>
+<!--
+    <a href="xxx" target="_blank">yyy</a>
+    <li> <a href="https://ea.udemy.com/organization/home/" target="_blank">Udemy training</a></li>
+    <li> <a href="https://gist.github.com/msciotti/cb21a5a822a2569738b6b649c5a3f79c" target="_blank">Discord Server API</a></li>
+-->
+   <li> <a href="https://developer.ea.com/pages/viewpage.action?pageId=465405000" target="_blank">KT series</a></li>
+   <li> <a href="https://docs.ea.com/presence/" target="_blank">WIKI Documents</a></li>
+   <li> <a href="https://developer.ea.com/pages/viewpage.action?spaceKey=SocialInternal&title=Presence+Event+Processor" target="_blank">Presence Event Processor</a></li>
+   <li> <a href="https://ea.udemy.com/course/kubernetesmastery/learn/lecture/17070926?start=0#overview" target="_blank">Udemy Kubernetes Course</a></li> 
+   <li> <a href="https://developer.ea.com/pages/viewpage.action?pageId=465404992" target="_blank">Original KT page</a></li>
+   <li> <a href="https://docs.ea.com/identity/api-references/grpc-apis/auth/v1/get_auth_for_ps4_blaze_server_request-grpc-docs" target="_blank">blaze proto auth</a></li>
+
+   <li> S01E01 <a href="https://ea.zoom.us/rec/share/21t9X4p4vgG-Kg91mY_hOjdxxVLJ2x5SYYDLiUyF_cJgUxIQmYLUCaHSA_Zxr7EK.L2GIRD4fdjUas3CC" target="_blank">High level system overview</a> <!-- 4Z$zp=v? -->  </li>
+   <li> S01E02 <a href="https://ea.zoom.us/rec/share/vURYe6kYGc1XnnGwxLhDC6NF3eZC0y1DivxMRn-7eIJWKVyDGNVrvsEbnKqP1JG6.ELLnBvMCJCZIQxiV" target="_blank">gRPC API design overview and main flows</a>
+     <!-- jgHh3?VE -->
+    </li>
+   <li> S01E03 <a href="https://ea.zoom.us/rec/share/zQPWcDcvdzvcz0WJ8MBqFLOwjuiS9a5Pqet5vyNpLeZE2aFRMf_V7TuhBQL_Nsmq.ykS0wjhTOENiegkf" target="_blank">Deeper dive into architecture / gRPC API</a> 
+    <!-- 1vCJhf*0 -->
+  </li>
+   <li> S01E04 <a href="https://ea.zoom.us/rec/share/8YSN7TQ9dTIeX1vYdFXw6pwSjGivPepltC94oZtJMsvNLqcBtxOohW8ZxNJRZgMt.GuEiyR02jBGMe4b2" target="_blank">Runtime, observability & deployment</a> 
+    <!-- $L9Jun68 -->
+  </li>
+   <li> S01E05 <a href="https://ea.zoom.us/rec/share/_eKJ5j3nziPm9BVDkEYjezLAxaxTZ6xyUeNg7_FwAZJBzfAhDKjkKL2N9wpEq_rG.sCPnSA4EotT6Um4n" target="_blank">Performance and load testing</a> 
+    <!-- fm#B6pb1  -->
+  </li>
+   <li> S01E06 <a href="https://ea.zoom.us/rec/share/4OPmLi7Uf8upLXGnD_lSwdivKWEkRtGQV4WSVPFyZgBi0EqASvwu7p_7YMZuGaOW.bdyxo2S6-mnY2oLp" target="_blank">Kubernetes Basics</a> <!-- 0!r?Cs&. -->
+    </li>
+   <li> S02E01 <a href="https://developer.ea.com/pages/viewpage.action?pageId=465404992#:~:text=S01E01-,Zoom,-j%23Y%3D2Gr6" target="_blank">High level explanation of this split</a> <!--  j#Y=2Gr6 --> </li>
+   <li> S02E02 <a href="https://ea.zoom.us/rec/share/Tpkk63iRfgYZR38xu1Tbod_aVie_J5QnYtJlBLTOVQELAe4t9Ierqms3zqIu99k_.u9NNTgk5NrkaYlAI" target="_blank">Deep dive into session service and its uses</a> <!--  o0ycmu5$	--> </li>
+   <li> S02E03 <a href="https://ea.zoom.us/rec/share/AKuKLRUkcFAJWA-g4E2b__rzqxtyXPY5zC5BWsev_fvYoRMVQLtEwWzZ95UlZb0.O1P2iVnqiiHdvb9L" target="_blank">Zoom</a> <!--  p3as?00K --></li>
+   <li> <a href="https://drive.google.com/file/d/1NAXL1DZUG6XrNHTAYh47dqHy7rrTVwqE/view" target="_blank">Presence Oncall Runbook</a></li>
+   <li> <a href="https://docs.google.com/document/d/1XywmF2v7MM-IfFmCQ0g79lT7s6fNS2TpcIvQJrsxsMU/edit#heading=h.lk0s4sm0q346" target="_blank">ID 1-3.0</a>,  
+    <a href="https://docs.ea.com/identity/guides/understanding-the-ea-account/", target="_blank">Understanding</a>; 
+    <a href="https://docs.google.com/presentation/d/1HlHjJomoF-LlEEbymJueWxWW2c0sjMmxPY-6Voy6ohk/edit#slide=id.g12f4520159f_0_558" target="_blank">slides for 3.0</a> and
+    
+
+    <a href="https://docs.google.com/document/d/16TNx9BhjsTI0r9vj71NWx3ifju49UsrSTMBDLDqJeNo/edit#heading=h.ldlvzy29quvn" target="_blank">notes</a> and 
+    <a href="https://docs.google.com/document/d/1vCEiN7oc_zVvgR8qDWvRyHzCOMmD7-8Ufmu4H42yGfg/edit" target="_blank">doc</a>
+  </li>
+   <li> Blaze 
+    <a href="https://developer.ea.com/display/blaze/Ignition#Ignition-QuickStart%E2%80%93Fromscratch,inasfewstepsaspossible" target="_blank">setup</a> and 
+    <a href="https://docs.ea.com/blaze/gamemanager/guides/getting-started/gamemanager-pyro-ignition-walkthrough" target="_blank">usage</a>
+  </li>
+  <li> <a href="https://medium.com/gravel-engineering/simplify-merge-request-description-with-templates-in-gitlab-45dca182185d" target="_blank">MR link 1</a>,  
+    <a href="https://gitlab.ea.com/eadp-social/presence/content-mart/content-mart-grpc/-/blob/main/.gitlab/merge_request_templates/Default.md?ref_type=heads" target="_blank">Content Mart MR</a>, 
+  <a href="https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/overview/" target="_blank">Sonar</a> and 
+  <a href="https://docs.google.com/document/d/1n6aG0r0i4BVqUOTfQqyFb5eZrViKmDW1KPkq5_cRTVI/edit" target="_blank">Best Practices doc</a></li>
+
+   <!--
+    <li> <a href="yyy" target="_blank">xxx</a></li>
+    <li> <a href="yyy" target="_blank">xxx</a></li>
+    <li> <a href="https://eaworld.work.ea.com/machina-ai-2024/home" target="_blank">Machina home 40 live videos</a></li>
+ 
+    Setup Links
+https://developer.ea.com/display/blaze/Ignition#Ignition-QuickStart%E2%80%93Fromscratch,inasfewstepsaspossible
+Usage:
+https://docs.ea.com/blaze/gamemanager/guides/getting-started/gamemanager-pyro-ignition-walkthrough
+-->
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<!--
+
+ #                                         #    #                           
+ #       ######  ####    ##   #           #    # #   #####  #    # # #    # 
+ #       #      #    #  #  #  #          #    #   #  #    # ##  ## # ##   # 
+ #       #####  #      #    # #         #    #     # #    # # ## # # # #  # 
+ #       #      #  ### ###### #        #     ####### #    # #    # # #  # # 
+ #       #      #    # #    # #       #      #     # #    # #    # # #   ## 
+ ####### ######  ####  #    # ###### #       #     # #####  #    # # #    # 
+
+-->
+
+<h3>Legal and admin</h3>
+<ul>
+<!--
+  <li> <a href="yyy" target="_blank">xxx</a></li>
+-->
+  <li> <a href="https://secure.ethicspoint.com/domain/media/en/gui/8089/index.html" target="_blank">EA Report Line for concerns</a>, 
+       <a href="https://drive.google.com/file/d/1gP7cfEVuyJwFbkoqykWsec1fixASWa0U/view" target="_blank">External Comms/Social Media</a>,
+       <a href="https://drive.google.com/file/d/14n5vouPe0BTUZkA8_l-awFnUm3Cz3s9L/view" target="_blank">Code of Conduct</a>,
+       <a href="https://drive.google.com/file/d/1oxxKKbKvCUUqCRSMa7KJi1w8y9gAL_Gm/view" target="_blank">Acceptable use</a>
+       policies
+  </li>
+  <li> 
+    <a href="https://app.bonus.ly/" target="_blank">Give bonus pts</a>
+    <a href="https://eaworld.work.ea.com/people-relations-coe/people-relations-home" target="_blank">People Relations</a> and
+       <a href="http://electronicarts.allvoices.co/survey" target="_blank">All Voices</a></li>
+  <li> <a href="https://eaworld.work.ea.com/legal-conflict-of-interest/" target="_blank">Conflicts of Interest</a>,
+
+       <a href="https://drive.google.com/file/d/1e_mvwvBjR6UQ0RJf1-u4JV014VI173UL/view" target="_blank">(Full document)</a> and 
+       <a href="https://drive.google.com/file/d/1PNtWhKmhff-6crIYJ5TiuRG62IZhHES-/view" target="_blank">Outside work projects</a></li>
+  <li> <a href="https://drive.google.com/file/d/1mYIxVM8EQ1XD679ztrqaCscbW-u5_XdI/view" target="_blank">Antitrust/Competition</a> and
+       <a href="https://drive.google.com/open?id=1thNRC2fAd4PV5BlCcIJV3NE1EE07CrzH" target="_blank">Insider trading</a> policies
+  </li>
+  <li> <a href="https://stockgrant.ea.com/Login.aspx" target="_blank">Stock grant</a></li>
+<!--
+  <li> <a href="https://docs.google.com/document/d/1n6aG0r0i4BVqUOTfQqyFb5eZrViKmDW1KPkq5_cRTVI/edit" target="_blank">Bes Practices</a></li>
+  <li> <a href="https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/overview/" target="_blank">Sonar</a></li>
+   <a href="yyy" target="_blank">xxx</a>
+   <a href="yyy" target="_blank">xxx</a>
+-->
+</ul>
+
+<!--
+ ######                                 
+ #     # ###### #####  #  ####          
+ #     # #      #    # # #              
+ ######  #####  #    # #  ####          
+ #   #   #      #    # #      #         
+ #    #  #      #    # # #    #         
+ #     # ###### #####  #  ####          
+                                        
+ -->
+
+<h3>Redis cli commands</h3>
+<table>
+  <thead>
+    <tr><th width="10%">No</th><th width="20%">Command</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0</td><td>SET key value</td><td>Sets the key to this value</td></tr>
+    <tr><td>1</td><td>DEL key</td><td>This command deletes the key, if it exists.</td></tr>
+    <tr><td>2</td><td>DUMP key</td><td>This command returns a serialized version of the value stored at the specified key.</td></tr>
+    <tr><td>3</td><td>EXISTS key</td><td>This command checks whether the key exists or not.</td></tr>
+    <tr><td>4</td><td>EXPIRE key seconds</td><td>Sets the expiry of the key after the specified time.</td></tr>
+    <tr><td>5</td><td>EXPIREAT key timestamp</td><td>Sets the expiry of the key after the specified time. Here time is in Unix timestamp format.</td></tr>
+    <tr><td>6</td><td>PEXPIRE key milliseconds</td><td>Set the expiry of key in milliseconds.</td></tr>
+    <tr><td>7</td><td>PEXPIREAT key milliseconds-timestamp</td><td>Sets the expiry of the key in Unix timestamp specified as milliseconds.</td></tr>
+    <tr><td>8</td><td>KEYS pattern</td><td>Finds all keys matching the specified pattern.</td></tr>
+    <tr><td>9</td><td>MOVE key db</td><td>Moves a key to another database.</td></tr>
+    <tr><td>10</td><td>PERSIST key</td><td>Removes the expiration from the key.</td></tr>
+    <tr><td>11</td><td>PTTL key</td><td>Gets the remaining time in keys expiry in milliseconds.</td></tr>
+    <tr><td>12</td><td>TTL key</td><td>Gets the remaining time in keys expiry.</td></tr>
+    <tr><td>13</td><td>RANDOMKEY</td><td>Returns a random key from Redis.</td></tr>
+    <tr><td>14</td><td>RENAME key newkey</td><td>Changes the key name.</td></tr>
+    <tr><td>15</td><td>RENAMENX key newkey</td><td>Renames the key, if a new key doesn't exist.</td></tr>
+    <tr><td>16</td><td>TYPE key</td><td>Returns the data type of the value stored in the key.</td></tr>
+  </table>
+
+  <!--
+ ###                                    
+  #  #    #   ##    ####  ######  ####  
+  #  ##  ##  #  #  #    # #      #      
+  #  # ## # #    # #      #####   ####  
+  #  #    # ###### #  ### #           # 
+  #  #    # #    # #    # #      #    # 
+ ### #    # #    #  ####  ######  ####  
+ -->
+<!--
+  <li> <a href="yyy" target="_blank">xxx</a></li>
+  <li> <a href="yyy" target="_blank">xxx</a></li>
+   <a href="yyy" target="_blank">xxx</a>
+   <a href="yyy" target="_blank">xxx</a>
+-->
+  
+  <h3>Useful Images</h3>
+  <p>OpenSearch:
+    <button onclick='switchDetail("opensearch", "details", this)'>Open Search 1</button> 
+    <a href="https://opensearch.darkside.ea.com/_dashboards/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-24h,to:now))&_a=(columns:!(_source),filters:!(),index:social-presence-prod-logs,interval:auto,query:(language:kuery,query:''),sort:!())" target="_blank">HERE</a>
+    <button onclick='switchDetail("opensearch2", "details", this)'>Example 2</button> 
+    Use this : NOT message: (complet* OR sending* OR "starting" OR receive* OR cancelled)
+    <a href="https://opensearch.darkside.ea.com/_dashboards/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:'2024-12-15T11:00:00.000Z',to:'2024-12-15T14:00:00.000Z'))&_a=(columns:!(_source),filters:!(('$state':(store:appState),meta:(alias:!n,disabled:!f,index:'99ddfe00-0bb6-11ee-acd5-43146e102cc9',key:kubernetes.container_name,negate:!t,params:(query:mongos),type:phrase),query:(match_phrase:(kubernetes.container_name:mongos))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:'99ddfe00-0bb6-11ee-acd5-43146e102cc9',key:tags,negate:!t,params:(query:canary-log),type:phrase),query:(match_phrase:(tags:canary-log))),('$state':(store:appState),meta:(alias:!n,disabled:!f,index:'99ddfe00-0bb6-11ee-acd5-43146e102cc9',key:kubernetes.container_name,negate:!t,params:(query:istio-proxy),type:phrase),query:(match_phrase:(kubernetes.container_name:istio-proxy)))),index:social-presence-prod-logs,interval:auto,query:(language:kuery,query:'identity.*:%20CF*%20AND%20NOT%20message:%20(complet*%20OR%20sending*%20OR%20%22starting%22)'),savedQuery:RECO-PROD,sort:!())" target="_blank">Link2</a>
+  </p>
+
+  <p>Presence:
+    <button onclick='switchDetail("InitSession", "details", this)'>Init Session</button>
+    <button onclick='switchDetail("JoiningPlayersT", "details", this)'>Join Players</button> 
+    <button onclick='switchDetail("SubscribeToFriendsPresence", "details", this)'>Subsribe to Fs</button> 
+    <button onclick='switchDetail("CloseSession", "details", this)'>Close session</button> 
+    <button onclick='switchDetail("Pager-Event-Lifecycle", "details", this)'>Pager Duty events</button> 
+    </p>
+    <p> Social
+         <button onclick='switchDetail("DesignPhases", "details", this)'>Design Phases</button>
+    <button onclick='switchDetail("IstioToPreFE-NATS-Redis", "details", this)'>Istio-NATS</button> 
+    <button onclick='switchDetail("DesignPhases2", "details", this)'>Design Ph2</button> 
+    <button onclick='switchDetail("ContentMart", "details", this)'>Content Mart</button> 
+    </p>
+    <p>Architectures  <button onclick='switchDetail("SocialUIfromGameSDK", "details", this)'>Game SDK</button>
+     <button onclick='switchDetail("WholeSDKArch", "details", this)'>SDK Arch</button>        
+    <button onclick='switchDetail("OverallArch1", "details", this)'>Arch1</button> 
+    <button onclick='switchDetail("OverallArch2", "details", this)'>Arch2</button> 
+    <button onclick='switchDetail("HighLevelArch", "details", this)'>Hi Lev Arch</button> 
+    <button onclick='switchDetail("GraphanaLoadTest", "details", this)'>Graf load</button>      
+    </p>
+  <div id="details">
+    <img src="images/HighLevelArch.png" >
+  </div>
+
+  <h3>
+    Alerts and Pager duty notes (from Ayush)
+  </h3>
+  <p>For an alert like this <a href="https://tnt-ea.pagerduty.com/incidents/Q3OD28MJ37R77W" target="_blank">incident https://tnt-ea.pagerduty.com/incidents/Q3OD28MJ37R77W</a>
+  you can see in the runbook and also the custom details section they have links to the places to go to check more details about what caused the alert.
+  </p>
+  <p>We do see that Identity had a spike of 5 alerts that might have caused 
+  <a href="https://eadp-social.datadoghq.com/dashboard/ied-2ik-ahj/friends?fromUser=false&fullscreen_end_ts=1738655999999&fullscreen_paused=true&fullscreen_refresh_mode=paused&fullscreen_section=overview&fullscreen_start_ts=1738569600000&fullscreen_widget=4311692765505806&refresh_mode=paused&tpl_var_infra-platform=stellar&from_ts=1738569600000&to_ts=1738655999999&live=false" target="_blank">latency spikes</a><div class=""></div>
+  Now identity doesn't belong to presence squads but is used extensively by friends in downstream calls; so that is why in this case there might not be anything we can do to fix the issue.
+But what you can do in cases like this is go through this kind of analysis and leave the engineers a message on squad-friends letting them know that 
+   this is happening and depending on severity involve identity team.
+</p>
+<p>We saw this kind of thing for both friends and friends-recommendation for the same reason, so if this is common there could be a network issue or something like that.
+</p>
+
+
+</body>
+</html>

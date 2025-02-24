@@ -1,0 +1,1 @@
+secrets=$(aws secretsmanager get-secret-value --secret-id dev/presence/ens-api-token --region=us-east-1 | jq -r '.SecretString')

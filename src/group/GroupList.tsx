@@ -44,7 +44,7 @@ const GroupList: React.FC<GroupListProps> = ({ groups }) => {
                 <tr key={group.id}>
                   <td>{group.name}</td>
                   <td><Link to={`/groups/${group.id}`}>
-                      Edit/Delete
+                      Update
                       </Link>
                   </td>
                 </tr>

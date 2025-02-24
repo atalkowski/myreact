@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 //       <tr><td><Link to="/">Users</Link></td></tr>
 
+// This was replaced by the MyTabBar.tsx which offers a tab-like UI rather than links.  
 const Navbar = () => {
   return (
     <nav className="navbar">

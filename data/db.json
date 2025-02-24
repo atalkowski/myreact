@@ -61,17 +61,49 @@
       "group": "f0ba"
     },
     {
+      "id": "c875",
+      "title": "Ethics Report Line",
+      "url": "https://secure.ethicspoint.com/domain/media/en/gui/8089/index.html",
+      "group": "5"
+    },
+    {
+      "id": "5add",
+      "title": "External comms, social media",
+      "url": "https://drive.google.com/file/d/1gP7cfEVuyJwFbkoqykWsec1fixASWa0U/view",
+      "group": "5"
+    },
+    {
+      "id": "40e5",
+      "title": "S2S internal gateways discussion",
+      "url": "https://electronic-arts.slack.com/archives/C088QLJ3KLY/p1739900089057959",
+      "group": "c331"
+    },
+    {
       "id": "8214",
       "title": "Original Aide Memoire",
-      "url": "notes/mylinks.htm",
+      "url": "notes/index.html",
       "group": "afa7"
+    },
+    {
+      "id": "901b",
+      "title": "The alternatives",
+      "url": "https://wapology.medium.com/10-best-bookmark-manager-app-to-save-and-organize-links-2eacd367c82a",
+      "group": "afa7"
+    },
+    {
+      "id": "67e8",
+      "title": "Migration of Management App 2.0",
+      "url": "https://eadp-marketplace.slack.com/archives/C01HZ3XF4TX/p1739990834644989",
+      "group": "c331"
+    },
+    {
+      "id": "72c1",
+      "title": "Developer setup",
+      "url": "https://developer.ea.com/pages/viewpage.action?spaceKey=SocialInternal&title=Getting+Started+with+Service+Development",
+      "group": "3"
     }
   ],
   "groups": [
-    {
-      "name": "My Team ",
-      "id": "1"
-    },
     {
       "name": "Current Work",
       "id": "2"

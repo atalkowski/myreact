@@ -1,14 +1,45 @@
-# Getting Started with Create React App
 
+
+# The Personal WIKI application synopsis
+This project and application is a merge of various works by the author to achieve the following:
+1. To demonstrate a simple React application for training purposes.
+2. To provide the Personal WIKI for recording and classifying information according to your preferences.
+
+
+### Quick Install TLDR; 
+Install in this order on Mac OS
+node:
+```sh
+	brew install node
+```
+json-server: node
+```sh
+	npm install -g json-server
+```
+jsondb:		# Start the json db server (uses a trivial JSON data source data/db.json)
+```sh
+	json-server --watch data/db.json --port 8000
+```
+install:	# Install the application
+```sh
+	cd src && npm install
+```
+start:	# Start the application
+```sh
+	cd src && npm start
+```
+
+## Makefile assistance.
+In the project root directory there is a Makefile to encapsulate the various builds and options.
+You can run this (if make is installed)
+```sh
+make
+```
+This will show the most up-to-date scripts that can be started and explain them - and should augment the comments below.
+If make is not instaled - you can take a look at the make.hlp and the Makefile to see what commands can be run to install
+
+## Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project root directory there is a Makefile to encapsulate the various builds and options. You can run:
-
-### `make`
-
-This will show the most up-to-date scripts that can be started and explain them - and should augment the comments below. You can take a look at the Makefile and also the make.hlp.
 
 ## Other Scripts (originals from the bootstrap)
 
@@ -17,7 +48,7 @@ Note these are encapsulated in the 'make' script above but remain documented her
 In the project directory (src), you can run these scripts manually:
 
 ### `npm start`
-
+(Equivalent to running make start in the root folder)
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
@@ -39,42 +70,8 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

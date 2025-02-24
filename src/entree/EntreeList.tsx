@@ -63,7 +63,7 @@ const EntreeList: React.FC<EntreeListProps> = ({ entrees, groups }) => {
                   <td>
                     <a href={entree.url} target="_blank" rel="noreferrer">{showLink(entree.url)}</a></td>
                   <td><Link to={`/entrees/${entree.id}`}>
-                      Edit
+                      Update
                       </Link>
                   </td>
                 </tr>
